@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tut_app/core/router/app_router.dart';
+import 'package:tut_app/view/splash/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,12 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      onGenerateRoute: AppRouter.onGenerate,
+      initialRoute: SplashScreen.routeName,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Container(),
     );
   }
 }
