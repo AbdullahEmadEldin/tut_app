@@ -5,6 +5,7 @@ import 'package:tut_app/app/onBoarding/model/on_boarding_model.dart';
 class OnBoardingPageView extends StatelessWidget {
   final OnBoardingObject onBoardingObject;
 
+  /// #### This for viewing onBoarding details (title, body, image)
   const OnBoardingPageView({
     super.key,
     required this.onBoardingObject,

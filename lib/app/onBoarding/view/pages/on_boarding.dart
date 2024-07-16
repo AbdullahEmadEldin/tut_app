@@ -20,6 +20,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
+
+      /// PageView.builder for viewing onBoarding details
       body: PageView.builder(
         controller: _pageController,
         onPageChanged: (index) => setState(() {
@@ -32,6 +34,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           );
         },
       ),
+
+      /// BottomSheet for navigating between pages
       bottomSheet: OnBoardingBottomSheetWidget(
         viewModel: onBoardingViewModel,
         onNextFunction: () {
@@ -41,8 +45,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 milliseconds: AppConstants.onBoardingAnimationTimer),
             curve: Curves.easeInOut,
           );
-          print(
-              '==>>> ${onBoardingViewModel.currentIndex == onBoardingViewModel.getOnBoardingObjects().length - 1}');
         },
         onBackFunction: () {
           _pageController.animateToPage(

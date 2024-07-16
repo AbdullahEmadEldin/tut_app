@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tut_app/app/auth/view/pages/login_page.dart';
 import 'package:tut_app/app/onBoarding/view_model/on_boarding_view_model.dart';
+import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 
 class OnBoardingBottomSheetWidget extends StatefulWidget {
@@ -7,6 +9,8 @@ class OnBoardingBottomSheetWidget extends StatefulWidget {
   final void Function() onNextFunction;
   final void Function() onBackFunction;
   final void Function() onSkipFunction;
+
+  /// #### View navigation between pages buttons and skip to Login page
   const OnBoardingBottomSheetWidget({
     super.key,
     required this.viewModel,
@@ -31,9 +35,10 @@ class _OnBoardingBottomSheetWidgetState
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           TextButton(
-            onPressed: () {},
+            onPressed: () =>
+                Navigator.pushReplacementNamed(context, LoginPage.routeName),
             child: Text(
-              'Skip',
+              AppString.skip,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     color: AppColors.primary,
                   ),
@@ -87,11 +92,13 @@ class _OnBoardingBottomSheetWidgetState
     );
   }
 
+  /// This method draw num of container based on num of pages
+  /// and determine color of the selected container.
   Container _indexContainer(int i) {
     return Container(
       height: 8,
       width: 8,
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
           color: widget.viewModel.currentIndex == i
               ? Colors.transparent
