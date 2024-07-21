@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tut_app/app/auth/view/pages/login_page.dart';
 import 'package:tut_app/app/onBoarding/view/pages/on_boarding.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
-import 'package:tut_app/view/error/error_router.dart';
-import 'package:tut_app/view/splash/splash_screen.dart';
+import 'package:tut_app/data/errors/error_router.dart';
+import 'package:tut_app/view/pages/splash_screen.dart';
 
 class AppRouter {
   static Route? onGenerate(RouteSettings settings) {
@@ -13,10 +13,12 @@ class AppRouter {
         );
       case OnBoardingPage.routeName:
         return MaterialPageRoute(builder: (context) => const OnBoardingPage());
-      default:
+      case LoginPage.routeName:
         return MaterialPageRoute(
-            //TODO handle no route found page.
-            builder: (context) => const ErrorRouter());
+          builder: (context) => const LoginPage(),
+        );
+      default:
+        return MaterialPageRoute(builder: (context) => const ErrorRouter());
     }
   }
 }

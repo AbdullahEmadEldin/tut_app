@@ -35,10 +35,9 @@ class _OnBoardingBottomSheetWidgetState
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           TextButton(
-            onPressed: () =>
-                Navigator.pushReplacementNamed(context, LoginPage.routeName),
+            onPressed: widget.onSkipFunction,
             child: Text(
-              AppString.skip,
+              AppStrings.skip,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     color: AppColors.primary,
                   ),
@@ -58,7 +57,7 @@ class _OnBoardingBottomSheetWidgetState
                   icon: Icon(
                     Icons.arrow_back_ios,
                     color: widget.viewModel.currentIndex == 0
-                        ? AppColors.veryLightGrey
+                        ? AppColors.primaryGrade3
                         : AppColors.white,
                   ),
                 ),
@@ -80,7 +79,7 @@ class _OnBoardingBottomSheetWidgetState
                     Icons.arrow_forward_ios,
                     color: widget.viewModel.currentIndex ==
                             widget.viewModel.getOnBoardingObjects().length - 1
-                        ? AppColors.veryLightGrey
+                        ? AppColors.primaryGrade3
                         : AppColors.white,
                   ),
                 )

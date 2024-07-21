@@ -8,22 +8,22 @@ class OnBoardingViewModel {
 
   List<OnBoardingObject> getOnBoardingObjects() => [
         OnBoardingObject(
-            title: AppString.onBoardingTitle1,
-            body: AppString.onBoardingSubTitle1,
+            title: AppStrings.onBoardingTitle1,
+            body: AppStrings.onBoardingSubTitle1,
             image: ImagesAssets.onboardingLogo1),
         OnBoardingObject(
-          title: AppString.onBoardingTitle2,
-          body: AppString.onBoardingSubTitle2,
+          title: AppStrings.onBoardingTitle2,
+          body: AppStrings.onBoardingSubTitle2,
           image: ImagesAssets.onboardingLogo2,
         ),
         OnBoardingObject(
-          title: AppString.onBoardingTitle3,
-          body: AppString.onBoardingSubTitle3,
+          title: AppStrings.onBoardingTitle3,
+          body: AppStrings.onBoardingSubTitle3,
           image: ImagesAssets.onboardingLogo3,
         ),
         OnBoardingObject(
-          title: AppString.onBoardingTitle4,
-          body: AppString.onBoardingSubTitle4,
+          title: AppStrings.onBoardingTitle4,
+          body: AppStrings.onBoardingSubTitle4,
           image: ImagesAssets.onboardingLogo4,
         ),
       ];

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tut_app/app/auth/view/pages/login_page.dart';
 import 'package:tut_app/app/onBoarding/view/widget/on_boarding_bottom_sheet.dart';
 import 'package:tut_app/app/onBoarding/view/widget/on_boarding_page_view.dart';
 import 'package:tut_app/app/onBoarding/view_model/on_boarding_view_model.dart';
 import 'package:tut_app/core/constants.dart';
+import 'package:tut_app/core/router/app_router.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -56,7 +58,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           print(
               '==>>> ${onBoardingViewModel.currentIndex == onBoardingViewModel.getOnBoardingObjects().length - 1}');
         },
-        onSkipFunction: () {},
+        onSkipFunction: () {
+          Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+        },
       ),
     );
   }

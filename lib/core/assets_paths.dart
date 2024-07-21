@@ -16,3 +16,7 @@ class ImagesAssets {
   static const String solidCircle = 'assets/images/solid_circle_ic.svg';
   static const String splashLogo = 'assets/images/splash_logo.png';
 }
+
+class AnimationAssets {
+  static const String loginAnimation = 'assets/animations/login_animation.riv';
+}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/router/app_router.dart';
-import 'package:tut_app/view/splash/splash_screen.dart';
+import 'package:tut_app/view/pages/splash_screen.dart';
 
 void main() {
   runApp(MyApp());

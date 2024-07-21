@@ -1,4 +1,4 @@
-class AppString {
+class AppStrings {
   static const onBoardingTitle1 = "TUT APP";
   static const onBoardingTitle2 = "TUT APP";
   static const onBoardingTitle3 = "TUT APP";
@@ -13,4 +13,14 @@ class AppString {
   static const onBoardingSubTitle4 =
       "This a subtitle text longer than others to mock the UI";
   static const skip = "skip";
+
+  /// Auth keywords
+  static const email = "Email";
+  static const password = "Password";
+  static const login = "Login";
+  static const register = "Register";
+  static const forgotPassword = "Forgot Password?";
+  static const alreadyHaveAnAccount = "Already have an account?";
+  static const dontHaveAnAccount = "Don't have an account?";
+  static const or = "OR";
 }
