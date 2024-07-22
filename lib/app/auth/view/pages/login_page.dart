@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     loginCubit = BlocProvider.of<LoginCubit>(context)
-      ..initializeRiveAnimation()
+      ..initializeRiveAnimation().then((value) => setState(() {}))
       ..checkForPasswordFocusNodeToChangeAnimationState();
 
     // /// initializing controllers of animations
@@ -74,8 +74,7 @@ class _LoginPageState extends State<LoginPage> {
 
     // _initializeRiveAnimation();
     // _checkForPasswordFocusNodeToChangeAnimationState();
-    // loginCubit.initializeRiveAnimation();
-    // loginCubit.checkForPasswordFocusNodeToChangeAnimationState();
+
     super.initState();
   }
 
