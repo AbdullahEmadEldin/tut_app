@@ -1,5 +1,9 @@
 class AppStrings {
+  //*---------------------------------------------------------- */
+  //********************  OnBoarding  ************************//
+//*---------------------------------------------------------- */
   static const onBoardingTitle1 = "TUT APP";
+
   static const onBoardingTitle2 = "TUT APP";
   static const onBoardingTitle3 = "TUT APP";
   static const onBoardingTitle4 = "TUT APP";
@@ -14,7 +18,9 @@ class AppStrings {
       "This a subtitle text longer than others to mock the UI";
   static const skip = "skip";
 
-  /// Auth keywords
+  //*---------------------------------------------------------- */
+  //********************  Authentication  ************************//
+  //*---------------------------------------------------------- */
   static const email = "Email";
   static const password = "Password";
   static const login = "Login";
@@ -23,4 +29,10 @@ class AppStrings {
   static const alreadyHaveAnAccount = "Already have an account?";
   static const dontHaveAnAccount = "Don't have an account?";
   static const or = "OR";
+
+  static const loginError = "Login failed. Please try again.";
+
+  static const noInternet = "No Internet";
+
+  static const emptyFields = "Please fill required fields";
 }

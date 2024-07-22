@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:tut_app/core/api_endpoints.dart';
 import 'package:tut_app/data/errors/exceptions.dart';
 import 'package:tut_app/data/networking/api_consumer.dart';
 import 'package:tut_app/data/networking/api_interceptor.dart';
@@ -10,9 +9,6 @@ class DioConsumer extends ApiConsumer {
   DioConsumer({
     required this.dio,
   }) {
-    /// define dio baseUrl once
-    dio.options.baseUrl = ApiEndpoints.authBaseUrl;
-
     /// add interceptors
     dio.interceptors.add(
       ApiInterceptor(),

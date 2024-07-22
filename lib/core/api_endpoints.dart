@@ -1,34 +1,37 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 class ApiEndpoints {
   static String authBaseUrl = "https://food-api-omega.vercel.app/api/v1/user";
 
   /// SignIn JSON
-  static String signIn = "/signin";
+  static String signIn = authBaseUrl + "/signin";
 
   /// SignUp FormData
-  static String signUp = "/signup";
+  static String signUp = authBaseUrl + "/signup";
 
   /// update FormData
-  static String updateData = "/update";
+  static String updateData = authBaseUrl + "/update";
 
   /// delete user FormData
-  static String deleteUser = "/delete?id=";
+  static String deleteUser = authBaseUrl + "/delete?id=";
 
   /// get user passing Id as part of endPoint not as a query parameter.
-  static String getUserData = "/get-user/";
+  static String getUserData = authBaseUrl + "/get-user/";
 
   /// logOut
-  static String logOut = "/logout";
+  static String logOut = authBaseUrl + "/logout";
 }
 
 class ApiKeys {
-  static String apiKey = "apiKey=9e9e9f7e-1b5b-4b0b-9b3b-5b5b5b5b5b5b";
+  static String apiKey = "apiKey=9e9e9f7e-1b5b-4b0b-9b3b-5b5b5b5b5b5b"; //mock
   static String errorMessage = "ErrorMessage";
-  static String successMessage = "SuccessMessage";
+  static String message = "message";
   static String token = "token";
   static String userId = "userId";
   static String userName = "userName";
-  static String userPassword = "userPassword";
-  static String userEmail = "userEmail";
+  static String password = "password";
+  static String email = "email";
+
   static String userPhone = "userPhone";
   static String userAddress = "userAddress";
   static String userImage = "userImage";

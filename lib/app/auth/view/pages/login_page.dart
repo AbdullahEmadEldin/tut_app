@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart';
 import 'package:tut_app/app/auth/data/login_animations_enum.dart';
+import 'package:tut_app/app/auth/view/widgets/input_field.dart';
 import 'package:tut_app/app/auth/view/widgets/register_button.dart';
+import 'package:tut_app/app/auth/view_model/login_cubit/login_cubit.dart';
 import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/assets_paths.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
@@ -19,6 +22,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late LoginCubit loginCubit;
+
+  ///
+  /// define key for text validation
+  ///
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  FocusNode passwordFocusNode = FocusNode();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   /// artboard of rive file
   Artboard? riveArtBoard;
 
@@ -38,16 +51,10 @@ class _LoginPageState extends State<LoginPage> {
   bool enteringEmail = false;
   bool enteringPassword = false;
 
-  String testEmail = 'abc';
-  String testPassword = '123';
-
-  ///
-  /// define key for text validation
-  ///
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  FocusNode passwordFocusNode = FocusNode();
   @override
   void initState() {
+    loginCubit = BlocProvider.of<LoginCubit>(context);
+
     /// initializing controllers of animations
     idleStaticController = SimpleAnimation(LoginAnimations.idleStatic.text);
     idleAnimatedController = SimpleAnimation(LoginAnimations.idleAnimated.text);
@@ -91,54 +98,38 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.all(AppPadding.p16),
                   child: Column(
                     children: [
-                      TextFormField(
+                      InputFieldWidget(
+                        controller: loginCubit.emailController,
+                        labelText: AppStrings.email,
                         validator: (value) =>
-                            value != testEmail ? 'Error' : null,
-                        decoration: InputDecoration(
-                          labelText: AppStrings.email,
-                          labelStyle: Theme.of(context).textTheme.bodyLarge,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(AppMargin.m8),
-                            borderSide: BorderSide(
-                                color: AppColors.greyPrimary, width: 0.5),
-                          ),
-                        ),
-                        onChanged: (value) {
+                            value!.isEmpty ? AppStrings.emptyFields : null,
+                        onTextChange: (value) {
                           if (value.isNotEmpty && !enteringEmail) {
-                            print('ddd');
                             _addActiveController(listeningController);
                             enteringEmail = true;
                           }
                         },
                       ),
                       const SizedBox(height: AppSize.s28),
-                      TextFormField(
-                        validator: (value) =>
-                            value != testPassword ? 'Error' : null,
+                      InputFieldWidget(
+                        controller: loginCubit.passwordController,
+                        labelText: AppStrings.password,
                         focusNode: passwordFocusNode,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: AppStrings.password,
-                          labelStyle: Theme.of(context).textTheme.bodyLarge,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(AppMargin.m8),
-                            borderSide: BorderSide(
-                                color: AppColors.greyPrimary, width: 0.5),
-                          ),
-                        ),
-                        onChanged: (value) {
+                        passwordInput: true,
+                        onTextChange: (value) {
                           if (value.isEmpty && !enteringPassword) {
                             _addActiveController(minimizeController);
                             enteringPassword = true;
                           }
                         },
+                        validator: (value) =>
+                            value!.isEmpty ? AppStrings.emptyFields : null,
                       ),
                       const SizedBox(height: AppSize.s40),
                       RegisterButton(
                         text: AppStrings.login,
                         onTap: () {
                           passwordFocusNode.unfocus();
-
                           _validateEmailAndPassword();
                         },
                       )
@@ -152,8 +143,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _validateEmailAndPassword() {
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (formKey.currentState!.validate()) {
+        loginCubit.login();
         _addActiveController(loadingLoopController);
       } else {
         _addActiveController(wrongPasswordController);
@@ -178,6 +170,7 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  /// This method to change animation
   _addActiveController(RiveAnimationController<dynamic> activeController) {
     _removeAllControllers();
     riveArtBoard?.artboard.addController(activeController);
@@ -200,6 +193,7 @@ class _LoginPageState extends State<LoginPage> {
     enteringPassword = false;
   }
 
+  /// without this method ,the animation will not be triggered after the password focus node is unfocused
   void _checkForPasswordFocusNodeToChangeAnimationState() {
     passwordFocusNode.addListener(() {
       if (passwordFocusNode.hasFocus) {
