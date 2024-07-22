@@ -26,58 +26,62 @@ class _LoginPageState extends State<LoginPage> {
 
   ///
   /// define key for text validation
-  ///
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  FocusNode passwordFocusNode = FocusNode();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  // ///
+  // GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  // FocusNode passwordFocusNode = FocusNode();
+  // TextEditingController emailController = TextEditingController();
+  // TextEditingController passwordController = TextEditingController();
 
-  /// artboard of rive file
-  Artboard? riveArtBoard;
+  // /// artboard of rive file
+  // Artboard? riveArtBoard;
 
-  /// each controller for each single animation of rive file
-  late RiveAnimationController idleStaticController,
-      idleAnimatedController,
-      listeningController,
-      voiceEndController,
-      voiceStartController,
-      voiceLoopController,
-      maximizedController,
-      minimizeController,
-      wrongPasswordController,
-      loadingStartController,
-      loadingLoopController,
-      loadingEndController;
+  // /// each controller for each single animation of rive file
+  // late RiveAnimationController idleStaticController,
+  //     idleAnimatedController,
+  //     listeningController,
+  //     voiceEndController,
+  //     voiceStartController,
+  //     voiceLoopController,
+  //     maximizedController,
+  //     minimizeController,
+  //     wrongPasswordController,
+  //     loadingStartController,
+  //     loadingLoopController,
+  //     loadingEndController;
   bool enteringEmail = false;
   bool enteringPassword = false;
 
   @override
   void initState() {
-    loginCubit = BlocProvider.of<LoginCubit>(context);
+    loginCubit = BlocProvider.of<LoginCubit>(context)
+      ..initializeRiveAnimation()
+      ..checkForPasswordFocusNodeToChangeAnimationState();
 
-    /// initializing controllers of animations
-    idleStaticController = SimpleAnimation(LoginAnimations.idleStatic.text);
-    idleAnimatedController = SimpleAnimation(LoginAnimations.idleAnimated.text);
-    listeningController = SimpleAnimation(LoginAnimations.listening.text);
-    voiceEndController = SimpleAnimation(LoginAnimations.voiceEnd.text);
-    voiceStartController = SimpleAnimation(LoginAnimations.voiceStart.text);
-    voiceLoopController = SimpleAnimation(LoginAnimations.voiceLoop.text);
-    maximizedController = SimpleAnimation(LoginAnimations.maximize.text);
-    minimizeController = SimpleAnimation(LoginAnimations.minimize.text);
-    wrongPasswordController =
-        SimpleAnimation(LoginAnimations.wrongPassword.text);
-    loadingStartController = SimpleAnimation(LoginAnimations.loadingStart.text);
-    loadingLoopController = SimpleAnimation(LoginAnimations.loadingLoop.text);
-    loadingEndController = SimpleAnimation(LoginAnimations.loadingEnd.text);
+    // /// initializing controllers of animations
+    // idleStaticController = SimpleAnimation(LoginAnimations.idleStatic.text);
+    // idleAnimatedController = SimpleAnimation(LoginAnimations.idleAnimated.text);
+    // listeningController = SimpleAnimation(LoginAnimations.listening.text);
+    // voiceEndController = SimpleAnimation(LoginAnimations.voiceEnd.text);
+    // voiceStartController = SimpleAnimation(LoginAnimations.voiceStart.text);
+    // voiceLoopController = SimpleAnimation(LoginAnimations.voiceLoop.text);
+    // maximizedController = SimpleAnimation(LoginAnimations.maximize.text);
+    // minimizeController = SimpleAnimation(LoginAnimations.minimize.text);
+    // wrongPasswordController =
+    //     SimpleAnimation(LoginAnimations.wrongPassword.text);
+    // loadingStartController = SimpleAnimation(LoginAnimations.loadingStart.text);
+    // loadingLoopController = SimpleAnimation(LoginAnimations.loadingLoop.text);
+    // loadingEndController = SimpleAnimation(LoginAnimations.loadingEnd.text);
 
-    _initializeRiveAnimation();
-    _checkForPasswordFocusNodeToChangeAnimationState();
+    // _initializeRiveAnimation();
+    // _checkForPasswordFocusNodeToChangeAnimationState();
+    // loginCubit.initializeRiveAnimation();
+    // loginCubit.checkForPasswordFocusNodeToChangeAnimationState();
     super.initState();
   }
 
   @override
   void dispose() {
-    passwordFocusNode.removeListener;
+    //passwordFocusNode.removeListener;
     super.dispose();
   }
 
@@ -89,11 +93,13 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: [
             const SizedBox(height: AppSize.s28),
-            riveArtBoard == null
+            loginCubit.riveArtBoard == null
                 ? const SizedBox.shrink()
-                : SizedBox(height: 300, child: Rive(artboard: riveArtBoard!)),
+                : SizedBox(
+                    height: 300,
+                    child: Rive(artboard: loginCubit.riveArtBoard!)),
             Form(
-                key: formKey,
+                key: loginCubit.formKey,
                 child: Padding(
                   padding: const EdgeInsets.all(AppPadding.p16),
                   child: Column(
@@ -105,7 +111,8 @@ class _LoginPageState extends State<LoginPage> {
                             value!.isEmpty ? AppStrings.emptyFields : null,
                         onTextChange: (value) {
                           if (value.isNotEmpty && !enteringEmail) {
-                            _addActiveController(listeningController);
+                            loginCubit.addActiveController(
+                                loginCubit.listeningController);
                             enteringEmail = true;
                           }
                         },
@@ -114,11 +121,12 @@ class _LoginPageState extends State<LoginPage> {
                       InputFieldWidget(
                         controller: loginCubit.passwordController,
                         labelText: AppStrings.password,
-                        focusNode: passwordFocusNode,
+                        focusNode: loginCubit.passwordFocusNode,
                         passwordInput: true,
                         onTextChange: (value) {
                           if (value.isEmpty && !enteringPassword) {
-                            _addActiveController(minimizeController);
+                            loginCubit.addActiveController(
+                                loginCubit.minimizeController);
                             enteringPassword = true;
                           }
                         },
@@ -129,8 +137,8 @@ class _LoginPageState extends State<LoginPage> {
                       RegisterButton(
                         text: AppStrings.login,
                         onTap: () {
-                          passwordFocusNode.unfocus();
-                          _validateEmailAndPassword();
+                          loginCubit.passwordFocusNode.unfocus();
+                          loginCubit.validateEmailAndPassword();
                         },
                       )
                     ],
@@ -142,65 +150,65 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _validateEmailAndPassword() {
-    Future.delayed(const Duration(seconds: 1), () {
-      if (formKey.currentState!.validate()) {
-        loginCubit.login();
-        _addActiveController(loadingLoopController);
-      } else {
-        _addActiveController(wrongPasswordController);
-      }
-    });
-  }
+  // void _validateEmailAndPassword() {
+  //   Future.delayed(const Duration(seconds: 1), () {
+  //     if (formKey.currentState!.validate()) {
+  //       loginCubit.login();
+  //       _addActiveController(loadingLoopController);
+  //     } else {
+  //       _addActiveController(wrongPasswordController);
+  //     }
+  //   });
+  // }
 
-  void _initializeRiveAnimation() {
-    /// rootBundle Contains all assets embedded in the project
-    rootBundle.load(AnimationAssets.loginAnimation).then((data) async {
-      await RiveFile.initialize();
+  // void _initializeRiveAnimation() {
+  //   /// rootBundle Contains all assets embedded in the project
+  //   rootBundle.load(AnimationAssets.loginAnimation).then((data) async {
+  //     await RiveFile.initialize();
 
-      /// hold the complete rive file
-      final file = RiveFile.import(data);
+  //     /// hold the complete rive file
+  //     final file = RiveFile.import(data);
 
-      /// access the animation inside the rive file
-      final artBoard = file.mainArtboard;
-      artBoard.addController(idleAnimatedController);
-      setState(() {
-        riveArtBoard = artBoard;
-      });
-    });
-  }
+  //     /// access the animation inside the rive file
+  //     final artBoard = file.mainArtboard;
+  //     artBoard.addController(idleAnimatedController);
+  //     setState(() {
+  //       riveArtBoard = artBoard;
+  //     });
+  //   });
+  // }
 
   /// This method to change animation
-  _addActiveController(RiveAnimationController<dynamic> activeController) {
-    _removeAllControllers();
-    riveArtBoard?.artboard.addController(activeController);
-  }
+  // _addActiveController(RiveAnimationController<dynamic> activeController) {
+  //   _removeAllControllers();
+  //   riveArtBoard?.artboard.addController(activeController);
+  // }
 
-  _removeAllControllers() {
-    riveArtBoard?.artboard.removeController(idleStaticController);
-    riveArtBoard?.artboard.removeController(idleAnimatedController);
-    riveArtBoard?.artboard.removeController(listeningController);
-    riveArtBoard?.artboard.removeController(voiceEndController);
-    riveArtBoard?.artboard.removeController(voiceStartController);
-    riveArtBoard?.artboard.removeController(voiceLoopController);
-    riveArtBoard?.artboard.removeController(maximizedController);
-    riveArtBoard?.artboard.removeController(minimizeController);
-    riveArtBoard?.artboard.removeController(wrongPasswordController);
-    riveArtBoard?.artboard.removeController(loadingStartController);
-    riveArtBoard?.artboard.removeController(loadingLoopController);
-    riveArtBoard?.artboard.removeController(loadingEndController);
-    enteringEmail = false;
-    enteringPassword = false;
-  }
+  // _removeAllControllers() {
+  //   riveArtBoard?.artboard.removeController(idleStaticController);
+  //   riveArtBoard?.artboard.removeController(idleAnimatedController);
+  //   riveArtBoard?.artboard.removeController(listeningController);
+  //   riveArtBoard?.artboard.removeController(voiceEndController);
+  //   riveArtBoard?.artboard.removeController(voiceStartController);
+  //   riveArtBoard?.artboard.removeController(voiceLoopController);
+  //   riveArtBoard?.artboard.removeController(maximizedController);
+  //   riveArtBoard?.artboard.removeController(minimizeController);
+  //   riveArtBoard?.artboard.removeController(wrongPasswordController);
+  //   riveArtBoard?.artboard.removeController(loadingStartController);
+  //   riveArtBoard?.artboard.removeController(loadingLoopController);
+  //   riveArtBoard?.artboard.removeController(loadingEndController);
+  //   enteringEmail = false;
+  //   enteringPassword = false;
+  // }
 
-  /// without this method ,the animation will not be triggered after the password focus node is unfocused
-  void _checkForPasswordFocusNodeToChangeAnimationState() {
-    passwordFocusNode.addListener(() {
-      if (passwordFocusNode.hasFocus) {
-        _addActiveController(minimizeController);
-      } else if (!passwordFocusNode.hasFocus) {
-        _addActiveController(maximizedController);
-      }
-    });
-  }
+  // /// without this method ,the animation will not be triggered after the password focus node is unfocused
+  // void _checkForPasswordFocusNodeToChangeAnimationState() {
+  //   passwordFocusNode.addListener(() {
+  //     if (passwordFocusNode.hasFocus) {
+  //       _addActiveController(minimizeController);
+  //     } else if (!passwordFocusNode.hasFocus) {
+  //       _addActiveController(maximizedController);
+  //     }
+  //   });
+  // }
 }
