@@ -6,7 +6,7 @@ import 'package:rive/rive.dart';
 import 'package:tut_app/app/auth/data/login_animations_enum.dart';
 import 'package:tut_app/app/auth/data/repository/auth_repository.dart';
 import 'package:tut_app/core/assets_paths.dart';
-import 'package:tut_app/data/errors/exceptions.dart';
+import 'package:tut_app/services/errors/exceptions.dart';
 
 part 'login_state.dart';
 

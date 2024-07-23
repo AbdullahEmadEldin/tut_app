@@ -7,8 +7,8 @@ import 'package:tut_app/app/auth/view_model/login_cubit/login_cubit.dart';
 import 'package:tut_app/app/home/home_router.dart';
 import 'package:tut_app/app/home/view/page/home_page.dart';
 import 'package:tut_app/app/onBoarding/view/pages/on_boarding.dart';
-import 'package:tut_app/data/errors/error_router.dart';
-import 'package:tut_app/data/networking/dio_comsumer.dart';
+import 'package:tut_app/services/errors/error_router.dart';
+import 'package:tut_app/services/networking/dio_comsumer.dart';
 import 'package:tut_app/view/pages/splash_screen.dart';
 
 class AppRouter {
