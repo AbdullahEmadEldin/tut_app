@@ -39,7 +39,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    //passwordFocusNode.removeListener;
     super.dispose();
   }
 
@@ -87,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(AppPadding.p16),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         InputFieldWidget(
                           controller: loginCubit.emailController,
@@ -133,7 +133,21 @@ class _LoginPageState extends State<LoginPage> {
                             loginCubit.validateEmailAndPassword();
                           },
                           loading: buttonLoading,
-                        )
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: Text(
+                              AppStrings.dontHaveAnAccount,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.end,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ))

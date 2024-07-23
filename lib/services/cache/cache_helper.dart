@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class CashHelper {
+abstract class CacheHelper {
   static late SharedPreferences _instance;
   static Future<void> init() async {
     _instance = await SharedPreferences.getInstance();
@@ -36,5 +36,6 @@ abstract class CashHelper {
 }
 
 class CacheValues {
+  static const String token = 'token';
   static const String firstLaunch = 'isFirstLaunch';
 }

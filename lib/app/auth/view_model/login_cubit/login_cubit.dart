@@ -1,11 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:meta/meta.dart';
 import 'package:rive/rive.dart';
 import 'package:tut_app/app/auth/data/login_animations_enum.dart';
 import 'package:tut_app/app/auth/data/repository/auth_repository.dart';
+import 'package:tut_app/core/api_endpoints.dart';
 import 'package:tut_app/core/assets_paths.dart';
+import 'package:tut_app/services/cache/cache_helper.dart';
 import 'package:tut_app/services/errors/exceptions.dart';
 
 part 'login_state.dart';
@@ -118,6 +121,15 @@ class LoginCubit extends Cubit<LoginState> {
         passwordController.text,
       );
       debugPrint('====?>>> login cubit:: ${loginData.token}');
+
+      /// decoding token to get user info
+      final decodedToken = JwtDecoder.decode(loginData.token);
+
+      /// save token in cache to call it back in the application.
+      CacheHelper.saveData(key: ApiKeys.token, value: loginData.token);
+      CacheHelper.saveData(
+          key: ApiKeys.userId, value: decodedToken[ApiKeys.userId]);
+
       emit(LoginSuccess());
     } on ServerException catch (e) {
       debugPrint('====?>>> login cubit error:: ${e.error.errorMessage}');

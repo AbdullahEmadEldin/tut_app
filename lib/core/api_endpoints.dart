@@ -27,7 +27,7 @@ class ApiKeys {
   static String errorMessage = "ErrorMessage";
   static String message = "message";
   static String token = "token";
-  static String userId = "userId";
+  static String userId = "id";
   static String userName = "userName";
   static String password = "password";
   static String email = "email";
