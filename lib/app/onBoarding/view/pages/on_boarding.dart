@@ -55,8 +55,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 milliseconds: AppConstants.onBoardingAnimationTimer),
             curve: Curves.easeInOut,
           );
-          print(
-              '==>>> ${onBoardingViewModel.currentIndex == onBoardingViewModel.getOnBoardingObjects().length - 1}');
         },
         onSkipFunction: () {
           Navigator.of(context).pushReplacementNamed(LoginPage.routeName);

@@ -8,6 +8,7 @@ class AppColors {
   static Color primaryGrade4 = const Color(0xffA0AEA0);
   static Color greyPrimary = const Color(0xffD0D0C1);
   static Color spotColor = const Color(0xff2C685F);
+  static const darkGrey = Color(0xffafafaf);
 
   static Color grey = const Color(0xff737477);
   static Color black = const Color(0xff000000);

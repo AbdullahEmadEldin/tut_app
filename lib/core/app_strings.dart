@@ -31,8 +31,8 @@ class AppStrings {
   static const or = "OR";
 
   static const loginError = "Login failed. Please try again.";
-
   static const noInternet = "No Internet";
-
   static const emptyFields = "Please fill required fields";
+
+  static const name = "Name";
 }

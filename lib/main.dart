@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/router/app_router.dart';
+import 'package:tut_app/core/theme/theme_manager.dart';
 import 'package:tut_app/services/cache/cache_helper.dart';
 import 'package:tut_app/view/pages/splash_screen.dart';
 
@@ -20,13 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: AppRouter.onGenerate,
-      initialRoute: SplashScreen.routeName,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: AppRouter.onGenerate,
+        initialRoute: SplashScreen.routeName,
+        theme: AppThemes.lightAppTheme);
   }
 }

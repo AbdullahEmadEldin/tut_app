@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart';
+import 'package:tut_app/app/auth/view/pages/register_page.dart';
+import 'package:tut_app/app/auth/view/widgets/auth_title.dart';
 import 'package:tut_app/app/auth/view/widgets/input_field.dart';
 import 'package:tut_app/app/auth/view/widgets/register_button.dart';
 import 'package:tut_app/app/auth/view_model/login_cubit/login_cubit.dart';
@@ -8,8 +10,6 @@ import 'package:tut_app/app/home/view/page/home_page.dart';
 import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/values_manager.dart';
-
-part 'login_animation_part.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -88,6 +88,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
+                        const AuthTitle(
+                          title: AppStrings.login,
+                        ),
                         InputFieldWidget(
                           controller: loginCubit.emailController,
                           labelText: AppStrings.email,
@@ -135,7 +138,8 @@ class _LoginPageState extends State<LoginPage> {
                           loading: buttonLoading,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(RegisterPage.routeName),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             child: Text(

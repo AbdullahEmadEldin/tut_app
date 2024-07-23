@@ -40,7 +40,7 @@ class AppThemes {
       // input decoration theme (text form field)
       inputDecorationTheme: InputDecorationTheme(
         // content padding
-        contentPadding: const EdgeInsets.all(AppPadding.p8),
+        contentPadding: const EdgeInsets.all(AppPadding.p12),
         // hint style
         hintStyle:
             getRegularStyle(color: AppColors.grey, fontSize: AppFontSize.s14),

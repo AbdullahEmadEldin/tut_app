@@ -38,9 +38,10 @@ class _OnBoardingBottomSheetWidgetState
             onPressed: widget.onSkipFunction,
             child: Text(
               AppStrings.skip,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: AppColors.primary,
-                  ),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall!
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           Container(

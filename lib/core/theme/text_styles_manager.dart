@@ -7,30 +7,40 @@ import 'package:tut_app/core/theme/fonts_manager.dart';
 class AppTextThemes {
   static TextTheme lightTextTheme = TextTheme(
     displayLarge: getSemiBoldStyle(
-      color: AppColors.primaryGrade4,
-      fontSize: AppFontSize.s16,
+      color: AppColors.primary,
+      fontSize: AppFontSize.s40,
+    ),
+    displayMedium: getSemiBoldStyle(
+      color: AppColors.primary,
+      fontSize: AppFontSize.s36,
     ),
     headlineLarge: getSemiBoldStyle(
-      color: AppColors.primaryGrade4,
-      fontSize: AppFontSize.s16,
+      color: AppColors.primary,
+      fontSize: AppFontSize.s32,
     ),
     headlineMedium: getRegularStyle(
-      color: AppColors.primaryGrade4,
-      fontSize: AppFontSize.s14,
+      color: AppColors.primary,
+      fontSize: AppFontSize.s28,
     ),
     titleMedium: getMediumStyle(
       color: AppColors.primary,
-      fontSize: AppFontSize.s16,
+      fontSize: AppFontSize.s26,
     ),
     titleSmall: getRegularStyle(
-      color: AppColors.white,
+      color: AppColors.primary,
+      fontSize: AppFontSize.s24,
+    ),
+    bodyLarge: getRegularStyle(
+      color: AppColors.primary,
+      fontSize: AppFontSize.s20,
+    ),
+    bodySmall: getRegularStyle(
+      color: AppColors.primary,
       fontSize: AppFontSize.s16,
     ),
-    bodyLarge: getRegularStyle(color: AppColors.primary),
-    bodySmall: getRegularStyle(color: AppColors.grey),
     bodyMedium: getRegularStyle(
-      color: AppColors.grey2,
-      fontSize: AppFontSize.s12,
+      color: AppColors.primary,
+      fontSize: AppFontSize.s14,
     ),
     labelSmall: getBoldStyle(
       color: AppColors.primary,

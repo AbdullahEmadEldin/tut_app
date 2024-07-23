@@ -25,7 +25,7 @@ class OnBoardingPageView extends StatelessWidget {
           ),
           Text(
             onBoardingObject.title,
-            style: Theme.of(context).textTheme.displayMedium,
+            style: Theme.of(context).textTheme.displayLarge,
           ),
           const SizedBox(
             height: 16,

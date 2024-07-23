@@ -54,10 +54,13 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
               )
             : widget.suffixIcon,
         labelText: widget.labelText,
-        labelStyle: Theme.of(context).textTheme.bodyLarge,
+        labelStyle: Theme.of(context)
+            .textTheme
+            .bodyMedium!
+            .copyWith(color: AppColors.darkGrey),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppMargin.m8),
-          borderSide: BorderSide(color: AppColors.greyPrimary, width: 0.1),
+          borderSide: const BorderSide(color: AppColors.darkGrey, width: 0.0),
         ),
       ),
       onChanged: widget.onTextChange,
