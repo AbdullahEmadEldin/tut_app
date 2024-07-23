@@ -10,7 +10,7 @@ class AppThemes {
       primaryColor: AppColors.primary,
       primaryColorLight: AppColors.lightPrimary,
       primaryColorDark: AppColors.darkPrimary,
-      disabledColor: AppColors.grey1,
+      disabledColor: AppColors.darkGrey,
       splashColor: AppColors.lightPrimary,
       scaffoldBackgroundColor: AppColors.background, // ripple effect color
       // cardview theme
@@ -49,8 +49,8 @@ class AppThemes {
         errorStyle: getRegularStyle(color: AppColors.error),
 
         // enabled border style
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.grey, width: AppSize.s1_5),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.grey, width: AppSize.s0_5),
           borderRadius: const BorderRadius.all(
             Radius.circular(AppSize.s8),
           ),

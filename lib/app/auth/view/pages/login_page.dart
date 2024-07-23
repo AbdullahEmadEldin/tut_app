@@ -94,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                         InputFieldWidget(
                           controller: loginCubit.emailController,
                           labelText: AppStrings.email,
+                          hintText: AppStrings.emailHint,
                           validator: (value) {
                             if (value!.isEmpty) AppStrings.emptyFields;
                             if (emailError != null) return emailError;
@@ -107,10 +108,11 @@ class _LoginPageState extends State<LoginPage> {
                             }
                           },
                         ),
-                        const SizedBox(height: AppSize.s28),
+                        const SizedBox(height: AppSize.s20),
                         InputFieldWidget(
                           controller: loginCubit.passwordController,
                           labelText: AppStrings.password,
+                          hintText: AppStrings.passwordHint,
                           focusNode: loginCubit.passwordFocusNode,
                           passwordInput: true,
                           onTextChange: (value) {
@@ -146,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                               AppStrings.dontHaveAnAccount,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyMedium!
+                                  .bodySmall!
                                   .copyWith(fontWeight: FontWeight.bold),
                               textAlign: TextAlign.end,
                             ),

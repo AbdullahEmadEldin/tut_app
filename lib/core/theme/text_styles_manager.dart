@@ -34,11 +34,15 @@ class AppTextThemes {
       color: AppColors.primary,
       fontSize: AppFontSize.s20,
     ),
+    bodyMedium: getRegularStyle(
+      color: AppColors.primary,
+      fontSize: AppFontSize.s18,
+    ),
     bodySmall: getRegularStyle(
       color: AppColors.primary,
       fontSize: AppFontSize.s16,
     ),
-    bodyMedium: getRegularStyle(
+    labelLarge: getBoldStyle(
       color: AppColors.primary,
       fontSize: AppFontSize.s14,
     ),

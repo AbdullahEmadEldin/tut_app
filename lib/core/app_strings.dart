@@ -21,10 +21,17 @@ class AppStrings {
   //*---------------------------------------------------------- */
   //********************  Authentication  ************************//
   //*---------------------------------------------------------- */
-  static const email = "Email";
-  static const password = "Password";
   static const login = "Login";
   static const register = "Register";
+  static const email = "Email";
+  static const emailHint = "Enter a valid email";
+  static const password = "Password";
+  static const passwordHint = "Make sure it's at least 8 characters";
+  static const confirmPassword = "Confirm Password";
+  static const confirmPasswordHint = "Make sure it's the same as the password";
+  static const passwordNotMatch = "Password does't match";
+  static const phoneNumber = "Phone Number";
+  static const phoneNumberHint = "Enter a valid phone number";
   static const forgotPassword = "Forgot Password?";
   static const alreadyHaveAnAccount = "Already have an account?";
   static const dontHaveAnAccount = "Don't have an account?";
@@ -35,4 +42,5 @@ class AppStrings {
   static const emptyFields = "Please fill required fields";
 
   static const name = "Name";
+  static const yourNameEx = "Your name ex: Ahmed";
 }

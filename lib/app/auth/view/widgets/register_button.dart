@@ -31,11 +31,9 @@ class RegisterButton extends StatelessWidget {
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                 )
               : Text(
-                  AppStrings.login,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: Colors.white),
+                  text,
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold),
                 ),
         ),
       ),
