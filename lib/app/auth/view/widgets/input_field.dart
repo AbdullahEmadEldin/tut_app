@@ -26,29 +26,29 @@ class InputFieldWidget extends StatefulWidget {
 }
 
 class _InputFieldWidgetState extends State<InputFieldWidget> {
-  bool showPassword = false;
+  bool securePassword = true;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
       validator: widget.validator,
       focusNode: widget.focusNode,
-      obscureText: showPassword,
+      obscureText: widget.passwordInput ? securePassword : false,
       decoration: InputDecoration(
         suffixIcon: widget.passwordInput
             ? IconButton(
-                icon: showPassword
+                icon: securePassword
                     ? Icon(
-                        Icons.visibility_off,
+                        Icons.remove_red_eye,
                         color: AppColors.primary,
                       )
                     : Icon(
-                        Icons.remove_red_eye,
+                        Icons.visibility_off,
                         color: AppColors.primary,
                       ),
                 onPressed: () => {
                   setState(() {
-                    showPassword = !showPassword;
+                    securePassword = !securePassword;
                   })
                 },
               )

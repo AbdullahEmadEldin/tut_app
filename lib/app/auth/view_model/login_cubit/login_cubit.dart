@@ -53,11 +53,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> initializeRiveAnimation() async {
     /// rootBundle Contains all assets embedded in the project
-    print('test111');
     rootBundle.load(AnimationAssets.loginAnimation).then((data) async {
-      print('test2222');
       await RiveFile.initialize();
-      print('test233333');
 
       /// hold the complete rive file
       final file = RiveFile.import(data);
@@ -74,7 +71,6 @@ class LoginCubit extends Cubit<LoginState> {
     Future.delayed(const Duration(seconds: 1), () {
       if (formKey.currentState!.validate()) {
         _login();
-        addActiveController(loadingLoopController);
       } else {
         addActiveController(wrongPasswordController);
       }
@@ -125,7 +121,13 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginSuccess());
     } on ServerException catch (e) {
       debugPrint('====?>>> login cubit error:: ${e.error.errorMessage}');
-      emit(LoginFailure(errMsg: e.error.errorMessage));
+      emit(
+        LoginFailure(
+          errMsg: e.error.errorMessage,
+          emailError: e.error.errorDetails?.first ?? '',
+          passwordError: e.error.errorDetails?.last ?? '',
+        ),
+      );
     }
   }
 }

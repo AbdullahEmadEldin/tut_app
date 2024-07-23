@@ -27,7 +27,9 @@ class RegisterButton extends StatelessWidget {
         ),
         child: Center(
           child: loading
-              ? const CircularProgressIndicator.adaptive()
+              ? const CircularProgressIndicator.adaptive(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                )
               : Text(
                   AppStrings.login,
                   style: Theme.of(context)
