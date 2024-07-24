@@ -28,7 +28,11 @@ class AuthRouter {
       case RegisterPage.routeName:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
-                  create: (context) => RegisterCubit(dio: dio),
+                  create: (context) => RegisterCubit(
+                    authService: AuthService(
+                      api: DioConsumer(dio: dio),
+                    ),
+                  ),
                   child: const RegisterPage(),
                 ));
       default:

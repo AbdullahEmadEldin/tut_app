@@ -11,13 +11,12 @@ import 'package:tut_app/core/values_manager.dart';
 class ProfilePicAvatar extends StatelessWidget {
   const ProfilePicAvatar({
     super.key,
-    required this.profilePic,
   });
-
-  final XFile? profilePic;
 
   @override
   Widget build(BuildContext context) {
+    // Using Stack to put the camera picker button on top-side of the avatar
+    final registerCubit = context.read<RegisterCubit>();
     return Stack(
       children: [
         SizedBox(
@@ -25,9 +24,9 @@ class ProfilePicAvatar extends StatelessWidget {
           width: AppSize.s160,
           child: CircleAvatar(
             backgroundColor: AppColors.primary,
-            backgroundImage: profilePic == null
+            backgroundImage: registerCubit.profilePic == null
                 ? const AssetImage(ImagesAssets.avatar)
-                : FileImage(File(profilePic!.path)),
+                : FileImage(File(registerCubit.profilePic!.path)),
           ),
         ),
         Positioned(
@@ -37,15 +36,18 @@ class ProfilePicAvatar extends StatelessWidget {
             width: AppSize.s50,
             height: AppSize.s50,
             decoration: BoxDecoration(
-                color: AppColors.grey,
+                color: AppColors.primary,
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: 2)),
             child: IconButton(
-                onPressed: () => ImagePicker()
-                        .pickImage(source: ImageSource.gallery)
-                        .then((value) {
-                      context.read<RegisterCubit>().uploadImage(image: value!);
-                    }),
+                onPressed: () async {
+                  final pic = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
+                  // this condition to avoid error if user didn't pick an image after opening the gallery.
+                  if (pic == null) return;
+                  // set the image to the cubit
+                  registerCubit.uploadImage(image: pic);
+                },
                 icon: const Icon(
                   Icons.camera_alt_rounded,
                   color: Colors.white,

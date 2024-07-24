@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/values_manager.dart';
 
@@ -17,7 +16,8 @@ class RegisterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      // not clickable when loading to avoid multiple requests
+      onTap: !loading ? onTap : null,
       child: Ink(
         height: AppSize.s50,
         width: double.infinity,

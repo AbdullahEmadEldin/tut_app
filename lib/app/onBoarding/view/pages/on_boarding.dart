@@ -4,8 +4,6 @@ import 'package:tut_app/app/onBoarding/view/widget/on_boarding_bottom_sheet.dart
 import 'package:tut_app/app/onBoarding/view/widget/on_boarding_page_view.dart';
 import 'package:tut_app/app/onBoarding/view_model/on_boarding_view_model.dart';
 import 'package:tut_app/core/constants.dart';
-import 'package:tut_app/core/router/app_router.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
 
 class OnBoardingPage extends StatefulWidget {
   static const String routeName = '/on_boarding';
@@ -21,8 +19,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
-
       /// PageView.builder for viewing onBoarding details
       body: PageView.builder(
         controller: _pageController,

@@ -11,6 +11,7 @@ class InputFieldWidget extends StatefulWidget {
   final Widget? suffixIcon;
   final FocusNode? focusNode;
   final bool passwordInput;
+  final TextInputType? keyboardType;
   const InputFieldWidget({
     super.key,
     required this.labelText,
@@ -21,6 +22,7 @@ class InputFieldWidget extends StatefulWidget {
     this.suffixIcon,
     this.focusNode,
     this.passwordInput = false,
+    this.keyboardType,
   });
 
   @override
@@ -43,6 +45,10 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
           validator: widget.validator,
           focusNode: widget.focusNode,
           obscureText: widget.passwordInput ? securePassword : false,
+          keyboardType: widget.keyboardType,
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+              letterSpacing:
+                  widget.keyboardType == TextInputType.number ? 5 : 0),
           decoration: InputDecoration(
             suffixIcon: widget.passwordInput
                 ? IconButton(

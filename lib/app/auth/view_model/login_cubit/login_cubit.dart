@@ -120,7 +120,6 @@ class LoginCubit extends Cubit<LoginState> {
         emailController.text,
         passwordController.text,
       );
-      debugPrint('====?>>> login cubit:: ${loginData.token}');
 
       /// decoding token to get user info
       final decodedToken = JwtDecoder.decode(loginData.token);

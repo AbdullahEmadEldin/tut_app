@@ -10,6 +10,7 @@ import 'package:tut_app/app/home/view/page/home_page.dart';
 import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/values_manager.dart';
+import 'package:tut_app/view/widgets/toast_message.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -31,7 +32,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     loginCubit = BlocProvider.of<LoginCubit>(context)
-      ..initializeRiveAnimation().then((value) => setState(() {}))
+      ..initializeRiveAnimation().then((value) => setState(() {
+            // this setState to avoid latency of rive animation or not viewing for the first time.
+          }))
       ..checkForPasswordFocusNodeToChangeAnimationState();
 
     super.initState();
@@ -50,23 +53,26 @@ class _LoginPageState extends State<LoginPage> {
         child: BlocListener<LoginCubit, LoginState>(
           listener: (context, state) {
             if (state is LoginLoading) {
-              loginCubit.addActiveController(loginCubit.loadingLoopController);
               setState(() {
                 buttonLoading = true;
               });
+              loginCubit.addActiveController(loginCubit.loadingLoopController);
+
               //
             } else if (state is LoginSuccess) {
               loginCubit.addActiveController(loginCubit.loadingEndController);
               buttonLoading = false;
+              showToast(context, AppStrings.loginSuccessMeg);
               Navigator.of(context).pushNamedAndRemoveUntil(
                   HomePage.routeName, (route) => false);
               //
             } else if (state is LoginFailure) {
               _handleFailureLoginAnimation(context, state);
 
-              emailError = state.emailError;
-              passwordError = state.passwordError;
-
+              emailError = state.emailError ?? '';
+              passwordError = state.passwordError ?? '';
+              showToast(context, state.errMsg + emailError! + passwordError!,
+                  isError: true);
               loginCubit.formKey.currentState?.validate();
               setState(() {
                 buttonLoading = false;
@@ -97,7 +103,6 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: AppStrings.emailHint,
                           validator: (value) {
                             if (value!.isEmpty) AppStrings.emptyFields;
-                            if (emailError != null) return emailError;
                             return null;
                           },
                           onTextChange: (value) {
@@ -124,13 +129,11 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           validator: (value) {
                             if (value!.isEmpty) return AppStrings.emptyFields;
-                            if (passwordError != null) {
-                              return passwordError;
-                            }
                             return null;
                           },
                         ),
                         const SizedBox(height: AppSize.s40),
+                        //! login button
                         RegisterButton(
                           text: AppStrings.login,
                           onTap: () {
@@ -141,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         InkWell(
                           onTap: () => Navigator.of(context)
-                              .pushNamed(RegisterPage.routeName),
+                              .pushReplacementNamed(RegisterPage.routeName),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             child: Text(
@@ -164,6 +167,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  /// shared validation handled here...
   void _handleFailureLoginAnimation(BuildContext context, LoginFailure state) {
     Future.delayed(const Duration(milliseconds: 1200), () {
       loginCubit.addActiveController(loginCubit.loadingEndController);
@@ -172,8 +176,6 @@ class _LoginPageState extends State<LoginPage> {
       loginCubit.addActiveController(loginCubit.wrongPasswordController);
     });
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(state.errMsg),
-    ));
+    showToast(context, state.errMsg, isError: true);
   }
 }

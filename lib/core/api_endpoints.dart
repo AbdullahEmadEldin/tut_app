@@ -23,16 +23,19 @@ class ApiEndpoints {
 }
 
 class ApiKeys {
-  static String apiKey = "apiKey=9e9e9f7e-1b5b-4b0b-9b3b-5b5b5b5b5b5b"; //mock
   static String errorMessage = "ErrorMessage";
   static String message = "message";
   static String token = "token";
   static String userId = "id";
-  static String userName = "userName";
-  static String password = "password";
-  static String email = "email";
 
-  static String userPhone = "userPhone";
+  //**===============Sign Up Keys=============== */
+  static String userName = "name";
+  static String email = "email";
+  static String password = "password";
+  static String confirmPassword = "confirmPassword";
+  static String phoneNum = "phone";
+  static String profilePic = "profilePic";
+
   static String userAddress = "userAddress";
   static String userImage = "userImage";
   static String userRole = "userRole";

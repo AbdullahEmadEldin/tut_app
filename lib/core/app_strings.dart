@@ -22,6 +22,7 @@ class AppStrings {
   //********************  Authentication  ************************//
   //*---------------------------------------------------------- */
   static const login = "Login";
+  static const loginSuccessMeg = "Login successfully";
   static const register = "Register";
   static const email = "Email";
   static const emailHint = "Enter a valid email";
@@ -32,6 +33,9 @@ class AppStrings {
   static const passwordNotMatch = "Password does't match";
   static const phoneNumber = "Phone Number";
   static const phoneNumberHint = "Enter a valid phone number";
+  static const phoneNumberValidation =
+      "Number length must be at least 10 characters long";
+
   static const forgotPassword = "Forgot Password?";
   static const alreadyHaveAnAccount = "Already have an account?";
   static const dontHaveAnAccount = "Don't have an account?";
