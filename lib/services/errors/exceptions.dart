@@ -35,35 +35,39 @@ void handleDioException(DioException e) {
         error: ServerErrorModel.fromJson(e.response?.data),
       );
     case DioExceptionType.badResponse:
-      switch (e.response!.statusCode) {
-        case 400: //bad request
-          throw ServerException(
-            error: ServerErrorModel.fromJson(e.response!.data),
-          );
-        case 401: //unauthorized
-          throw ServerException(
-            error: ServerErrorModel.fromJson(e.response!.data),
-          );
-        case 403: //forbidden
-          throw ServerException(
-            error: ServerErrorModel.fromJson(e.response!.data),
-          );
-        case 404: //not found
-          throw ServerException(
-            error: ServerErrorModel.fromJson(e.response!.data),
-          );
-        case 409: //conflict
-          throw ServerException(
-            error: ServerErrorModel.fromJson(e.response!.data),
-          );
-        case 500: //internal server error
-          throw ServerException(
-            error: ServerErrorModel.fromJson(e.response!.data),
-          );
-        default: //unhandled error
-          throw ServerException(
-            error: ServerErrorModel.fromJson(e.response!.data),
-          );
-      }
+      _handleBadResponse(e);
+  }
+}
+
+void _handleBadResponse(DioException e) {
+  switch (e.response!.statusCode) {
+    case 400: //bad request
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
+    case 401: //unauthorized
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
+    case 403: //forbidden
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
+    case 404: //not found
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
+    case 409: //conflict
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
+    case 500: //internal server error
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
+    default: //unhandled error
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
   }
 }
