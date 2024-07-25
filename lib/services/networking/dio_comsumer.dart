@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:tut_app/services/errors/exceptions.dart';
 import 'package:tut_app/services/networking/api_consumer.dart';
 import 'package:tut_app/services/networking/api_interceptor.dart';
@@ -13,14 +14,18 @@ class DioConsumer extends ApiConsumer {
     dio.interceptors.add(
       ApiInterceptor(),
     );
-    dio.interceptors.add(LogInterceptor(
-      request: true,
-      requestBody: true,
-      requestHeader: true,
-      responseHeader: true,
-      responseBody: true,
-      error: true,
-    ));
+    if (!kReleaseMode) {
+      dio.interceptors.add(
+        LogInterceptor(
+          request: true,
+          requestBody: true,
+          requestHeader: true,
+          responseHeader: true,
+          responseBody: true,
+          error: true,
+        ),
+      );
+    }
   }
 
   @override

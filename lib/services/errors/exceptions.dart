@@ -10,6 +10,9 @@ class ServerException implements Exception {
 void handleDioException(DioException e) {
   switch (e.type) {
     case DioExceptionType.cancel:
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
     case DioExceptionType.connectionTimeout:
       throw ServerException(
         error: ServerErrorModel.fromJson(e.response!.data),
