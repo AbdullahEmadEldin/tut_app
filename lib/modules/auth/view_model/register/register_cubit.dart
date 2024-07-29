@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
-import 'package:tut_app/app/auth/data/models/register_model.dart';
-import 'package:tut_app/app/auth/data/repository/auth_repository.dart';
+import 'package:tut_app/modules/auth/data/models/register_model.dart';
+import 'package:tut_app/modules/auth/data/repository/auth_repository.dart';
 import 'package:tut_app/services/errors/exceptions.dart';
 
 part 'register_state.dart';

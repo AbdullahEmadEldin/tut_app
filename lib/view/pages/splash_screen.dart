@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:tut_app/app/onBoarding/view/pages/on_boarding.dart';
+import 'package:tut_app/modules/onBoarding/view/pages/on_boarding.dart';
 import 'package:tut_app/core/assets_paths.dart';
 import 'package:tut_app/core/constants.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';

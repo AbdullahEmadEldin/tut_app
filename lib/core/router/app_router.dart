@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/app/auth/auth_router.dart';
-import 'package:tut_app/app/auth/view/pages/login_page.dart';
-import 'package:tut_app/app/auth/view/pages/register_page.dart';
-import 'package:tut_app/app/home/home_router.dart';
-import 'package:tut_app/app/home/view/page/home_page.dart';
-import 'package:tut_app/app/onBoarding/view/pages/on_boarding.dart';
+import 'package:tut_app/modules/auth/auth_router.dart';
+import 'package:tut_app/modules/auth/view/pages/login_page.dart';
+import 'package:tut_app/modules/auth/view/pages/register_page.dart';
+import 'package:tut_app/modules/home/home_router.dart';
+import 'package:tut_app/modules/home/view/page/home_page.dart';
+import 'package:tut_app/modules/onBoarding/view/pages/on_boarding.dart';
 import 'package:tut_app/services/errors/error_router.dart';
 import 'package:tut_app/view/pages/splash_screen.dart';
 

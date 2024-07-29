@@ -1,4 +1,4 @@
-import 'package:tut_app/app/onBoarding/model/on_boarding_model.dart';
+import 'package:tut_app/modules/onBoarding/model/on_boarding_model.dart';
 import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/assets_paths.dart';
 

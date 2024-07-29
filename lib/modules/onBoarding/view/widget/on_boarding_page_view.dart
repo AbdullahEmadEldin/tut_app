@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tut_app/app/onBoarding/model/on_boarding_model.dart';
+import 'package:tut_app/modules/onBoarding/model/on_boarding_model.dart';
 
 class OnBoardingPageView extends StatelessWidget {
   final OnBoardingObject onBoardingObject;

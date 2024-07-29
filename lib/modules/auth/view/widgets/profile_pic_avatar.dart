@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tut_app/app/auth/view_model/register/register_cubit.dart';
+import 'package:tut_app/modules/auth/view_model/register/register_cubit.dart';
 import 'package:tut_app/core/assets_paths.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/values_manager.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/app/auth/view/pages/login_page.dart';
-import 'package:tut_app/app/onBoarding/view/widget/on_boarding_bottom_sheet.dart';
-import 'package:tut_app/app/onBoarding/view/widget/on_boarding_page_view.dart';
-import 'package:tut_app/app/onBoarding/view_model/on_boarding_view_model.dart';
+import 'package:tut_app/modules/auth/view/pages/login_page.dart';
+import 'package:tut_app/modules/onBoarding/view/widget/on_boarding_bottom_sheet.dart';
+import 'package:tut_app/modules/onBoarding/view/widget/on_boarding_page_view.dart';
+import 'package:tut_app/modules/onBoarding/view_model/on_boarding_view_model.dart';
 import 'package:tut_app/core/constants.dart';
 
 class OnBoardingPage extends StatefulWidget {
