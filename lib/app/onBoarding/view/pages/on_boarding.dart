@@ -40,7 +40,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           _pageController.animateToPage(
             onBoardingViewModel.goNext(),
             duration: const Duration(
-                milliseconds: AppConstants.onBoardingAnimationTimer),
+                milliseconds: AppConstants.onBoardingAnimationTimerInMilli),
             curve: Curves.easeInOut,
           );
         },
@@ -48,7 +48,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           _pageController.animateToPage(
             onBoardingViewModel.goBack(),
             duration: const Duration(
-                milliseconds: AppConstants.onBoardingAnimationTimer),
+                milliseconds: AppConstants.onBoardingAnimationTimerInMilli),
             curve: Curves.easeInOut,
           );
         },

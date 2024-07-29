@@ -10,7 +10,7 @@ class AppColors {
   static Color spotColor = const Color(0xff2C685F);
   static const grey = Color(0xffafafaf);
   static Color error = const Color.fromARGB(255, 234, 33, 33); // red color
-  static Color success = const Color(0xff24d456);
+  static Color success = const Color(0xff2ECC71);
   static Color darkGrey = const Color(0xff737477);
 
   static Color black = const Color(0xff000000);

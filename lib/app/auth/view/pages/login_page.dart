@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rive/rive.dart';
+import 'package:rive/rive.dart' as rive;
 import 'package:tut_app/app/auth/view/pages/register_page.dart';
 import 'package:tut_app/app/auth/view/widgets/auth_title.dart';
 import 'package:tut_app/app/auth/view/widgets/input_field.dart';
@@ -86,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   ? const SizedBox.shrink()
                   : SizedBox(
                       height: 300,
-                      child: Rive(artboard: loginCubit.riveArtBoard!)),
+                      child: rive.Rive(artboard: loginCubit.riveArtBoard!)),
               Form(
                   key: loginCubit.formKey,
                   child: Padding(

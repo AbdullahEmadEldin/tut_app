@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/app/auth/view/pages/login_page.dart';
 import 'package:tut_app/app/onBoarding/view_model/on_boarding_view_model.dart';
 import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
