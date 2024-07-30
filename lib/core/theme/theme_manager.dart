@@ -81,7 +81,9 @@ class AppThemes {
       ),
       // label style
       progressIndicatorTheme:
-          ProgressIndicatorThemeData(color: AppColors.primary));
+          ProgressIndicatorThemeData(color: AppColors.primary),
+      bottomNavigationBarTheme:
+          BottomNavigationBarThemeData(backgroundColor: AppColors.secondary));
 
   static ThemeData darkAppTheme = ThemeData(
     brightness: Brightness.dark,

@@ -8,4 +8,6 @@ class AppConstants {
 
 class SharedPrefKeys {
   String lang = 'lang';
+  String firstLaunch = 'firstLaunch';
+  String stayLoggedIn = 'stayLoggedIn';
 }
