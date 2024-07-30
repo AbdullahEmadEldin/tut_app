@@ -27,7 +27,9 @@ class AppStrings {
   static const email = "Email";
   static const emailHint = "Enter a valid email";
   static const password = "Password";
-  static const passwordHint = "Make sure it's at least 8 characters";
+  static const passwordHint = "Make sure it's correct password";
+  static const String stayLoggedIn = 'Remember me';
+
   static const confirmPassword = "Confirm Password";
   static const confirmPasswordHint = "Make sure it's the same as the password";
   static const passwordNotMatch = "Password does't match";

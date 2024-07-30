@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:tut_app/modules/auth/view/pages/login_page.dart';
+import 'package:tut_app/modules/home/view/page/home_page.dart';
 import 'package:tut_app/modules/onBoarding/view/pages/on_boarding.dart';
 import 'package:tut_app/core/assets_paths.dart';
 import 'package:tut_app/core/constants.dart';
@@ -45,9 +46,17 @@ class _SplashScreenState extends State<SplashScreen>
         CacheHelper.getData(key: AppConstants.sharedPrefKeys.firstLaunch) ??
             true;
     if (firstLaunch) {
+      print('inital Router ===> ONBOARDING');
       Navigator.of(context).pushReplacementNamed(OnBoardingPage.routeName);
     } else {
-      Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+      final bool stayLoggedIn =
+          CacheHelper.getData(key: AppConstants.sharedPrefKeys.stayLoggedIn) ??
+              false;
+      if (stayLoggedIn) {
+        Navigator.of(context).pushReplacementNamed(HomePage.routeName);
+      } else {
+        Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+      }
     }
   }
 

@@ -4,6 +4,7 @@ import 'package:tut_app/modules/onBoarding/view/widget/on_boarding_bottom_sheet.
 import 'package:tut_app/modules/onBoarding/view/widget/on_boarding_page_view.dart';
 import 'package:tut_app/modules/onBoarding/view_model/on_boarding_view_model.dart';
 import 'package:tut_app/core/constants.dart';
+import 'package:tut_app/services/cache/cache_helper.dart';
 
 class OnBoardingPage extends StatefulWidget {
   static const String routeName = '/on_boarding';
@@ -16,6 +17,18 @@ class OnBoardingPage extends StatefulWidget {
 class _OnBoardingPageState extends State<OnBoardingPage> {
   final PageController _pageController = PageController();
   final OnBoardingViewModel onBoardingViewModel = OnBoardingViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// set the firstLaunch bool with false
+    ///
+    CacheHelper.saveData(
+        key: AppConstants.sharedPrefKeys.firstLaunch, value: false);
+    debugPrint('This is the first run of the application');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
