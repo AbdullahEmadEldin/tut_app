@@ -57,7 +57,7 @@ class _OnBoardingBottomSheetWidgetState
                   icon: Icon(
                     Icons.arrow_back_ios,
                     color: widget.viewModel.currentIndex == 0
-                        ? AppColors.primaryGrade3
+                        ? AppColors.secondary
                         : AppColors.white,
                   ),
                 ),
@@ -79,7 +79,7 @@ class _OnBoardingBottomSheetWidgetState
                     Icons.arrow_forward_ios,
                     color: widget.viewModel.currentIndex ==
                             widget.viewModel.getOnBoardingObjects().length - 1
-                        ? AppColors.primaryGrade3
+                        ? AppColors.secondary
                         : AppColors.white,
                   ),
                 )
