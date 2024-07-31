@@ -1,5 +1,8 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/router/app_router.dart';
+import 'package:tut_app/core/theme/text_styles_manager.dart';
 import 'package:tut_app/core/theme/theme_manager.dart';
 import 'package:tut_app/services/cache/cache_helper.dart';
 import 'package:tut_app/view/pages/splash_screen.dart';
@@ -7,7 +10,8 @@ import 'package:tut_app/view/pages/splash_screen.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   CacheHelper.init();
-  runApp(MyApp());
+  runApp(DevicePreview(enabled: !kReleaseMode, builder: (_) => MyApp()));
+  // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,9 +25,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: AppRouter.onGenerate,
-        initialRoute: SplashScreen.routeName,
-        theme: AppThemes.lightAppTheme);
+      useInheritedMediaQuery: true,
+      builder: DevicePreview.appBuilder,
+      locale: DevicePreview.locale(context),
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: AppRouter.onGenerate,
+      initialRoute: SplashScreen.routeName,
+      theme: AppThemes.lightAppTheme(context),
+    );
   }
 }

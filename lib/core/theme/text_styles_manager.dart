@@ -1,67 +1,68 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:tut_app/core/helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/theme/fonts_manager.dart';
 
 class AppTextThemes {
-  static TextTheme lightTextTheme = TextTheme(
-    displayLarge: getSemiBoldStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s40,
-    ),
-    displayMedium: getSemiBoldStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s36,
-    ),
-    headlineLarge: getSemiBoldStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s32,
-    ),
-    headlineMedium: getRegularStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s28,
-    ),
-    titleMedium: getMediumStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s26,
-    ),
-    titleSmall: getRegularStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s24,
-    ),
-    bodyLarge: getRegularStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s20,
-    ),
-    bodyMedium: getRegularStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s18,
-    ),
-    bodySmall: getRegularStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s16,
-    ),
-    labelLarge: getBoldStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s14,
-    ),
-    labelSmall: getBoldStyle(
-      color: AppColors.primary,
-      fontSize: AppFontSize.s12,
-    ),
-  );
+  static TextTheme lightTextTheme(BuildContext context) => TextTheme(
+        displayLarge: getSemiBoldStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 40),
+        ),
+        displayMedium: getSemiBoldStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 36),
+        ),
+        headlineLarge: getSemiBoldStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 32),
+        ),
+        headlineMedium: getRegularStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 28),
+        ),
+        titleMedium: getMediumStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 26),
+        ),
+        titleSmall: getRegularStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 24),
+        ),
+        bodyLarge: getRegularStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 20),
+        ),
+        bodyMedium: getRegularStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 18),
+        ),
+        bodySmall: getRegularStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 16),
+        ),
+        labelLarge: getBoldStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 14),
+        ),
+        labelSmall: getBoldStyle(
+          color: AppColors.primary,
+          fontSize: Helper.getResponsiveDimension(context, baseDimension: 12),
+        ),
+      );
 
 //!! Dark theme !!!
 
   // static TextTheme darkTextTheme = TextTheme(
   //   displayLarge: getSemiBoldStyle(
   //     color: AppColors.primaryGrade4,
-  //     fontSize: AppFontSize.s16,
+  //     fontSize:getDouble(),
   //   ),
   //   headlineLarge: getSemiBoldStyle(
   //     color: AppColors.primaryGrade4,
-  //     fontSize: AppFontSize.s16,
+  //     fontSize:getDouble(),
   //   ),
   //   headlineMedium: getRegularStyle(
   //     color: AppColors.primaryGrade4,
