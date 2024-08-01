@@ -9,7 +9,7 @@ import 'package:tut_app/modules/onBoarding/view/pages/on_boarding.dart';
 import 'package:tut_app/core/assets_paths.dart';
 import 'package:tut_app/core/constants.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
-import 'package:tut_app/services/cache/cache_helper.dart';
+import 'package:tut_app/core/services/cache/cache_helper.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/';

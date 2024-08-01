@@ -4,7 +4,7 @@ import 'package:tut_app/modules/onBoarding/view/widget/on_boarding_bottom_sheet.
 import 'package:tut_app/modules/onBoarding/view/widget/on_boarding_page_view.dart';
 import 'package:tut_app/modules/onBoarding/view_model/on_boarding_view_model.dart';
 import 'package:tut_app/core/constants.dart';
-import 'package:tut_app/services/cache/cache_helper.dart';
+import 'package:tut_app/core/services/cache/cache_helper.dart';
 
 class OnBoardingPage extends StatefulWidget {
   static const String routeName = '/on_boarding';
