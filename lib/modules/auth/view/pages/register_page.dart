@@ -11,7 +11,7 @@ import 'package:tut_app/modules/auth/view_model/register/register_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/constants/values_manager.dart';
-import 'package:tut_app/view/widgets/toast_message.dart';
+import 'package:tut_app/shared/view/widgets/toast_message.dart';
 
 class RegisterPage extends StatelessWidget {
   static const String routeName = '/register';
