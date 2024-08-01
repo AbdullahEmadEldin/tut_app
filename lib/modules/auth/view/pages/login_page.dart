@@ -2,19 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart' as rive;
-import 'package:tut_app/core/constants.dart';
-import 'package:tut_app/modules/auth/view/pages/register_page.dart';
 import 'package:tut_app/modules/auth/view/widgets/auth_title.dart';
 import 'package:tut_app/modules/auth/view/widgets/dont_have_account_button.dart';
 import 'package:tut_app/modules/auth/view/widgets/input_field.dart';
 import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
 import 'package:tut_app/modules/auth/view/widgets/stay_logged_checkbox.dart';
 import 'package:tut_app/modules/auth/view_model/login_cubit/login_cubit.dart';
-import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
+import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/values_manager.dart';
-import 'package:tut_app/services/cache/cache_helper.dart';
 import 'package:tut_app/view/widgets/toast_message.dart';
 
 class LoginPage extends StatefulWidget {
@@ -69,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
               buttonLoading = false;
               showToast(context, AppStrings.loginSuccessMeg);
               Navigator.of(context).pushNamedAndRemoveUntil(
-                  HomePage.routeName, (route) => false);
+                  AnimatedBottomBar.routeName, (route) => false);
               //
             } else if (state is LoginFailure) {
               _handleFailureLoginAnimation(context, state);

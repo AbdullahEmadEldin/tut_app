@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
+import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/core/constants.dart';
 
-class HomeRouter {
+class NavBarRouter {
   static Route? onGenerate(RouteSettings settings) {
     switch (settings.name) {
-      case HomePage.routeName:
+      case AnimatedBottomBar.routeName:
         return PageRouteBuilder(
             transitionDuration: AppConstants.transitionDurationInSec,
             transitionsBuilder: _homePagesAnimationBuilder,
             pageBuilder: (context, animation, secondaryAnimation) =>
-                const HomePage());
+                const AnimatedBottomBar());
       default:
         return null;
     }

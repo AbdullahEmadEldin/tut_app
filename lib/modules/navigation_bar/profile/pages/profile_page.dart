@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:tut_app/core/helpers.dart';
 import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
 
-class HomePage extends StatelessWidget {
-  static const String routeName = '/home';
-  const HomePage({super.key});
+class ProfilePage extends StatelessWidget {
+  static const String routeName = '/profile';
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
                     Helper.getResponsiveDimension(context, baseDimension: 200),
                 height:
                     Helper.getResponsiveDimension(context, baseDimension: 50),
-                text: 'Responsive one',
+                text: 'profile',
                 onTap: () {}),
             SizedBox(
               height: 100,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/theme/text_styles_manager.dart';
 import 'package:tut_app/modules/auth/view/pages/login_page.dart';
+import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/modules/onBoarding/view/pages/on_boarding.dart';
 import 'package:tut_app/core/assets_paths.dart';
@@ -54,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen>
           CacheHelper.getData(key: AppConstants.sharedPrefKeys.stayLoggedIn) ??
               false;
       if (stayLoggedIn) {
-        Navigator.of(context).pushReplacementNamed(HomePage.routeName);
+        Navigator.of(context).pushReplacementNamed(AnimatedBottomBar.routeName);
       } else {
         Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
       }

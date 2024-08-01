@@ -8,7 +8,7 @@ import 'package:tut_app/modules/auth/view/widgets/input_field.dart';
 import 'package:tut_app/modules/auth/view/widgets/profile_pic_avatar.dart';
 import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
 import 'package:tut_app/modules/auth/view_model/register/register_cubit.dart';
-import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
+import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/values_manager.dart';
 import 'package:tut_app/view/widgets/toast_message.dart';
@@ -44,7 +44,8 @@ class RegisterPage extends StatelessWidget {
                 //as it throw error of dirty widget marked to be builded during HomePage build
                 Future.delayed(const Duration(seconds: 2), () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                      HomePage.routeName, (Route<dynamic> route) => false);
+                      AnimatedBottomBar.routeName,
+                      (Route<dynamic> route) => false);
                 });
               }
 
