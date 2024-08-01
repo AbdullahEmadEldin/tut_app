@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:tut_app/services/errors/exceptions.dart';
-import 'package:tut_app/services/networking/api_consumer.dart';
-import 'package:tut_app/services/networking/api_interceptor.dart';
+import 'package:tut_app/core/services/errors/exceptions.dart';
+import 'package:tut_app/core/services/networking/api_consumer.dart';
+import 'package:tut_app/core/services/networking/api_interceptor.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;

@@ -3,14 +3,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/router/app_router.dart';
 import 'package:tut_app/core/theme/theme_manager.dart';
-import 'package:tut_app/services/cache/cache_helper.dart';
+import 'package:tut_app/core/services/cache/cache_helper.dart';
 import 'package:tut_app/view/pages/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   CacheHelper.init();
-  runApp(DevicePreview(enabled: !kReleaseMode, builder: (_) => MyApp()));
-  // runApp(MyApp());
+  // runApp(DevicePreview(enabled: !kReleaseMode, builder: (_) => MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
