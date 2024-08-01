@@ -24,7 +24,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
 
   int _currentIndex = 0;
 
-  List<Widget> _pages = const [
+  final List<Widget> _pages = const [
     HomePage(),
     LibraryPage(),
     ProfilePage(),

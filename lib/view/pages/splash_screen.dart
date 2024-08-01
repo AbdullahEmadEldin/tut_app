@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen>
       body: RotationTransition(
         turns: _controller!,
         child: Center(
-          child: Image.asset(ImagesAssets.splashLogo),
+          child: Image.asset(AppAssets.images.splashLogo),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class AppFonts {
   static const String montserrat = 'Montserrat';
+  static const String brittanySignature = 'BrittanySignature';
 }
 
 class AppFontWeight {

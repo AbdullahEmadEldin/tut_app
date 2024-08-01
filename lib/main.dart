@@ -9,8 +9,8 @@ import 'package:tut_app/view/pages/splash_screen.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   CacheHelper.init();
-  // runApp(DevicePreview(enabled: !kReleaseMode, builder: (_) => MyApp()));
-  runApp(MyApp());
+  runApp(DevicePreview(enabled: !kReleaseMode, builder: (_) => MyApp()));
+  // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

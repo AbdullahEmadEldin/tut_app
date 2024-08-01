@@ -25,7 +25,7 @@ class ProfilePicAvatar extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: AppColors.primary,
             backgroundImage: registerCubit.profilePic == null
-                ? const AssetImage(ImagesAssets.avatar)
+                ? AssetImage(AppAssets.images.avatar)
                 : FileImage(File(registerCubit.profilePic!.path)),
           ),
         ),

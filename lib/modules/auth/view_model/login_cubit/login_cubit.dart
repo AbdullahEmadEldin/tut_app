@@ -56,7 +56,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> initializeRiveAnimation() async {
     /// rootBundle Contains all assets embedded in the project
-    rootBundle.load(AnimationAssets.loginAnimation).then((data) async {
+    rootBundle.load(AppAssets.animations.loginAnimation).then((data) async {
       await RiveFile.initialize();
 
       /// hold the complete rive file

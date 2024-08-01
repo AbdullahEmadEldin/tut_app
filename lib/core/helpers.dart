@@ -10,7 +10,7 @@ class Helper {
   static Future<MultipartFile> uploadImageToApi(XFile? image) async {
     // if the user didn't select an image we will use the default avatar as his profile pic.
     if (image == null) {
-      final ByteData byteData = await rootBundle.load(ImagesAssets.avatar);
+      final ByteData byteData = await rootBundle.load(AppAssets.images.avatar);
       final Uint8List imageData = byteData.buffer.asUint8List();
 
       final MultipartFile multipartFile = MultipartFile.fromBytes(
@@ -51,13 +51,10 @@ class Helper {
     final Size currentSize = MediaQuery.sizeOf(context);
     final scaleFactor = _getScaleFactor(currentSize);
     double responsiveDimension = baseDimension * scaleFactor;
-    print('RD before limits:::::: $responsiveDimension');
     double upperLimit = baseDimension * 1.1;
     double lowerLimit = baseDimension * 0.8;
 
     responsiveDimension = responsiveDimension.clamp(lowerLimit, upperLimit);
-    print(
-        '== currentSize = ${currentSize.width} ...... scaleFactor = $scaleFactor ....baseDimension = $baseDimension... responsiveDimension = $responsiveDimension');
     return responsiveDimension;
   }
 

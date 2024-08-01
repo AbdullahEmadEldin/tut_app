@@ -10,6 +10,7 @@ environment:
 dependencies:
   analyzer: ^6.4.1
   bloc: ^8.1.4
+  carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.6
   device_preview: ^1.2.0
   dio: ^5.5.0+1
@@ -47,3 +48,6 @@ flutter:
           weight: 400
         - asset: assets/fonts/Montserrat-Light.ttf
           weight: 300
+    - family: BrittanySignature
+      fonts:
+        - asset: assets/fonts/BrittanySignature.ttf

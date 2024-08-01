@@ -10,21 +10,21 @@ class OnBoardingViewModel {
         OnBoardingObject(
             title: AppStrings.onBoardingTitle1,
             body: AppStrings.onBoardingSubTitle1,
-            image: ImagesAssets.onboardingLogo1),
+            image: AppAssets.images.onboardingLogo1),
         OnBoardingObject(
           title: AppStrings.onBoardingTitle2,
           body: AppStrings.onBoardingSubTitle2,
-          image: ImagesAssets.onboardingLogo2,
+          image: AppAssets.images.onboardingLogo2,
         ),
         OnBoardingObject(
           title: AppStrings.onBoardingTitle3,
           body: AppStrings.onBoardingSubTitle3,
-          image: ImagesAssets.onboardingLogo3,
+          image: AppAssets.images.onboardingLogo3,
         ),
         OnBoardingObject(
           title: AppStrings.onBoardingTitle4,
           body: AppStrings.onBoardingSubTitle4,
-          image: ImagesAssets.onboardingLogo4,
+          image: AppAssets.images.onboardingLogo4,
         ),
       ];
 
