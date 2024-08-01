@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:tut_app/core/app_strings.dart';
+import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tut_app/core/assets_paths.dart';
+import 'package:tut_app/constants/assets_paths.dart';
 
 class Helper {
   /// This method convert the selected image to MultipartFile

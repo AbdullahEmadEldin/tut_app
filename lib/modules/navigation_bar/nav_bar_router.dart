@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
-import 'package:tut_app/core/constants.dart';
+import 'package:tut_app/constants/constants.dart';
 
 class NavBarRouter {
   static Route? onGenerate(RouteSettings settings) {

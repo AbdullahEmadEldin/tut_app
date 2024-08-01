@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/theme/fonts_manager.dart';
 import 'package:tut_app/core/theme/text_styles_manager.dart';
-import 'package:tut_app/core/values_manager.dart';
+import 'package:tut_app/constants/values_manager.dart';
 
 class AppThemes {
   static ThemeData lightAppTheme(BuildContext context) => ThemeData(

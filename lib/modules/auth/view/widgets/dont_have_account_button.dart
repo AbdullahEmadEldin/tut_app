@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/app_strings.dart';
+import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/modules/auth/view/pages/register_page.dart';
 
 class DontHaveAccountButton extends StatelessWidget {

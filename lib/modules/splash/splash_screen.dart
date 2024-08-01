@@ -6,8 +6,8 @@ import 'package:tut_app/modules/auth/view/pages/login_page.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/modules/onBoarding/view/pages/on_boarding.dart';
-import 'package:tut_app/core/assets_paths.dart';
-import 'package:tut_app/core/constants.dart';
+import 'package:tut_app/constants/assets_paths.dart';
+import 'package:tut_app/constants/constants.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/services/cache/cache_helper.dart';
 

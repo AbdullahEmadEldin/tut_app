@@ -1,4 +1,4 @@
-import 'package:tut_app/core/api_endpoints.dart';
+import 'package:tut_app/constants/api_endpoints.dart';
 
 class LoginModel {
   final String message;

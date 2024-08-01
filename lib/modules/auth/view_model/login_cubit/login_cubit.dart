@@ -6,8 +6,8 @@ import 'package:meta/meta.dart';
 import 'package:rive/rive.dart';
 import 'package:tut_app/modules/auth/data/login_animations_enum.dart';
 import 'package:tut_app/modules/auth/data/repository/auth_repository.dart';
-import 'package:tut_app/core/api_endpoints.dart';
-import 'package:tut_app/core/assets_paths.dart';
+import 'package:tut_app/constants/api_endpoints.dart';
+import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/services/cache/cache_helper.dart';
 import 'package:tut_app/core/services/errors/exceptions.dart';
 

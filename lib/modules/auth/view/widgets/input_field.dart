@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
-import 'package:tut_app/core/values_manager.dart';
+import 'package:tut_app/constants/values_manager.dart';
 
 class InputFieldWidget extends StatefulWidget {
   final String labelText;

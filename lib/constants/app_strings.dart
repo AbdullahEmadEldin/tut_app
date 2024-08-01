@@ -58,4 +58,6 @@ class AppStrings {
   static const String search = "Search";
   static const String profile = "Profile";
   static const String library = "Your library";
+  static const String flashSale = 'Flash Sale';
+  static const String trendingBooks = 'Trending Books';
 }

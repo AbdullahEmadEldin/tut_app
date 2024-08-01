@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/app_strings.dart';
-import 'package:tut_app/core/constants.dart';
+import 'package:tut_app/constants/app_strings.dart';
+import 'package:tut_app/constants/constants.dart';
 import 'package:tut_app/core/services/cache/cache_helper.dart';
 
 class StayLoggedCheckBox extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:tut_app/modules/onBoarding/model/on_boarding_model.dart';
-import 'package:tut_app/core/app_strings.dart';
-import 'package:tut_app/core/assets_paths.dart';
+import 'package:tut_app/constants/app_strings.dart';
+import 'package:tut_app/constants/assets_paths.dart';
 
 class OnBoardingViewModel {
   int _currentIndex = 0;

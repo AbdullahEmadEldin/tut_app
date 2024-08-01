@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tut_app/core/router/app_router.dart';
 import 'package:tut_app/core/theme/theme_manager.dart';
 import 'package:tut_app/core/services/cache/cache_helper.dart';
-import 'package:tut_app/view/pages/splash_screen.dart';
+import 'package:tut_app/modules/splash/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

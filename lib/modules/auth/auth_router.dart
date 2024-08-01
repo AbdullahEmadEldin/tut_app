@@ -6,7 +6,7 @@ import 'package:tut_app/modules/auth/view/pages/login_page.dart';
 import 'package:tut_app/modules/auth/view/pages/register_page.dart';
 import 'package:tut_app/modules/auth/view_model/login_cubit/login_cubit.dart';
 import 'package:tut_app/modules/auth/view_model/register/register_cubit.dart';
-import 'package:tut_app/core/constants.dart';
+import 'package:tut_app/constants/constants.dart';
 import 'package:tut_app/core/services/networking/dio_comsumer.dart';
 
 class AuthRouter {
