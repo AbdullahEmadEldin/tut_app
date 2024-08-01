@@ -3,8 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/helpers.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
+import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home';
@@ -33,14 +33,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: AppColors.secondary,
-        child: Row(
-          children: [
-            Icon(CupertinoIcons.book_fill),
-          ],
-        ),
-      ),
+      bottomNavigationBar: AnimatedBottomBar(),
     );
   }
 }

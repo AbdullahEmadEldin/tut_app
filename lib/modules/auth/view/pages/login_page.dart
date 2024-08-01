@@ -10,7 +10,7 @@ import 'package:tut_app/modules/auth/view/widgets/input_field.dart';
 import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
 import 'package:tut_app/modules/auth/view/widgets/stay_logged_checkbox.dart';
 import 'package:tut_app/modules/auth/view_model/login_cubit/login_cubit.dart';
-import 'package:tut_app/modules/home/view/page/home_page.dart';
+import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/core/app_strings.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/values_manager.dart';

@@ -49,4 +49,13 @@ class AppStrings {
 
   static const name = "Name";
   static const yourNameEx = "Your name ex: Ahmed";
+
+  //*---------------------------------------------------------- */
+  //********************  Home  ************************//
+  //*---------------------------------------------------------- */
+
+  static const String reading = "Reading";
+  static const String search = "Search";
+  static const String profile = "Profile";
+  static const String library = "Your library";
 }

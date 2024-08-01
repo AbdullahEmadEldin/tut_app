@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/modules/home/view/page/home_page.dart';
+import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/core/constants.dart';
 
 class HomeRouter {
