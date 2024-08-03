@@ -24,6 +24,17 @@ class Helper {
           filename: image.path.split('/').last);
   }
 
+  /// This method to handle the string length to a limited length
+  /// you can determine the max length for the string.
+  static String limitStringLength(
+      {required String str, required int maxLength}) {
+    if (str.length > maxLength) {
+      return '${str.substring(0, maxLength)}...';
+    } else {
+      return str;
+    }
+  }
+
 //*========================== IMP Explanation ========================== *//
   /// This method to calculate the responsive dimension of a widget
   /// according to the screen size and the device pixel ratio

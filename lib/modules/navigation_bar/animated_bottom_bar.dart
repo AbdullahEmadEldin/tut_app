@@ -75,11 +75,11 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
           ),
           SalomonBottomBarItem(
             icon: Icon(
-              CupertinoIcons.search,
+              CupertinoIcons.compass,
               size: Helper.getResponsiveDimension(context, baseDimension: 38),
             ),
             title: Text(
-              AppStrings.search,
+              AppStrings.explore,
               style: _barItemTextStyle(),
             ),
             selectedColor: AppColors.primary,

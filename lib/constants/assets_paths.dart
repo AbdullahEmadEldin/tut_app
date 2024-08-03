@@ -29,4 +29,8 @@ class _ImagesPaths {
   final String mockBanner2 = 'assets/images/mock_banner2.png';
   final String mockBanner3 = 'assets/images/mock_banner3.png';
   final String mockBanner4 = 'assets/images/mock_banner4.png';
+
+  final String fakeBookCover = 'assets/images/fake_book_cover.png';
+
+  final String fakeBookCover2 = 'assets/images/fakeCover2.png';
 }

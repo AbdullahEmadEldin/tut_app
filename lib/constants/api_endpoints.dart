@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 
 class ApiEndpoints {
+  //*=============================================*//
+  //**===============Auth EndPoints===============*//
+  //*=============================================*//
+
   static String authBaseUrl = "https://food-api-omega.vercel.app/api/v1/user";
 
   /// SignIn JSON
@@ -20,6 +24,18 @@ class ApiEndpoints {
 
   /// logOut
   static String logOut = authBaseUrl + "/logout";
+
+  //*===========================================================*/
+  //**=============== GOOGLE Books Api-EndPoints=============== */
+  //*===========================================================*/
+
+  static String googleBooksBaseUrl =
+      "https://www.googleapis.com/books/v1/volumes?";
+  //? query parameters
+  static const String query = "q";
+  static const String langParam = "langRestrict";
+  static const String maxResults = "maxResults";
+  static const String startIndex = "startIndex";
 }
 
 class ApiKeys {

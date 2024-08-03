@@ -1,22 +1,36 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tut_app/core/services/networking/dio_comsumer.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/constants.dart';
+import 'package:tut_app/shared/data/repos/books_repository.dart';
+import 'package:tut_app/shared/view_model/cubit/get_books_by_category_cubit.dart';
 
 class NavBarRouter {
   static Route? onGenerate(RouteSettings settings) {
     switch (settings.name) {
       case AnimatedBottomBar.routeName:
         return PageRouteBuilder(
-            transitionDuration: AppConstants.transitionDurationInSec,
-            transitionsBuilder: _homePagesAnimationBuilder,
-            pageBuilder: (context, animation, secondaryAnimation) =>
-                const AnimatedBottomBar());
+          transitionDuration: AppConstants.transitionDurationInSec,
+          transitionsBuilder: _navBarAnimationBuilder,
+          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
+            create: (context) => GetBooksByCategoryCubit(
+              repo: BooksRepository(
+                api: DioConsumer(
+                  dio: Dio(),
+                ),
+              ),
+            ),
+            child: const AnimatedBottomBar(),
+          ),
+        );
       default:
         return null;
     }
   }
 
-  static Widget _homePagesAnimationBuilder(
+  static Widget _navBarAnimationBuilder(
       BuildContext context,
       Animation<double> animation,
       Animation<double> secondaryAnimation,

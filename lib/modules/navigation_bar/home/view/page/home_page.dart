@@ -1,15 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
-import 'package:tut_app/core/theme/fonts_manager.dart';
-import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/banner_slider.dart';
+import 'package:tut_app/modules/navigation_bar/home/view/widgets/books_list_view.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/falsh_sale_text.dart';
 import 'package:tut_app/shared/data/models/book.dart';
-import 'package:tut_app/shared/view/widgets/book_tile.dart';
+import 'package:tut_app/shared/view_model/cubit/get_books_by_category_cubit.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home';
@@ -17,6 +16,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // getting the books from Google books api and trigger the BLoC states.
+    BlocProvider.of<GetBooksByCategoryCubit>(context)
+        .getCategorizedBooks(category: '', lang: 'ar');
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -29,77 +32,33 @@ class HomePage extends StatelessWidget {
               Container(
                 color: AppColors.primaryGrade4.withOpacity(0.2),
                 padding: EdgeInsets.only(left: 16, right: 16, top: 8),
+                width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      AppStrings.trendingBooks,
+                      AppStrings.newRelease,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
-                    SizedBox(
-                      height: Helper.getResponsiveDimension(context,
-                          baseDimension: 410),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 6,
-                        itemBuilder: (context, index) {
-                          List<Book> books = [
-                            Book(
-                              name: 'Memory Of You',
-                              image: 'assets/images/fake_book_cover.png',
-                              category: 'Romance',
-                              description: 'desc',
-                              author: 'Abdullah',
-                              price: '10',
-                            ),
-                            Book(
-                              name: 'Memory Of You',
-                              image: 'assets/images/fakeCover2.png',
-                              category: 'Romance',
-                              description: 'desc',
-                              author: 'Abdullah',
-                              price: '10',
-                            ),
-                            Book(
-                              name: 'Memory Of You',
-                              image: 'assets/images/fake_book_cover.png',
-                              category: 'Romance',
-                              description: 'desc',
-                              author: 'Abdullah',
-                              price: '10',
-                            ),
-                            Book(
-                              name: 'Memory Of You',
-                              image: 'assets/images/fakeCover2.png',
-                              category: 'Romance',
-                              description: 'desc',
-                              author: 'Abdullah',
-                              price: '10',
-                            ),
-                            Book(
-                              name: 'Memory Of You',
-                              image: 'assets/images/fake_book_cover.png',
-                              category: 'Romance',
-                              description: 'desc',
-                              author: 'Abdullah',
-                              price: '10',
-                            ),
-                            Book(
-                              name: 'Memory Of You',
-                              image: 'assets/images/fakeCover2.png',
-                              category: 'Romance',
-                              description: 'desc',
-                              author: 'Abdullah',
-                              price: '10',
-                            ),
-                          ];
-
-                          return BookTile(
-                            book: books[index],
+                    BlocBuilder<GetBooksByCategoryCubit,
+                        GetBooksByCategoryState>(
+                      builder: (context, state) {
+                        List<Book> books = [];
+                        if (state is GetBooksByCategoryLoading) {
+                          //This is for the shimmer effect representing the same outline form of the book tiles.
+                          return BooksListView(
+                            books: const [],
+                            isLoading: true,
                           );
-                        },
-                      ),
+                        }
+                        if (state is GetBooksByCategorySuccess) {
+                          books = state.books;
+
+                          return BooksListView(books: books, isLoading: false);
+                        } else
+                          //Todo: handle error UI...with some lottie animation
+                          return Text('Some thing is wrong');
+                      },
                     ),
                   ],
                 ),
