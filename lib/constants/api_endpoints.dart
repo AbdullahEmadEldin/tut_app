@@ -34,6 +34,7 @@ class ApiEndpoints {
   //? query parameters
   static const String query = "q";
   static const String langParam = "langRestrict";
+  static const String qNewRelease = "new+releases";
   static const String maxResults = "maxResults";
   static const String startIndex = "startIndex";
 }

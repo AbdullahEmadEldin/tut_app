@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/data/models/book_sub_models.dart';
+import 'package:tut_app/shared/data/repos/book_category_enum.dart';
 import 'package:tut_app/shared/data/repos/books_repository.dart';
 
 part 'get_books_by_category_state.dart';
@@ -14,7 +15,7 @@ class GetBooksByCategoryCubit extends Cubit<GetBooksByCategoryState> {
   }) : super(GetBooksByCategoryInitial());
 
   Future<void> getCategorizedBooks({
-    required String category,
+    required BooksCategory category,
     required String lang,
   }) async {
     emit(GetBooksByCategoryLoading());

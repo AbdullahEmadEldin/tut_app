@@ -8,7 +8,8 @@ import 'package:tut_app/modules/navigation_bar/home/view/widgets/banner_slider.d
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/books_list_view.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/falsh_sale_text.dart';
 import 'package:tut_app/shared/data/models/book.dart';
-import 'package:tut_app/shared/view_model/cubit/get_books_by_category_cubit.dart';
+import 'package:tut_app/shared/data/repos/book_category_enum.dart';
+import 'package:tut_app/modules/navigation_bar/home/view_model/get_books_by_category_cubit.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home';
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // getting the books from Google books api and trigger the BLoC states.
     BlocProvider.of<GetBooksByCategoryCubit>(context)
-        .getCategorizedBooks(category: '', lang: 'ar');
+        .getCategorizedBooks(category: BooksCategory.fiction, lang: 'ar');
 
     return SafeArea(
       child: Scaffold(
