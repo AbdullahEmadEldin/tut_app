@@ -9,18 +9,30 @@ import 'package:tut_app/modules/navigation_bar/home/view/widgets/books_list_view
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/falsh_sale_text.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/data/repos/book_category_enum.dart';
-import 'package:tut_app/modules/navigation_bar/home/view_model/get_books_by_category_cubit.dart';
+import 'package:tut_app/modules/navigation_bar/home/view_model/get_new_books_cubit.dart';
 
-class HomePage extends StatelessWidget {
+/// There is no need to rebuild the whole page.
+/// but we are sing Stateful widget to trigger the API request one time in init state.
+/// if you call the request in build method, every you jump to it from nav bar will call it again.
+class HomePage extends StatefulWidget {
   static const String routeName = '/home';
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // getting the books from Google books api and trigger the BLoC states.
-    BlocProvider.of<GetBooksByCategoryCubit>(context)
-        .getCategorizedBooks(category: BooksCategory.fiction, lang: 'ar');
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // getting the books from Google books api and trigger the BLoC states.
+    BlocProvider.of<GetNewBooksCubit>(context)
+        .getCategorizedBooks(category: BooksCategory.fiction, lang: 'ar');
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -41,11 +53,10 @@ class HomePage extends StatelessWidget {
                       AppStrings.newRelease,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
-                    BlocBuilder<GetBooksByCategoryCubit,
-                        GetBooksByCategoryState>(
+                    BlocBuilder<GetNewBooksCubit, GetNewBooksState>(
                       builder: (context, state) {
                         List<Book> books = [];
-                        if (state is GetBooksByCategoryLoading) {
+                        if (state is GetNewBookLoading) {
                           //This is for the shimmer effect representing the same outline form of the book tiles.
                           return BooksListView(
                             books: const [],
@@ -54,7 +65,6 @@ class HomePage extends StatelessWidget {
                         }
                         if (state is GetBooksByCategorySuccess) {
                           books = state.books;
-
                           return BooksListView(books: books, isLoading: false);
                         } else
                           //Todo: handle error UI...with some lottie animation

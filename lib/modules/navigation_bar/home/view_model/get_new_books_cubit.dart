@@ -6,32 +6,34 @@ import 'package:tut_app/shared/data/models/book_sub_models.dart';
 import 'package:tut_app/shared/data/repos/book_category_enum.dart';
 import 'package:tut_app/shared/data/repos/books_repository.dart';
 
-part 'get_books_by_category_state.dart';
+part 'get_new_books_state.dart';
 
-class GetBooksByCategoryCubit extends Cubit<GetBooksByCategoryState> {
+class GetNewBooksCubit extends Cubit<GetNewBooksState> {
   final BooksRepository repo;
-  GetBooksByCategoryCubit({
+  GetNewBooksCubit({
     required this.repo,
-  }) : super(GetBooksByCategoryInitial());
+  }) : super(GetNewBookInitial());
 
+  /// get books by it's category
+  ///  `category` : will be passed by choosing one in Explore screen.
+  /// `lang` : will be passed by choosing one in Explore screen.
   Future<void> getCategorizedBooks({
     required BooksCategory category,
     required String lang,
   }) async {
-    emit(GetBooksByCategoryLoading());
+    emit(GetNewBookLoading());
     try {
-      // final booksResponse = await repo.getCategorizedBooks(
-      //   category: category,
-      //   lang: lang,
-      // );
-      // print('Test:::::::::::::::: ${booksResponse.totalItems}');
+      final booksResponse = await repo.getNewReleaseBooks(
+        lang: lang,
+      );
+      print('Test:::::::::::::::: ${booksResponse.totalItems}');
 
-      List<Book> books = await _getMockBooks();
+      // List<Book> books = await _getMockBooks();
 
-      emit(GetBooksByCategorySuccess(books: books));
+      emit(GetBooksByCategorySuccess(books: booksResponse.books ?? []));
     } catch (e) {
       print('====. Erorr: ${e.toString()}');
-      emit(GetBooksByCategoryFailure(errorMsg: e.toString()));
+      emit(GetNewBookFailure(errorMsg: e.toString()));
     }
   }
 

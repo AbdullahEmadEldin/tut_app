@@ -5,6 +5,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/modules/navigation_bar/explore/view/page/explore_page.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/modules/navigation_bar/library/pages/library_page.dart';
 import 'package:tut_app/modules/navigation_bar/profile/pages/profile_page.dart';
@@ -27,7 +28,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
   final List<Widget> _pages = const [
     HomePage(),
     LibraryPage(),
-    ProfilePage(),
+    ExplorePage(),
     ProfilePage(),
   ];
   @override

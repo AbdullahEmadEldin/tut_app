@@ -5,7 +5,7 @@ import 'package:tut_app/core/services/networking/dio_comsumer.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/constants.dart';
 import 'package:tut_app/shared/data/repos/books_repository.dart';
-import 'package:tut_app/modules/navigation_bar/home/view_model/get_books_by_category_cubit.dart';
+import 'package:tut_app/modules/navigation_bar/home/view_model/get_new_books_cubit.dart';
 
 class NavBarRouter {
   static Route? onGenerate(RouteSettings settings) {
@@ -15,7 +15,7 @@ class NavBarRouter {
           transitionDuration: AppConstants.transitionDurationInSec,
           transitionsBuilder: _navBarAnimationBuilder,
           pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
-            create: (context) => GetBooksByCategoryCubit(
+            create: (context) => GetNewBooksCubit(
               repo: BooksRepository(
                 api: DioConsumer(
                   dio: Dio(),
