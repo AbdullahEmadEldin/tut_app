@@ -60,4 +60,9 @@ class AppStrings {
   static const String library = "My library";
   static const String flashSale = 'Flash Sale';
   static const String newRelease = 'New Books';
+
+  //*---------------------------------------------------------- */
+  //********************  Explore  ************************//
+  //*---------------------------------------------------------- */
+  static const String searchLabel = 'Search for a book...';
 }

@@ -33,10 +33,14 @@ class ApiEndpoints {
       "https://www.googleapis.com/books/v1/volumes?";
   //? query parameters
   static const String query = "q";
-  static const String langParam = "langRestrict";
-  static const String qNewRelease = "new+releases";
-  static const String maxResults = "maxResults";
-  static const String startIndex = "startIndex";
+  static const String qLangParam = "langRestrict";
+  static const String qStartIndex = "startIndex";
+  static const String qMaxResults = "maxResults";
+  static const String qOrderBy = "orderBy";
+  static const String qProjection =
+      "projection"; // for getting books with valid data only
+  static const String fullVolumeInfo = 'full';
+  static const String trending = "";
 }
 
 class ApiKeys {

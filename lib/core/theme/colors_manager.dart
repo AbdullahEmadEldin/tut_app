@@ -5,6 +5,8 @@ class AppColors {
   static Color primary = const Color(0xff2F4858);
   static Color lightPrimary = const Color(0xff4B6A70); // color with 80% opacity
   static Color secondary = const Color(0xff728C86);
+  static Color secondaryLight = const Color(0xff728C86).withOpacity(0.2);
+
   static Color primaryGrade4 = const Color(0xffA0AEA0);
   static Color greyPrimary = const Color(0xffD0D0C1);
   static Color spotColor = const Color(0xff2C685F);

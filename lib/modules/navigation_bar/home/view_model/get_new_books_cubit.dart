@@ -30,7 +30,7 @@ class GetNewBooksCubit extends Cubit<GetNewBooksState> {
 
       // List<Book> books = await _getMockBooks();
 
-      emit(GetBooksByCategorySuccess(books: booksResponse.books ?? []));
+      emit(GetNewBooksSuccess(books: booksResponse.books ?? []));
     } catch (e) {
       print('====. Erorr: ${e.toString()}');
       emit(GetNewBookFailure(errorMsg: e.toString()));

@@ -7,10 +7,10 @@ final class GetNewBookInitial extends GetNewBooksState {}
 
 final class GetNewBookLoading extends GetNewBooksState {}
 
-final class GetBooksByCategorySuccess extends GetNewBooksState {
+final class GetNewBooksSuccess extends GetNewBooksState {
   final List<Book> books;
 
-  GetBooksByCategorySuccess({required this.books});
+  GetNewBooksSuccess({required this.books});
 }
 
 final class GetNewBookFailure extends GetNewBooksState {
