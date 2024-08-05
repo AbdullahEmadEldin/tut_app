@@ -25,14 +25,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // getting the books from Google books api and trigger the BLoC states.
     BlocProvider.of<GetNewBooksCubit>(context)
-        .getCategorizedBooks(category: BooksCategory.fiction, lang: 'ar');
+        .getCategorizedBooks(category: BooksCategory.Fiction, lang: 'ar');
     super.initState();
   }
 
+  /// This override required for AutomaticKeepAliveClientMixin which keeps the state alive.
+  /// when you switch between pages inside nav bar
+  // @override
+  // bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    // super.build(context);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -63,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                             isLoading: true,
                           );
                         }
-                        if (state is GetBooksByCategorySuccess) {
+                        if (state is GetNewBooksSuccess) {
                           books = state.books;
                           return BooksListView(books: books, isLoading: false);
                         } else

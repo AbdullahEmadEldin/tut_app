@@ -1,11 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tut_app/core/services/networking/dio_comsumer.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/constants.dart';
-import 'package:tut_app/shared/data/repos/books_repository.dart';
-import 'package:tut_app/modules/navigation_bar/home/view_model/get_new_books_cubit.dart';
 
 class NavBarRouter {
   static Route? onGenerate(RouteSettings settings) {
@@ -14,16 +9,8 @@ class NavBarRouter {
         return PageRouteBuilder(
           transitionDuration: AppConstants.transitionDurationInSec,
           transitionsBuilder: _navBarAnimationBuilder,
-          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
-            create: (context) => GetNewBooksCubit(
-              repo: BooksRepository(
-                api: DioConsumer(
-                  dio: Dio(),
-                ),
-              ),
-            ),
-            child: const AnimatedBottomBar(),
-          ),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const AnimatedBottomBar(),
         );
       default:
         return null;

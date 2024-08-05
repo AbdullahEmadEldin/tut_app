@@ -26,7 +26,6 @@ class BooksListView extends StatelessWidget {
               ? const BookTileShimmer() //represent the loading state.
               : BookTile(
                   book: books[index].bookInfo,
-                  isLoading: isLoading,
                 );
         },
       ),

@@ -19,10 +19,14 @@ class BooksRepository {
     final response = await api.get(
       path: ApiEndpoints.googleBooksBaseUrl,
       queryParameters: {
-        ApiEndpoints.query: ApiEndpoints.qNewRelease,
-        ApiEndpoints.langParam: "en",
-        ApiEndpoints.maxResults: "10",
-        ApiEndpoints.startIndex: "0",
+        ApiEndpoints.query: 'action+drama',
+        ApiEndpoints.qLangParam: "en",
+        ApiEndpoints.qMaxResults:
+            "20", // this will be static value as UI won't need more than 20 book.
+        ApiEndpoints.qStartIndex: "0",
+        ApiEndpoints.qProjection: ApiEndpoints.fullVolumeInfo,
+        'orderBy': 'newest',
+        // 'filter': 'ebooks',
       },
     );
     return BooksResponse.fromJson(response);
@@ -36,9 +40,10 @@ class BooksRepository {
       path: ApiEndpoints.googleBooksBaseUrl,
       queryParameters: {
         ApiEndpoints.query: "subject:$category",
-        ApiEndpoints.langParam: "en",
-        ApiEndpoints.maxResults: "10",
-        ApiEndpoints.startIndex: "0",
+        ApiEndpoints.qLangParam: "en",
+        ApiEndpoints.qMaxResults: "10",
+        ApiEndpoints.qStartIndex: "0",
+        ApiEndpoints.qProjection: ApiEndpoints.fullVolumeInfo,
       },
     );
     return BooksResponse.fromJson(response);
@@ -52,9 +57,10 @@ class BooksRepository {
       path: ApiEndpoints.googleBooksBaseUrl,
       queryParameters: {
         ApiEndpoints.query: searchTerm,
-        ApiEndpoints.langParam: "en",
-        ApiEndpoints.maxResults: "10",
-        ApiEndpoints.startIndex: "0",
+        ApiEndpoints.qLangParam: "en",
+        ApiEndpoints.qMaxResults: "10",
+        ApiEndpoints.qStartIndex: "0",
+        ApiEndpoints.qProjection: ApiEndpoints.fullVolumeInfo,
       },
     );
     return BooksResponse.fromJson(response);
