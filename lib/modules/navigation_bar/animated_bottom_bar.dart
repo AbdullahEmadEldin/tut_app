@@ -86,7 +86,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
               AppStrings.reading,
               style: _barItemTextStyle(),
             ),
-            selectedColor: AppColors.primary,
+            selectedColor: AppColors.spotColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(
@@ -97,7 +97,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
               AppStrings.library,
               style: _barItemTextStyle(),
             ),
-            selectedColor: AppColors.primary,
+            selectedColor: AppColors.spotColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(
@@ -108,7 +108,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
               AppStrings.explore,
               style: _barItemTextStyle(),
             ),
-            selectedColor: AppColors.primary,
+            selectedColor: AppColors.spotColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(
@@ -119,7 +119,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
               AppStrings.profile,
               style: _barItemTextStyle(),
             ),
-            selectedColor: AppColors.primary,
+            selectedColor: AppColors.spotColor,
           ),
         ],
       ),

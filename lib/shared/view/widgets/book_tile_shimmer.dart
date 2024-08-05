@@ -6,6 +6,8 @@ import 'package:tut_app/core/theme/colors_manager.dart';
 class BookTileShimmer extends StatelessWidget {
   final double? imageHeight;
   final double? imageWidth;
+  final Color? shimmerColor;
+  final bool inStaggeredView;
 
   /// This is loading shimmer widget for book tile
   /// It represents the loading state. with the same layout of book tile
@@ -13,15 +15,19 @@ class BookTileShimmer extends StatelessWidget {
     super.key,
     this.imageHeight,
     this.imageWidth,
+    this.shimmerColor,
+    this.inStaggeredView = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: AppColors.background,
-      highlightColor: AppColors.secondary,
+      highlightColor: shimmerColor ?? AppColors.secondary,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        padding: inStaggeredView
+            ? const EdgeInsets.symmetric(horizontal: 8, vertical: 4)
+            : const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: SizedBox(
           width: imageWidth ??
               Helper.getResponsiveDimension(context, baseDimension: 230),
@@ -41,16 +47,18 @@ class BookTileShimmer extends StatelessWidget {
                 height: imageHeight ??
                     Helper.getResponsiveDimension(context, baseDimension: 340),
               ),
-              SizedBox(
-                height:
-                    Helper.getResponsiveDimension(context, baseDimension: 12),
-              ),
-              Container(
-                height:
-                    Helper.getResponsiveDimension(context, baseDimension: 18),
-                width: double.infinity,
-                color: AppColors.primaryGrade4,
-              )
+              if (!inStaggeredView)
+                SizedBox(
+                  height:
+                      Helper.getResponsiveDimension(context, baseDimension: 12),
+                ),
+              if (!inStaggeredView)
+                Container(
+                  height:
+                      Helper.getResponsiveDimension(context, baseDimension: 18),
+                  width: double.infinity,
+                  color: AppColors.primaryGrade4,
+                )
             ],
           ),
         ),

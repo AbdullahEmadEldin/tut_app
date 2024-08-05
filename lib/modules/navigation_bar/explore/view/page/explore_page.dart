@@ -20,12 +20,14 @@ class ExplorePage extends StatelessWidget {
             pinned: true,
             delegate: SearchBarDelegate(),
           ),
+
+          /// child of CustomScrollView must be a Sliver type so we can use SliverToBoxAdapter
+          /// to make a non-sliver widget a sliver
           SliverToBoxAdapter(
             child: CategoriesListView(),
           ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            sliver: BooksStaggeredGridView(),
+          BooksStaggeredGridView(
+            books: [],
           ),
         ],
       ),

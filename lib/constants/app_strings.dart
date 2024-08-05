@@ -65,4 +65,5 @@ class AppStrings {
   //********************  Explore  ************************//
   //*---------------------------------------------------------- */
   static const String searchLabel = 'Search for a book...';
+  static const String pickCategory = 'Pick a category to explore...';
 }
