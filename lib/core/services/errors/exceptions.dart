@@ -64,6 +64,10 @@ void _handleBadResponse(DioException e) {
       throw ServerException(
         error: ServerErrorModel.fromJson(e.response!.data),
       );
+    case 429: //too many requests
+      throw ServerException(
+        error: ServerErrorModel.fromJson(e.response!.data),
+      );
     case 500: //internal server error
       throw ServerException(
         error: ServerErrorModel.fromJson(e.response!.data),
