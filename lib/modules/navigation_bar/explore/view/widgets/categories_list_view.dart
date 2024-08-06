@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/core/helpers.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view/widgets/book_category_tile.dart';
+import 'package:tut_app/modules/navigation_bar/explore/view_model/cubit/explore_books_cubit.dart';
 import 'package:tut_app/shared/data/repos/book_category_enum.dart';
 
 class CategoriesListView extends StatefulWidget {
@@ -29,6 +31,11 @@ class _CategoriesListViewState extends State<CategoriesListView> {
                     onTap: () {
                       setState(() {
                         groupValue = index;
+                        BlocProvider.of<ExploreBooksCubit>(context)
+                            .getCategorizedBooks(
+                                category: e, lang: 'en', startIndex: 0);
+                        BlocProvider.of<ExploreBooksCubit>(context)
+                            .setCategory(e);
                       });
                     },
                     isSelected: groupValue == index,

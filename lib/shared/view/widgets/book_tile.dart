@@ -5,7 +5,7 @@ import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 
 class BookTile extends StatelessWidget {
-  final BookInfo book;
+  final Book book;
   final double? imageHeight;
   final double? imageWidth;
   final bool inStaggeredView;
@@ -20,7 +20,8 @@ class BookTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Handling the long book title.
-    String bookTitle = Helper.limitStringLength(str: book.title, maxLength: 18);
+    String bookTitle =
+        Helper.limitStringLength(str: book.bookInfo.title, maxLength: 18);
     return Padding(
       padding: inStaggeredView
           ? const EdgeInsets.symmetric(horizontal: 4, vertical: 4)
@@ -38,10 +39,10 @@ class BookTile extends StatelessWidget {
             ),
             child: InkWell(
               onTap: () {},
-              child: (book.imageLinks?.thumbnail != null)
+              child: (book.bookInfo.imageLinks?.thumbnail != null)
                   //todo: replace with network image
                   ? Image.network(
-                      book.imageLinks!.thumbnail!,
+                      book.bookInfo.imageLinks!.thumbnail!,
                       width: imageWidth ??
                           Helper.getResponsiveDimension(context,
                               baseDimension: 230),

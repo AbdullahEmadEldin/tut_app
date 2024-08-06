@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/helpers.dart';
 import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
+import 'package:tut_app/shared/data/models/book.dart';
+import 'package:tut_app/shared/data/models/book_sub_models.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String routeName = '/profile';
@@ -15,37 +17,181 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: <Widget>[
-        // Background image or any other widget
-        Positioned.fill(
-          child: Image.asset(
-            AppAssets.images.fakeBookCover,
-            fit: BoxFit.cover,
-          ),
-        ),
-        // Blur effect
-        Center(
-          child: ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        body: SingleChildScrollView(
+            child: Column(
+      children: [
+        Text('Hello'),
+        SizedBox(
+          height: 700,
+          child: GridView.builder(
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Container(
-                width: 200,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  'Blurred Container',
-                  style: TextStyle(fontSize: 24),
-                ),
+                height: index == 3 ? 300 : 200,
+                color: Colors.red,
               ),
             ),
+            itemCount: 10,
           ),
         ),
       ],
-    ));
+    )));
   }
+
+  List<Book> _getBooks() => [
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "This is a long book title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "This is a long book title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "This is a long book title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "This is a long book title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "This is a long book title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "This is a long book title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "This is a long book title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "Test 2 for a long book title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+        Book(
+            kind: 'kind',
+            id: 'id',
+            bookInfo: BookInfo(
+              title: "title",
+            ),
+            saleInfo: SaleInfo(),
+            accessInfo: AccessInfo()),
+      ];
 }

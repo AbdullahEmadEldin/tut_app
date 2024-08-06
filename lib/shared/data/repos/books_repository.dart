@@ -35,14 +35,15 @@ class BooksRepository {
   Future<BooksResponse> getCategorizedBooks({
     required BooksCategory category,
     required String lang,
+    required int startIndex,
   }) async {
     final response = await api.get(
       path: ApiEndpoints.googleBooksBaseUrl,
       queryParameters: {
-        ApiEndpoints.query: "subject:$category",
+        ApiEndpoints.query: "subject:${category.name}",
         ApiEndpoints.qLangParam: "en",
-        ApiEndpoints.qMaxResults: "10",
-        ApiEndpoints.qStartIndex: "0",
+        ApiEndpoints.qMaxResults: "20",
+        ApiEndpoints.qStartIndex: "$startIndex",
         ApiEndpoints.qProjection: ApiEndpoints.fullVolumeInfo,
       },
     );

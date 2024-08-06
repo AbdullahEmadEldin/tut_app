@@ -26,7 +26,7 @@ class CategoryTile extends StatelessWidget {
             color: isSelected ? AppColors.secondaryLight : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: AppColors.grey.withOpacity(0.5),
+              color: AppColors.spotColor.withOpacity(0.5),
             )),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

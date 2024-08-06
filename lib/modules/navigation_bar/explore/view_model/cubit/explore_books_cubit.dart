@@ -10,6 +10,10 @@ class ExploreBooksCubit extends Cubit<ExploreBooksState> {
   final BooksRepository repository;
   ExploreBooksCubit(this.repository) : super(ExploreBooksInitial());
 
+  BooksCategory? _category;
+
+  setCategory(BooksCategory category) => _category = category;
+  getCategory() => _category;
   Future<void> searchForBook({required String searchItem}) async {
     emit(FetchingBooksLoading());
     try {
@@ -26,13 +30,16 @@ class ExploreBooksCubit extends Cubit<ExploreBooksState> {
   Future<void> getCategorizedBooks({
     required BooksCategory category,
     required String lang,
+    required int startIndex,
   }) async {
     emit(FetchingBooksLoading());
     try {
       final booksResponse = await repository.getCategorizedBooks(
         category: category,
         lang: lang,
+        startIndex: startIndex,
       );
+      print('====>CUBIT::::: ${booksResponse.books?.length}');
       emit(FetchingBooksSuccess(books: booksResponse.books ?? []));
     } catch (e) {
       emit(FetchingBooksFailure(errorMsg: e.toString()));
