@@ -36,6 +36,8 @@ class _CategoriesListViewState extends State<CategoriesListView> {
                                 category: e, lang: 'en', startIndex: 0);
                         BlocProvider.of<ExploreBooksCubit>(context)
                             .setCategory(e);
+                        BlocProvider.of<ExploreBooksCubit>(context)
+                            .newCategory(true);
                       });
                     },
                     isSelected: groupValue == index,

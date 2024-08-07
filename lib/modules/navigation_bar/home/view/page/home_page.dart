@@ -22,7 +22,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     BlocProvider.of<GetNewBooksCubit>(context)
@@ -32,12 +33,12 @@ class _HomePageState extends State<HomePage> {
 
   /// This override required for AutomaticKeepAliveClientMixin which keeps the state alive.
   /// when you switch between pages inside nav bar
-  // @override
-  // bool get wantKeepAlive => true;
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
-    // super.build(context);
+    super.build(context);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(

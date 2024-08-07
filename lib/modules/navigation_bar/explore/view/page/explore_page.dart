@@ -5,8 +5,15 @@ import 'package:tut_app/modules/navigation_bar/explore/view/widgets/books_grid_v
 import 'package:tut_app/modules/navigation_bar/explore/view/widgets/categories_list_view.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view/widgets/search_text_field.dart';
 
-class ExplorePage extends StatelessWidget {
+class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
+
+  @override
+  State<ExplorePage> createState() => _ExplorePageState();
+}
+
+class _ExplorePageState extends State<ExplorePage> {
+  ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +22,7 @@ class ExplorePage extends StatelessWidget {
       /// enables to make custom scrollable behaviors for slivers(widgets)
       /// We need it here to make the search bar sticky at the top.
       child: CustomScrollView(
+        controller: _scrollController,
         slivers: [
           SliverPersistentHeader(
             pinned: true,
@@ -27,7 +35,7 @@ class ExplorePage extends StatelessWidget {
             child: CategoriesListView(),
           ),
           BooksStaggeredGridView(
-            books: [],
+            scrollController: _scrollController,
           ),
         ],
       ),
