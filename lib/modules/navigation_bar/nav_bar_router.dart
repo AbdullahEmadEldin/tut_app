@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/constants.dart';
+import 'package:tut_app/shared/view/pages/book_details_page.dart';
 
 class NavBarRouter {
   static Route? onGenerate(RouteSettings settings) {
@@ -12,6 +13,8 @@ class NavBarRouter {
           pageBuilder: (context, animation, secondaryAnimation) =>
               const AnimatedBottomBar(),
         );
+      case BookDetailsPage.routeName:
+        return MaterialPageRoute(builder: (context) => const BookDetailsPage());
       default:
         return null;
     }
