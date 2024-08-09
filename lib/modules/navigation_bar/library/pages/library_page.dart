@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/helpers.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
 
 class LibraryPage extends StatelessWidget {
@@ -20,10 +20,10 @@ class LibraryPage extends StatelessWidget {
               height: 200,
             ),
             RegisterButton(
-                width:
-                    Helper.getResponsiveDimension(context, baseDimension: 200),
+                width: UiHelper.getResponsiveDimension(context,
+                    baseDimension: 200),
                 height:
-                    Helper.getResponsiveDimension(context, baseDimension: 50),
+                    UiHelper.getResponsiveDimension(context, baseDimension: 50),
                 text: 'This is library',
                 onTap: () {}),
             SizedBox(

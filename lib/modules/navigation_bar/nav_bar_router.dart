@@ -14,7 +14,9 @@ class NavBarRouter {
               const AnimatedBottomBar(),
         );
       case BookDetailsPage.routeName:
-        return MaterialPageRoute(builder: (context) => const BookDetailsPage());
+        final args = settings.arguments as BookDetailsArgs;
+        return MaterialPageRoute(
+            builder: (context) => BookDetailsPage(args: args));
       default:
         return null;
     }

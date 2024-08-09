@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/helpers.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/theme/fonts_manager.dart';
 
@@ -9,47 +9,47 @@ class AppTextThemes {
   static TextTheme lightTextTheme(BuildContext context) => TextTheme(
         displayLarge: getSemiBoldStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 40),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 40),
         ),
         displayMedium: getSemiBoldStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 36),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 36),
         ),
         headlineLarge: getSemiBoldStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 32),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 32),
         ),
         headlineMedium: getRegularStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 28),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 28),
         ),
         titleMedium: getMediumStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 26),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 26),
         ),
         titleSmall: getRegularStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 24),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 24),
         ),
         bodyLarge: getRegularStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 20),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 20),
         ),
         bodyMedium: getRegularStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 18),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 18),
         ),
         bodySmall: getRegularStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 16),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 16),
         ),
         labelLarge: getBoldStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 14),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 14),
         ),
         labelSmall: getBoldStyle(
           color: AppColors.primary,
-          fontSize: Helper.getResponsiveDimension(context, baseDimension: 12),
+          fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 12),
         ),
       );
 

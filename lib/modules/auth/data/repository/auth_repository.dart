@@ -1,8 +1,8 @@
 import 'package:image_picker/image_picker.dart';
+import 'package:tut_app/core/network_helper.dart';
 import 'package:tut_app/modules/auth/data/models/login_model.dart';
 import 'package:tut_app/modules/auth/data/models/register_model.dart';
 import 'package:tut_app/constants/api_endpoints.dart';
-import 'package:tut_app/core/helpers.dart';
 import 'package:tut_app/core/services/networking/api_consumer.dart';
 
 class AuthService {
@@ -39,7 +39,7 @@ class AuthService {
         ApiKeys.phoneNum: phone,
         ApiKeys.password: password,
         ApiKeys.confirmPassword: confirmPassword,
-        ApiKeys.profilePic: await Helper.uploadImageToApi(profilePic),
+        ApiKeys.profilePic: await NetworkHelper.uploadImageToApi(profilePic),
         'location': //This is my location. Not needed in this project but the ready made API require it
             '{"name":"methalfa","address":"meet halfa","coordinates":[30.1572709,31.224779]}'
       },

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/shared/data/models/book_sub_models.dart';
 
 class Book {
@@ -70,11 +71,11 @@ class BookInfo {
     this.description,
     this.categories,
   });
-//! Any 'N/A' is a handling situation for the API. because a lot of books doesn't have the complete data.
+//! Any AppStrings.notApplicable ('N/A') is a handling situation for the API. because a lot of books doesn't have the complete data.
   BookInfo.fromJson(Map<String, dynamic> json)
       : title = json['title'],
-        authors = json['authors'] ?? ['N/A'],
-        publishedDate = json['publishedDate'],
+        authors = json['authors'] ?? [AppStrings.notApplicable],
+        publishedDate = json['publishedDate'] ?? AppStrings.notApplicable,
         allowAnonLogging = json['allowAnonLogging'],
         imageLinks = json['imageLinks'] != null
             ? ImageLinks.fromJson(json['imageLinks'])
@@ -85,7 +86,7 @@ class BookInfo {
         description = json['description'],
         categories = json['categories'] ??
             [
-              'N/A',
+              AppStrings.notApplicable,
             ];
 
   Map<String, dynamic> toJson() {

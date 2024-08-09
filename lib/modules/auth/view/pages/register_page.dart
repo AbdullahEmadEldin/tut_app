@@ -14,7 +14,7 @@ import 'package:tut_app/constants/values_manager.dart';
 import 'package:tut_app/shared/view/widgets/toast_message.dart';
 
 class RegisterPage extends StatelessWidget {
-  static const String routeName = '/register';
+  static const String routeName = '${LoginPage.routeName}/register';
   const RegisterPage({super.key});
 
   @override

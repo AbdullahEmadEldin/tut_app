@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/assets_paths.dart';
-import 'package:tut_app/core/helpers.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/shared/data/models/book.dart';
+import 'package:tut_app/shared/view/pages/book_details_page.dart';
 
 class BookTile extends StatelessWidget {
   final Book book;
@@ -21,7 +22,7 @@ class BookTile extends StatelessWidget {
   Widget build(BuildContext context) {
     // Handling the long book title.
     String bookTitle =
-        Helper.limitStringLength(str: book.bookInfo.title, maxLength: 18);
+        UiHelper.limitStringLength(str: book.bookInfo.title, maxLength: 18);
     return Padding(
       padding: inStaggeredView
           ? const EdgeInsets.symmetric(horizontal: 4, vertical: 4)
@@ -38,37 +39,14 @@ class BookTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: InkWell(
-              onTap: () {},
-              child: (book.bookInfo.imageLinks?.thumbnail != null)
-                  //todo: replace with network image
-                  ? Image.network(
-                      book.bookInfo.imageLinks!.thumbnail!,
-                      width: imageWidth ??
-                          Helper.getResponsiveDimension(context,
-                              baseDimension: 230),
-                      height: imageHeight ??
-                          Helper.getResponsiveDimension(
-                            context,
-                            baseDimension: 340,
-                          ),
-                      fit: BoxFit.cover,
-                    )
-                  : Image.asset(
-                      AppAssets.images.fakeBookCover,
-                      width: imageWidth ??
-                          Helper.getResponsiveDimension(context,
-                              baseDimension: 230),
-                      height: imageHeight ??
-                          Helper.getResponsiveDimension(
-                            context,
-                            baseDimension: 340,
-                          ),
-                      fit: BoxFit.cover,
-                    ),
+              onTap: () => Navigator.pushNamed(
+                  context, BookDetailsPage.routeName,
+                  arguments: BookDetailsArgs(book: book)),
+              child: Hero(tag: book.id, child: _buildImage(context)),
             ),
           ),
           SizedBox(
-            height: Helper.getResponsiveDimension(context, baseDimension: 8),
+            height: UiHelper.getResponsiveDimension(context, baseDimension: 8),
           ),
           if (!inStaggeredView)
             Text(
@@ -82,4 +60,29 @@ class BookTile extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildImage(BuildContext context) =>
+      (book.bookInfo.imageLinks?.thumbnail != null)
+          ? Image.network(
+              book.bookInfo.imageLinks!.thumbnail!,
+              width: imageWidth ??
+                  UiHelper.getResponsiveDimension(context, baseDimension: 230),
+              height: imageHeight ??
+                  UiHelper.getResponsiveDimension(
+                    context,
+                    baseDimension: 340,
+                  ),
+              fit: BoxFit.cover,
+            )
+          : Image.asset(
+              AppAssets.images.fakeBookCover,
+              width: imageWidth ??
+                  UiHelper.getResponsiveDimension(context, baseDimension: 230),
+              height: imageHeight ??
+                  UiHelper.getResponsiveDimension(
+                    context,
+                    baseDimension: 340,
+                  ),
+              fit: BoxFit.cover,
+            );
 }

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/helpers.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/services/networking/dio_comsumer.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view/page/explore_page.dart';
@@ -80,7 +80,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
           SalomonBottomBarItem(
             icon: Icon(
               CupertinoIcons.home,
-              size: Helper.getResponsiveDimension(context, baseDimension: 38),
+              size: UiHelper.getResponsiveDimension(context, baseDimension: 38),
             ),
             title: Text(
               AppStrings.reading,
@@ -91,7 +91,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
           SalomonBottomBarItem(
             icon: Icon(
               FontAwesomeIcons.bookBookmark,
-              size: Helper.getResponsiveDimension(context, baseDimension: 30),
+              size: UiHelper.getResponsiveDimension(context, baseDimension: 30),
             ),
             title: Text(
               AppStrings.library,
@@ -102,7 +102,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
           SalomonBottomBarItem(
             icon: Icon(
               CupertinoIcons.compass,
-              size: Helper.getResponsiveDimension(context, baseDimension: 38),
+              size: UiHelper.getResponsiveDimension(context, baseDimension: 38),
             ),
             title: Text(
               AppStrings.explore,
@@ -113,7 +113,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
           SalomonBottomBarItem(
             icon: Icon(
               CupertinoIcons.profile_circled,
-              size: Helper.getResponsiveDimension(context, baseDimension: 38),
+              size: UiHelper.getResponsiveDimension(context, baseDimension: 38),
             ),
             title: Text(
               AppStrings.profile,

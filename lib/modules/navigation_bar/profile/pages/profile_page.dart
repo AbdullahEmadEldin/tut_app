@@ -5,7 +5,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/assets_paths.dart';
-import 'package:tut_app/core/helpers.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/data/models/book_sub_models.dart';

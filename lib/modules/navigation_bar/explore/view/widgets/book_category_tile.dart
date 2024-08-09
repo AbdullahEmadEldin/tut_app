@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/helpers.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/shared/data/repos/book_category_enum.dart';
 
@@ -33,8 +33,10 @@ class CategoryTile extends StatelessWidget {
           children: [
             Image.asset(
               category.icon,
-              width: Helper.getResponsiveDimension(context, baseDimension: 55),
-              height: Helper.getResponsiveDimension(context, baseDimension: 50),
+              width:
+                  UiHelper.getResponsiveDimension(context, baseDimension: 55),
+              height:
+                  UiHelper.getResponsiveDimension(context, baseDimension: 50),
             ),
             Text(
               category.name,

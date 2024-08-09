@@ -1,3 +1,5 @@
+import 'package:tut_app/constants/app_strings.dart';
+
 class ImageLinks {
   String? smallThumbnail;
   String? thumbnail;
@@ -31,9 +33,10 @@ class SaleInfo {
   SaleInfo.fromJson(Map<String, dynamic> json) {
     country = json['country'];
     buyLink = json['buyLink'];
+
     listPrice = json['listPrice'] != null
         ? ListPrice.fromJson(json['listPrice'])
-        : null;
+        : ListPrice(amount: 0, currencyCode: AppStrings.notApplicable);
   }
 
   Map<String, dynamic> toJson() {
@@ -56,7 +59,7 @@ class ListPrice {
 
   ListPrice.fromJson(Map<String, dynamic> json) {
     amount = json['amount'];
-    currencyCode = json['currencyCode'];
+    currencyCode = json['currencyCode'] ?? AppStrings.notApplicable;
   }
 
   Map<String, dynamic> toJson() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tut_app/core/helpers.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 
 class BookTileShimmer extends StatelessWidget {
@@ -30,9 +30,9 @@ class BookTileShimmer extends StatelessWidget {
             : const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: SizedBox(
           width: imageWidth ??
-              Helper.getResponsiveDimension(context, baseDimension: 230),
+              UiHelper.getResponsiveDimension(context, baseDimension: 230),
           height: imageHeight ??
-              Helper.getResponsiveDimension(context, baseDimension: 362),
+              UiHelper.getResponsiveDimension(context, baseDimension: 362),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -43,19 +43,21 @@ class BookTileShimmer extends StatelessWidget {
                   color: AppColors.background,
                 ),
                 width: imageWidth ??
-                    Helper.getResponsiveDimension(context, baseDimension: 230),
+                    UiHelper.getResponsiveDimension(context,
+                        baseDimension: 230),
                 height: imageHeight ??
-                    Helper.getResponsiveDimension(context, baseDimension: 340),
+                    UiHelper.getResponsiveDimension(context,
+                        baseDimension: 340),
               ),
               if (!inStaggeredView)
                 SizedBox(
-                  height:
-                      Helper.getResponsiveDimension(context, baseDimension: 12),
+                  height: UiHelper.getResponsiveDimension(context,
+                      baseDimension: 12),
                 ),
               if (!inStaggeredView)
                 Container(
-                  height:
-                      Helper.getResponsiveDimension(context, baseDimension: 18),
+                  height: UiHelper.getResponsiveDimension(context,
+                      baseDimension: 18),
                   width: double.infinity,
                   color: AppColors.primaryGrade4,
                 )

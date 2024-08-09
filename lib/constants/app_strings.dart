@@ -1,4 +1,5 @@
 class AppStrings {
+  static const notApplicable = "N/A";
   //*---------------------------------------------------------- */
   //********************  OnBoarding  ************************//
 //*---------------------------------------------------------- */
@@ -66,4 +67,12 @@ class AppStrings {
   //*---------------------------------------------------------- */
   static const String searchLabel = 'Search for a book...';
   static const String pickCategory = 'Pick a category to explore...';
+
+  //*---------------------------------------------------------- */
+  //********************  Book Details  ************************//
+  //*---------------------------------------------------------- */
+  static const String author = 'Author: ';
+  static const String published = 'Published: ';
+  static const String price = 'Price: ';
+  static const String description = 'Description';
 }

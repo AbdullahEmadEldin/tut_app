@@ -5,7 +5,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/helpers.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 
 class SearchBarDelegate extends SliverPersistentHeaderDelegate {
@@ -44,13 +44,13 @@ class _SearchTextFieldState extends State<SearchTextField> {
     return Container(
       color: AppColors.secondaryLight.withOpacity(0.1),
       child: Container(
-        height: Helper.getResponsiveDimension(context, baseDimension: 75),
+        height: UiHelper.getResponsiveDimension(context, baseDimension: 75),
         width: double.infinity,
         margin: EdgeInsets.symmetric(horizontal: 28),
         child: Center(
           child: TextField(
             cursorHeight:
-                Helper.getResponsiveDimension(context, baseDimension: 25),
+                UiHelper.getResponsiveDimension(context, baseDimension: 25),
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(horizontal: 24),
                 hintText: AppStrings.searchLabel,

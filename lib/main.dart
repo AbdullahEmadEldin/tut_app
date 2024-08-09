@@ -1,5 +1,4 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/router/app_router.dart';
 import 'package:tut_app/core/theme/theme_manager.dart';
