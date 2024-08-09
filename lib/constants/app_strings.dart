@@ -74,5 +74,6 @@ class AppStrings {
   static const String author = 'Author: ';
   static const String published = 'Published: ';
   static const String price = 'Price: ';
-  static const String description = 'Description';
+  static const String synopsis = 'Synopsis';
+  static const String notAvailable = 'This book is not available to download';
 }

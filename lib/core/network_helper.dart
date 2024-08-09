@@ -1,9 +1,12 @@
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tut_app/constants/assets_paths.dart';
+import 'package:tut_app/shared/view/widgets/toast_message.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NetworkHelper {
   /// This method convert the selected image to MultipartFile
@@ -23,5 +26,27 @@ class NetworkHelper {
     } else
       return MultipartFile.fromFile(image.path,
           filename: image.path.split('/').last);
+  }
+
+  static Future<void> customLaunchUrl(
+    BuildContext context, {
+    required String url,
+  }) async {
+    Uri uri = Uri.parse(url);
+
+    /// before launching the url, give permission of internet access in Android Manifest file.
+    bool canLaunch = await canLaunchUrl(uri);
+    try {
+      if (canLaunch) {
+        await launchUrl(
+          uri,
+          mode: LaunchMode.externalApplication,
+        );
+      } else {
+        showToast(context, 'Could not launch url', isError: true);
+      }
+    } on Exception catch (e) {
+      showToast(context, e.toString(), isError: true);
+    }
   }
 }

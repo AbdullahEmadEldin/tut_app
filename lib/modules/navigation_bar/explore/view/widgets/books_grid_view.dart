@@ -130,6 +130,7 @@ class _BooksStaggeredGridViewState extends State<BooksStaggeredGridView> {
                         )
                       : BookTile(
                           book: _items[index],
+                          index: index,
                           imageHeight: (index % 5 * 6) +
                               200, // this is to make the image height dynamic
                           inStaggeredView: true,
