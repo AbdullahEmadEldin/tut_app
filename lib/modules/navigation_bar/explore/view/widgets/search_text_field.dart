@@ -4,9 +4,11 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/modules/navigation_bar/explore/view_model/cubit/explore_books_cubit.dart';
 
 class SearchBarDelegate extends SliverPersistentHeaderDelegate {
   @override
@@ -39,6 +41,7 @@ class SearchTextField extends StatefulWidget {
 }
 
 class _SearchTextFieldState extends State<SearchTextField> {
+  TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,6 +52,8 @@ class _SearchTextFieldState extends State<SearchTextField> {
         margin: EdgeInsets.symmetric(horizontal: 28),
         child: Center(
           child: TextField(
+            controller: textEditingController,
+            onSubmitted: (value) => _makeSearchCall(context),
             cursorHeight:
                 UiHelper.getResponsiveDimension(context, baseDimension: 25),
             decoration: InputDecoration(
@@ -58,7 +63,16 @@ class _SearchTextFieldState extends State<SearchTextField> {
                     .textTheme
                     .labelLarge!
                     .copyWith(color: AppColors.grey),
-                suffixIcon: Icon(CupertinoIcons.search, color: AppColors.grey),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    _makeSearchCall(context);
+                  },
+                  icon: Icon(
+                    CupertinoIcons.search_circle_fill,
+                    color: AppColors.spotColor.withOpacity(0.9),
+                    size: 40,
+                  ),
+                ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(32),
@@ -83,5 +97,13 @@ class _SearchTextFieldState extends State<SearchTextField> {
         ),
       ),
     );
+  }
+
+  void _makeSearchCall(BuildContext context) {
+    if (textEditingController.text.isNotEmpty) {
+      BlocProvider.of<ExploreBooksCubit>(context)
+          .searchForBook(searchItem: textEditingController.text, startIndex: 0);
+      BlocProvider.of<ExploreBooksCubit>(context).switchToSearch();
+    }
   }
 }

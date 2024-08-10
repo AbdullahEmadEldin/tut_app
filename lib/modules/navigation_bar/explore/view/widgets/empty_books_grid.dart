@@ -6,7 +6,11 @@ import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 
 class EmptyBooksGrid extends StatelessWidget {
-  const EmptyBooksGrid({super.key});
+  final String? message;
+  const EmptyBooksGrid({
+    super.key,
+    this.message,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class EmptyBooksGrid extends StatelessWidget {
                     baseDimension: 320),
               ),
               Text(
-                AppStrings.pickCategory,
+                message ?? AppStrings.pickCategory,
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium!

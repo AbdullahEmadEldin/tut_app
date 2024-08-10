@@ -12,8 +12,8 @@ import 'package:tut_app/shared/view/widgets/toast_message.dart';
 
 class BookDetailsHeader extends SliverPersistentHeaderDelegate {
   final Book book;
-  final int index;
-  BookDetailsHeader({required this.book, required this.index});
+  final String heroTag;
+  BookDetailsHeader({required this.book, required this.heroTag});
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -35,7 +35,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
                 top: 100,
                 start: 22,
                 child: Hero(
-                  tag: index,
+                  tag: heroTag,
                   child: Material(
                     elevation: 10,
                     color: Colors.black,

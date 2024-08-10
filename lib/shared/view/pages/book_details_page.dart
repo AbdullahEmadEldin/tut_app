@@ -6,8 +6,8 @@ import 'package:tut_app/shared/view/widgets/book_details_header.dart';
 
 class BookDetailsArgs {
   final Book book;
-  final int index;
-  BookDetailsArgs({required this.book, required this.index});
+  final String heroTag;
+  BookDetailsArgs({required this.book, required this.heroTag});
 }
 
 class BookDetailsPage extends StatelessWidget {
@@ -27,7 +27,8 @@ class BookDetailsPage extends StatelessWidget {
         slivers: [
           SliverPersistentHeader(
               pinned: true,
-              delegate: BookDetailsHeader(book: args.book, index: args.index)),
+              delegate:
+                  BookDetailsHeader(book: args.book, heroTag: args.heroTag)),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),

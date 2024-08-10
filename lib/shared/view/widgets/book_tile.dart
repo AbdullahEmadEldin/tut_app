@@ -9,14 +9,14 @@ class BookTile extends StatelessWidget {
   final Book book;
 
   /// passing index to use it with Hero widget because book id is not unique as the books are repeating.
-  final int index;
+  final String heroTag;
   final double? imageHeight;
   final double? imageWidth;
   final bool inStaggeredView;
   const BookTile({
     super.key,
     required this.book,
-    required this.index,
+    required this.heroTag,
     this.imageHeight,
     this.imageWidth,
     this.inStaggeredView = false,
@@ -45,8 +45,8 @@ class BookTile extends StatelessWidget {
             child: InkWell(
               onTap: () => Navigator.pushNamed(
                   context, BookDetailsPage.routeName,
-                  arguments: BookDetailsArgs(book: book, index: index)),
-              child: Hero(tag: index, child: _buildImage(context)),
+                  arguments: BookDetailsArgs(book: book, heroTag: heroTag)),
+              child: Hero(tag: heroTag, child: _buildImage(context)),
             ),
           ),
           SizedBox(

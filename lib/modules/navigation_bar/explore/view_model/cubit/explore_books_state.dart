@@ -18,3 +18,11 @@ final class FetchingBooksFailure extends ExploreBooksState {
 
   FetchingBooksFailure({required this.errorMsg});
 }
+
+final class SwitchToSearchState extends ExploreBooksState {}
+
+final class SearchBooksSuccess extends ExploreBooksState {
+  final List<Book> books;
+
+  SearchBooksSuccess({required this.books});
+}
