@@ -1,80 +1,74 @@
 class AppStrings {
-  static const notApplicable = "N/A";
+  static const notApplicable = "not_applicable";
   //*---------------------------------------------------------- */
   //********************  OnBoarding  ************************//
-//*---------------------------------------------------------- */
-  static const onBoardingTitle1 = "TUT APP";
+  //*---------------------------------------------------------- */
+  static const onBoardingTitle1 = "on_boarding_title_1";
+  static const onBoardingTitle2 = "on_boarding_title_2";
+  static const onBoardingTitle3 = "on_boarding_title_3";
+  static const onBoardingTitle4 = "on_boarding_title_4";
 
-  static const onBoardingTitle2 = "TUT APP";
-  static const onBoardingTitle3 = "TUT APP";
-  static const onBoardingTitle4 = "TUT APP";
-
-  static const onBoardingSubTitle1 =
-      "This a subtitle text longer than others to mock the UI This a subtitle text longer than others to mock the UI";
-  static const onBoardingSubTitle2 =
-      "This a subtitle text longer than others to mock the UI";
-  static const onBoardingSubTitle3 =
-      "This a subtitle text longer than others to mock the UI";
-  static const onBoardingSubTitle4 =
-      "This a subtitle text longer than others to mock the UI";
+  static const onBoardingSubTitle1 = "on_boarding_sub_title_1";
+  static const onBoardingSubTitle2 = "on_boarding_sub_title_2";
+  static const onBoardingSubTitle3 = "on_boarding_sub_title_3";
+  static const onBoardingSubTitle4 = "on_boarding_sub_title_4";
   static const skip = "skip";
 
   //*---------------------------------------------------------- */
   //********************  Authentication  ************************//
   //*---------------------------------------------------------- */
-  static const login = "Login";
-  static const loginSuccessMeg = "Login successfully";
-  static const register = "Register";
-  static const email = "Email";
-  static const emailHint = "Enter a valid email";
-  static const password = "Password";
-  static const passwordHint = "Make sure it's correct password";
-  static const String stayLoggedIn = 'Remember me';
+  static const login = "login";
+  static const loginSuccessMeg = "login_success_msg";
+  static const register = "register";
+  static const email = "email";
+  static const emailHint = "email_hint";
+  static const password = "password";
+  static const passwordHint = "password_hint";
+  static const String stayLoggedIn = 'stay_logged_in';
 
-  static const confirmPassword = "Confirm Password";
-  static const confirmPasswordHint = "Make sure it's the same as the password";
-  static const passwordNotMatch = "Password does't match";
-  static const phoneNumber = "Phone Number";
-  static const phoneNumberHint = "Enter a valid phone number";
-  static const phoneNumberValidation =
-      "Number length must be at least 10 characters long";
+  static const confirmPassword = "confirm_password";
+  static const confirmPasswordHint = "confirm_password_hint";
+  static const passwordNotMatch = "password_not_match";
+  static const phoneNumber = "phone_number";
+  static const phoneNumberHint = "phone_number_hint";
+  static const phoneNumberValidation = "phone_number_validation";
 
-  static const forgotPassword = "Forgot Password?";
-  static const alreadyHaveAnAccount = "Already have an account?";
-  static const dontHaveAnAccount = "Don't have an account?";
-  static const or = "OR";
+  static const forgotPassword = "forgot_password";
+  static const alreadyHaveAnAccount = "already_have_an_account";
+  static const dontHaveAnAccount = "dont_have_an_account";
+  static const or = "or";
 
-  static const loginError = "Login failed. Please try again.";
-  static const noInternet = "No Internet";
-  static const emptyFields = "Please fill required fields";
+  static const loginError = "login_error";
+  static const noInternet = "no_internet";
+  static const emptyFields = "empty_fields";
 
-  static const name = "Name";
-  static const yourNameEx = "Your name ex: Ahmed";
+  static const name = "name";
+  static const yourNameEx = "your_name_ex";
 
   //*---------------------------------------------------------- */
   //********************  Home  ************************//
   //*---------------------------------------------------------- */
 
-  static const String reading = "Reading";
-  static const String explore = "Explore";
-  static const String profile = "Profile";
-  static const String library = "My library";
-  static const String flashSale = 'Flash Sale';
-  static const String newRelease = 'New Books';
+  static const String reading = "reading";
+  static const String explore = "explore";
+  static const String profile = "profile";
+  static const String library = "library";
+  static const String flashSale = 'flash_sale';
+  static const String newRelease = 'new_release';
 
   //*---------------------------------------------------------- */
   //********************  Explore  ************************//
   //*---------------------------------------------------------- */
-  static const String searchLabel = 'Search for a book...';
-  static const String pickCategory = 'Pick a category to explore...';
-  static const String noBooks = 'No books found...';
+  static const String searchLabel = 'search_label';
+  static const String pickCategory = 'pick_category';
+  static const String noBooks = 'no_books';
 
   //*---------------------------------------------------------- */
   //********************  Book Details  ************************//
   //*---------------------------------------------------------- */
-  static const String author = 'Author: ';
-  static const String published = 'Published: ';
-  static const String price = 'Price: ';
-  static const String synopsis = 'Synopsis';
-  static const String notAvailable = 'This book is not available to download';
+  static const String author = 'author';
+  static const String published = 'published';
+  static const String price = 'price';
+  static const String synopsis = 'synopsis';
+  static const String notAvailable = 'not_available';
 }

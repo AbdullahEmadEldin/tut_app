@@ -1,4 +1,5 @@
 class AppAssets {
+  static const String translationsPath = "assets/translations";
   static ImagesPaths images = ImagesPaths();
   static AnimationAssets animations = AnimationAssets();
   static IconPath icons = IconPath();
@@ -36,6 +37,7 @@ class ImagesPaths {
   final String fakeBookCover2 = 'assets/images/fakeCover2.png';
 }
 
+/// I'm using icons for enums outside  AppAssets so it's static as enum don't accept another from.
 class IconPath {
   static const String fiction = 'assets/images/fiction_icon.png';
   static const String health = 'assets/images/health_icon.png';
