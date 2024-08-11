@@ -15,7 +15,9 @@ class FlashSaleText extends StatelessWidget {
       child: Text(
         AppStrings.flashSale.tr(),
         style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-              fontFamily: AppFonts.brittanySignature,
+              fontFamily: context.locale.languageCode == 'ar'
+                  ? AppFonts.notoKufiArabic
+                  : AppFonts.brittanySignature,
               fontWeight: FontWeight.w900,
             ),
       ),

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:tut_app/core/lang_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/core/theme/fonts_manager.dart';
@@ -8,140 +10,141 @@ import 'package:tut_app/core/theme/fonts_manager.dart';
 class AppTextThemes {
   static TextTheme lightTextTheme(BuildContext context) => TextTheme(
         displayLarge: getSemiBoldStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 40),
         ),
         displayMedium: getSemiBoldStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 36),
         ),
         headlineLarge: getSemiBoldStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 32),
         ),
         headlineMedium: getRegularStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 28),
         ),
         titleMedium: getMediumStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 26),
         ),
         titleSmall: getRegularStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 24),
         ),
         bodyLarge: getRegularStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 20),
         ),
         bodyMedium: getRegularStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 18),
         ),
         bodySmall: getRegularStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 16),
         ),
         labelLarge: getBoldStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 14),
         ),
         labelSmall: getBoldStyle(
+          context,
           color: AppColors.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 12),
         ),
       );
 
 //!! Dark theme !!!
-
-  // static TextTheme darkTextTheme = TextTheme(
-  //   displayLarge: getSemiBoldStyle(
-  //     color: AppColors.primaryGrade4,
-  //     fontSize:getDouble(),
-  //   ),
-  //   headlineLarge: getSemiBoldStyle(
-  //     color: AppColors.primaryGrade4,
-  //     fontSize:getDouble(),
-  //   ),
-  //   headlineMedium: getRegularStyle(
-  //     color: AppColors.primaryGrade4,
-  //     fontSize: AppFontSize.s14,
-  //   ),
-  //   titleMedium: getMediumStyle(
-  //     color: AppColors.primary,
-  //     fontSize: AppFontSize.s16,
-  //   ),
-  //   titleSmall: getRegularStyle(
-  //     color: AppColors.white,
-  //     fontSize: AppFontSize.s16,
-  //   ),
-  //   bodyLarge: getRegularStyle(color: AppColors.grey1),
-  //   bodySmall: getRegularStyle(color: AppColors.grey),
-  //   bodyMedium: getRegularStyle(
-  //     color: AppColors.grey2,
-  //     fontSize: AppFontSize.s12,
-  //   ),
-  //   labelSmall: getBoldStyle(
-  //     color: AppColors.primary,
-  //     fontSize: AppFontSize.s12,
-  //   ),
-  // );
 }
 
 /// *******************************************************
 /// This methods to make calling text styles more easier
 /// And determine the needed properties in TextStyle.
 /// *******************************************************
-TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color) {
+TextStyle _getTextStyle(
+    BuildContext context, double fontSize, FontWeight fontWeight, Color color) {
   return TextStyle(
       fontSize: fontSize,
-      fontFamily: AppFonts.montserrat,
+      fontFamily: context.locale.languageCode == LanguageType.arabic.code
+          ? AppFonts.notoKufiArabic
+          : AppFonts.montserrat,
       color: color,
       fontWeight: fontWeight);
 }
 
 // regular style
 
-TextStyle getRegularStyle({
+TextStyle getRegularStyle(
+  BuildContext context, {
   double fontSize = AppFontSize.s12,
   required Color color,
 }) {
-  return _getTextStyle(fontSize, AppFontWeight.regular, color);
+  return _getTextStyle(
+    context,
+    fontSize,
+    AppFontWeight.regular,
+    color,
+  );
 }
 
 // medium style
 
-TextStyle getMediumStyle({
+TextStyle getMediumStyle(
+  BuildContext context, {
   double fontSize = AppFontSize.s12,
   required Color color,
 }) {
-  return _getTextStyle(fontSize, AppFontWeight.medium, color);
+  return _getTextStyle(
+    context,
+    fontSize,
+    AppFontWeight.medium,
+    color,
+  );
 }
 
 // medium style
 
-TextStyle getLightStyle({
+TextStyle getLightStyle(
+  BuildContext context, {
   double fontSize = AppFontSize.s12,
   required Color color,
 }) {
-  return _getTextStyle(fontSize, AppFontWeight.light, color);
+  return _getTextStyle(
+    context,
+    fontSize,
+    AppFontWeight.light,
+    color,
+  );
 }
 
 // bold style
 
-TextStyle getBoldStyle({
+TextStyle getBoldStyle(
+  BuildContext context, {
   double fontSize = AppFontSize.s12,
   required Color color,
 }) {
-  return _getTextStyle(fontSize, AppFontWeight.bold, color);
+  return _getTextStyle(context, fontSize, AppFontWeight.bold, color);
 }
 
 // semibold style
 
-TextStyle getSemiBoldStyle({
+TextStyle getSemiBoldStyle(
+  BuildContext context, {
   double fontSize = AppFontSize.s12,
   required Color color,
 }) {
-  return _getTextStyle(fontSize, AppFontWeight.semiBold, color);
+  return _getTextStyle(context, fontSize, AppFontWeight.semiBold, color);
 }

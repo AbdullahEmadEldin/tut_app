@@ -28,7 +28,7 @@ class AppThemes {
         // elevated button them
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            textStyle: getRegularStyle(
+            textStyle: getRegularStyle(context,
                 color: AppColors.white, fontSize: AppFontSize.s17),
             backgroundColor: AppColors.primary,
             shape: RoundedRectangleBorder(
@@ -42,11 +42,11 @@ class AppThemes {
           // content padding
           contentPadding: const EdgeInsets.all(AppPadding.p12),
           // hint style
-          hintStyle:
-              getRegularStyle(color: AppColors.grey, fontSize: AppFontSize.s14),
-          labelStyle:
-              getMediumStyle(color: AppColors.grey, fontSize: AppFontSize.s14),
-          errorStyle: getRegularStyle(color: AppColors.error),
+          hintStyle: getRegularStyle(context,
+              color: AppColors.grey, fontSize: AppFontSize.s14),
+          labelStyle: getMediumStyle(context,
+              color: AppColors.grey, fontSize: AppFontSize.s14),
+          errorStyle: getRegularStyle(context, color: AppColors.error),
 
           // enabled border style
           enabledBorder: const OutlineInputBorder(

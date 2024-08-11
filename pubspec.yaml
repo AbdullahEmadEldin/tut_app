@@ -57,3 +57,6 @@ flutter:
     - family: BrittanySignature
       fonts:
         - asset: assets/fonts/BrittanySignature.ttf
+    - family: NotoKufiArabic
+      fonts:
+        - asset: assets/fonts/NotoKufiArabic.ttf
