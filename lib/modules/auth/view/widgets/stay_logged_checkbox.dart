@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/constants/constants.dart';
@@ -43,7 +44,7 @@ class _StayLoggedCheckBoxState extends State<StayLoggedCheckBox> {
               setState(() {});
             }),
         Text(
-          AppStrings.stayLoggedIn,
+          AppStrings.stayLoggedIn.tr(),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],

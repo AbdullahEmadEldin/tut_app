@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
@@ -37,7 +38,7 @@ class BookInfoTexts extends StatelessWidget {
                           ),
                     ),
                     Text(
-                      AppStrings.author +
+                      AppStrings.author.tr() +
                           UiHelper.limitStringLength(
                               str: book.bookInfo.authors!.first
                                   .toString()
@@ -48,13 +49,13 @@ class BookInfoTexts extends StatelessWidget {
                           ),
                     ),
                     Text(
-                      AppStrings.published + book.bookInfo.publishedDate!,
+                      AppStrings.published.tr() + book.bookInfo.publishedDate!,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: AppColors.white,
                           ),
                     ),
                     Text(
-                      AppStrings.price +
+                      AppStrings.price.tr() +
                           (book.saleInfo.listPrice!.amount.toString() == '0'
                               ? ''
                               : book.saleInfo.listPrice!.amount.toString()) +

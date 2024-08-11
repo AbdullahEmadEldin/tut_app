@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/network_helper.dart';
@@ -66,7 +67,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppStrings.synopsis,
+                  AppStrings.synopsis.tr(),
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium!
@@ -97,7 +98,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
                               url: book.bookInfo.previewLink!);
                           //
                         } else {
-                          showToast(context, AppStrings.notAvailable,
+                          showToast(context, AppStrings.notAvailable.tr(),
                               isError: true);
                         }
                       },
@@ -143,7 +144,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
               book.accessInfo.pdf!.downloadLink!);
       //
     } else {
-      showToast(context, AppStrings.notAvailable, isError: true);
+      showToast(context, AppStrings.notAvailable.tr(), isError: true);
     }
   }
 

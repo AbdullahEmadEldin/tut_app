@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -136,7 +137,8 @@ class _BooksStaggeredGridViewState extends State<BooksStaggeredGridView> {
       child: _defaultView
           ? SliverToBoxAdapter(
               child: EmptyBooksGrid(
-              message: (_items.isEmpty && _search) ? AppStrings.noBooks : null,
+              message:
+                  (_items.isEmpty && _search) ? AppStrings.noBooks.tr() : null,
             ))
           : SliverMasonryGrid(
               delegate: SliverChildBuilderDelegate(

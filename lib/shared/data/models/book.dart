@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/shared/data/models/book_sub_models.dart';
 
@@ -71,11 +72,11 @@ class BookInfo {
     this.description,
     this.categories,
   });
-//! Any AppStrings.notApplicable ('N/A') is a handling situation for the API. because a lot of books doesn't have the complete data.
+//! Any AppStrings.notApplicable.tr() ('N/A') is a handling situation for the API. because a lot of books doesn't have the complete data.
   BookInfo.fromJson(Map<String, dynamic> json)
       : title = json['title'],
-        authors = json['authors'] ?? [AppStrings.notApplicable],
-        publishedDate = json['publishedDate'] ?? AppStrings.notApplicable,
+        authors = json['authors'] ?? [AppStrings.notApplicable.tr()],
+        publishedDate = json['publishedDate'] ?? AppStrings.notApplicable.tr(),
         allowAnonLogging = json['allowAnonLogging'],
         imageLinks = json['imageLinks'] != null
             ? ImageLinks.fromJson(json['imageLinks'])
@@ -86,7 +87,7 @@ class BookInfo {
         description = json['description'],
         categories = json['categories'] ??
             [
-              AppStrings.notApplicable,
+              AppStrings.notApplicable.tr(),
             ];
 
   Map<String, dynamic> toJson() {

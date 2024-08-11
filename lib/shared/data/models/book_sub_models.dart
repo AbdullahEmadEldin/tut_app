@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:tut_app/constants/app_strings.dart';
 
 class ImageLinks {
@@ -36,7 +37,7 @@ class SaleInfo {
 
     listPrice = json['listPrice'] != null
         ? ListPrice.fromJson(json['listPrice'])
-        : ListPrice(amount: 0, currencyCode: AppStrings.notApplicable);
+        : ListPrice(amount: 0, currencyCode: AppStrings.notApplicable.tr());
   }
 
   Map<String, dynamic> toJson() {
@@ -59,7 +60,7 @@ class ListPrice {
 
   ListPrice.fromJson(Map<String, dynamic> json) {
     amount = json['amount'];
-    currencyCode = json['currencyCode'] ?? AppStrings.notApplicable;
+    currencyCode = json['currencyCode'] ?? AppStrings.notApplicable.tr();
   }
 
   Map<String, dynamic> toJson() {

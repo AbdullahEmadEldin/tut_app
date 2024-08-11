@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
@@ -33,7 +34,7 @@ class BookDetailsPage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                args.book.bookInfo.description ?? AppStrings.notApplicable,
+                args.book.bookInfo.description ?? AppStrings.notApplicable.tr(),
               ),
             ),
           )

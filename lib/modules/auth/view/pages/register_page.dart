@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/modules/auth/view/pages/login_page.dart';
@@ -58,7 +59,7 @@ class RegisterPage extends StatelessWidget {
                       height: AppSize.s30,
                     ),
                     //! title
-                    const AuthTitle(title: AppStrings.register),
+                    AuthTitle(title: AppStrings.register.tr()),
                     const SizedBox(
                       height: AppSize.s4,
                     ),
@@ -67,66 +68,67 @@ class RegisterPage extends StatelessWidget {
                     const SizedBox(height: AppSize.s12),
                     //! name
                     InputFieldWidget(
-                      labelText: AppStrings.name,
-                      hintText: AppStrings.yourNameEx,
+                      labelText: AppStrings.name.tr(),
+                      hintText: AppStrings.yourNameEx.tr(),
                       controller: registerCubit.nameController,
                       validator: _handleValidation,
                     ),
                     const SizedBox(height: AppSize.s18),
                     //! email
                     InputFieldWidget(
-                      labelText: AppStrings.email,
-                      hintText: AppStrings.emailHint,
+                      labelText: AppStrings.email.tr(),
+                      hintText: AppStrings.emailHint.tr(),
                       controller: registerCubit.emailController,
                       validator: _handleValidation,
                     ),
                     const SizedBox(height: AppSize.s18),
                     //! phone
                     InputFieldWidget(
-                      labelText: AppStrings.phoneNumber,
-                      hintText: AppStrings.phoneNumberHint,
+                      labelText: AppStrings.phoneNumber.tr(),
+                      hintText: AppStrings.phoneNumberHint.tr(),
                       controller: registerCubit.phoneController,
                       keyboardType: TextInputType.number,
                       validator: (value) {
                         _handleValidation(value);
                         if (value!.length < 10)
-                          return AppStrings.phoneNumberValidation;
+                          return AppStrings.phoneNumberValidation.tr();
                         return null;
                       },
                     ),
                     const SizedBox(height: AppSize.s18),
                     //! password
                     InputFieldWidget(
-                      labelText: AppStrings.password,
-                      hintText: AppStrings.passwordHint,
+                      labelText: AppStrings.password.tr(),
+                      hintText: AppStrings.passwordHint.tr(),
                       controller: registerCubit.passwordController,
                       passwordInput: true,
                       validator: (value) {
                         if (value == null || value.isEmpty)
-                          return AppStrings.emptyFields;
-                        if (value.length < 8) return AppStrings.passwordHint;
+                          return AppStrings.emptyFields.tr();
+                        if (value.length < 8)
+                          return AppStrings.passwordHint.tr();
                         return null;
                       },
                     ),
                     const SizedBox(height: AppSize.s18),
                     //! confirm password
                     InputFieldWidget(
-                      labelText: AppStrings.confirmPassword,
-                      hintText: AppStrings.confirmPasswordHint,
+                      labelText: AppStrings.confirmPassword.tr(),
+                      hintText: AppStrings.confirmPasswordHint.tr(),
                       controller: registerCubit.confirmPasswordController,
                       passwordInput: true,
                       validator: (p0) {
                         if (p0 == null || p0.isEmpty)
-                          return AppStrings.emptyFields;
+                          return AppStrings.emptyFields.tr();
                         if (p0 != registerCubit.passwordController.text)
-                          return AppStrings.passwordNotMatch;
+                          return AppStrings.passwordNotMatch.tr();
                         return null;
                       },
                     ),
                     const SizedBox(height: AppSize.s18),
                     //! register button
                     RegisterButton(
-                        text: AppStrings.register,
+                        text: AppStrings.register.tr(),
                         loading: isLoading,
                         onTap: () {
                           registerCubit.validateRegisterDataAndSignUp();
@@ -140,7 +142,7 @@ class RegisterPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             child: Text(
-                              AppStrings.alreadyHaveAnAccount,
+                              AppStrings.alreadyHaveAnAccount.tr(),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall!
@@ -162,7 +164,7 @@ class RegisterPage extends StatelessWidget {
 
   String? _handleValidation(String? value) {
     if (value == null || value.isEmpty) {
-      return AppStrings.emptyFields;
+      return AppStrings.emptyFields.tr();
     }
     return null;
   }

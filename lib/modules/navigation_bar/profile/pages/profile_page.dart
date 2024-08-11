@@ -1,12 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:tut_app/constants/assets_paths.dart';
-import 'package:tut_app/core/ui_helpers.dart';
-import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
+import 'package:tut_app/constants/app_strings.dart';
+import 'package:tut_app/core/lang_manager.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/data/models/book_sub_models.dart';
 
@@ -17,27 +14,32 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-            child: Column(
-      children: [
-        Text('Hello'),
-        SizedBox(
-          height: 700,
-          child: GridView.builder(
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Container(
-                height: index == 3 ? 300 : 200,
-                color: Colors.red,
-              ),
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              LanguageManager.changeAppLang(context,
+                  lang: LanguageType.english);
+            },
+            child: Text(
+              AppStrings.price.tr().tr(),
+              style: TextStyle(color: Colors.white),
             ),
-            itemCount: 10,
           ),
-        ),
-      ],
-    )));
+          ElevatedButton(
+            onPressed: () {
+              LanguageManager.changeAppLang(context, lang: LanguageType.arabic);
+            },
+            child: Text(
+              AppStrings.price.tr().tr(),
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 
   List<Book> _getBooks() => [

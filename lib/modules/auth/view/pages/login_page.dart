@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
             } else if (state is LoginSuccess) {
               loginCubit.addActiveController(loginCubit.loadingEndController);
               buttonLoading = false;
-              showToast(context, AppStrings.loginSuccessMeg);
+              showToast(context, AppStrings.loginSuccessMeg.tr());
               Navigator.of(context).pushNamedAndRemoveUntil(
                   AnimatedBottomBar.routeName, (route) => false);
               //
@@ -96,15 +97,15 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const AuthTitle(
-                          title: AppStrings.login,
+                        AuthTitle(
+                          title: AppStrings.login.tr(),
                         ),
                         InputFieldWidget(
                           controller: loginCubit.emailController,
-                          labelText: AppStrings.email,
-                          hintText: AppStrings.emailHint,
+                          labelText: AppStrings.email.tr(),
+                          hintText: AppStrings.emailHint.tr(),
                           validator: (value) {
-                            if (value!.isEmpty) AppStrings.emptyFields;
+                            if (value!.isEmpty) AppStrings.emptyFields.tr();
                             return null;
                           },
                           onTextChange: (value) {
@@ -119,8 +120,8 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(height: AppSize.s20),
                         InputFieldWidget(
                           controller: loginCubit.passwordController,
-                          labelText: AppStrings.password,
-                          hintText: AppStrings.passwordHint,
+                          labelText: AppStrings.password.tr(),
+                          hintText: AppStrings.passwordHint.tr(),
                           focusNode: loginCubit.passwordFocusNode,
                           passwordInput: true,
                           onTextChange: (value) {
@@ -131,7 +132,8 @@ class _LoginPageState extends State<LoginPage> {
                             }
                           },
                           validator: (value) {
-                            if (value!.isEmpty) return AppStrings.emptyFields;
+                            if (value!.isEmpty)
+                              return AppStrings.emptyFields.tr();
                             return null;
                           },
                         ),
@@ -139,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
 
                         //! login button
                         RegisterButton(
-                          text: AppStrings.login,
+                          text: AppStrings.login.tr(),
                           onTap: () {
                             loginCubit.passwordFocusNode.unfocus();
                             loginCubit.validateEmailAndPassword();

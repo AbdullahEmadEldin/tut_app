@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      AppStrings.newRelease,
+                      AppStrings.newRelease.tr(),
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     BlocBuilder<GetNewBooksCubit, GetNewBooksState>(

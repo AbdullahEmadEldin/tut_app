@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:tut_app/modules/onBoarding/model/on_boarding_model.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/constants/assets_paths.dart';
@@ -8,22 +9,22 @@ class OnBoardingViewModel {
 
   List<OnBoardingObject> getOnBoardingObjects() => [
         OnBoardingObject(
-            title: AppStrings.onBoardingTitle1,
-            body: AppStrings.onBoardingSubTitle1,
+            title: AppStrings.onBoardingTitle1.tr(),
+            body: AppStrings.onBoardingSubTitle1.tr(),
             image: AppAssets.images.onboardingLogo1),
         OnBoardingObject(
-          title: AppStrings.onBoardingTitle2,
-          body: AppStrings.onBoardingSubTitle2,
+          title: AppStrings.onBoardingTitle2.tr(),
+          body: AppStrings.onBoardingSubTitle2.tr(),
           image: AppAssets.images.onboardingLogo2,
         ),
         OnBoardingObject(
-          title: AppStrings.onBoardingTitle3,
-          body: AppStrings.onBoardingSubTitle3,
+          title: AppStrings.onBoardingTitle3.tr(),
+          body: AppStrings.onBoardingSubTitle3.tr(),
           image: AppAssets.images.onboardingLogo3,
         ),
         OnBoardingObject(
-          title: AppStrings.onBoardingTitle4,
-          body: AppStrings.onBoardingSubTitle4,
+          title: AppStrings.onBoardingTitle4.tr(),
+          body: AppStrings.onBoardingSubTitle4.tr(),
           image: AppAssets.images.onboardingLogo4,
         ),
       ];
