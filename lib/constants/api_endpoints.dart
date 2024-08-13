@@ -19,11 +19,12 @@ class ApiEndpoints {
   /// delete user FormData
   static String deleteUser = authBaseUrl + "/delete?id=";
 
-  /// get user passing Id as part of endPoint not as a query parameter.
-  static String getUserData = authBaseUrl + "/get-user/";
-
   /// logOut
   static String logOut = authBaseUrl + "/logout";
+
+  /// get user passing Id as part of endPoint not as a query parameter. //? WHY?
+  /// as the backend doesn't id accept query parameters and passing it in the header.
+  static String getUserDataById(String id) => authBaseUrl + "/get-user/$id";
 
   //*===========================================================*/
   //**=============== GOOGLE Books Api-EndPoints=============== */
@@ -59,19 +60,5 @@ class ApiKeys {
 
   static String userAddress = "userAddress";
   static String userImage = "userImage";
-  static String userRole = "userRole";
-  static String userCart = "userCart";
-  static String userOrders = "userOrders";
-  static String userFavorites = "userFavorites";
-  static String userNotifications = "userNotifications";
   static String userAddresses = "userAddresses";
-  static String userAddressId = "userAddressId";
-  static String userAddressTitle = "userAddressTitle";
-  static String userAddressDescription = "userAddressDescription";
-  static String userAddressLatitude = "userAddressLatitude";
-  static String userAddressLongitude = "userAddressLongitude";
-  static String userAddressCity = "userAddressCity";
-  static String userAddressState = "userAddressState";
-  static String userAddressCountry = "userAddressCountry";
-  static String userAddressZip = "userAddressZip";
 }

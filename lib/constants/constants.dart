@@ -10,4 +10,6 @@ class SharedPrefKeys {
   String lang = 'lang';
   String firstLaunch = 'firstLaunch';
   String stayLoggedIn = 'stayLoggedIn';
+  String token = 'token';
+  String userId = 'id';
 }

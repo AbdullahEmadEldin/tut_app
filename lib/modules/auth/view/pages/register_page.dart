@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures
 
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/modules/auth/view/pages/login_page.dart';
 import 'package:tut_app/modules/auth/view/widgets/auth_title.dart';
 import 'package:tut_app/modules/auth/view/widgets/input_field.dart';
@@ -64,7 +68,25 @@ class RegisterPage extends StatelessWidget {
                       height: AppSize.s4,
                     ),
                     //! profile pic
-                    Center(child: ProfilePicAvatar()),
+                    Center(
+                      child: ProfilePicAvatar(
+                        profileAvatar: registerCubit.profilePic == null
+                            ? AssetImage(AppAssets.images.avatar)
+                            : FileImage(
+                                File(registerCubit.profilePic!.path),
+                              ),
+                        onPressed: () async {
+                          final pic = await ImagePicker()
+                              .pickImage(source: ImageSource.gallery);
+                          // this condition to avoid error if user didn't pick an image after opening the gallery.
+                          if (pic == null) return;
+                          // set the image to the cubit
+                          // if user didn't pick an image we will use the default avatar
+                          // it's handled in the converting method to MultipartFile method.
+                          registerCubit.uploadImage(image: pic);
+                        },
+                      ),
+                    ),
                     const SizedBox(height: AppSize.s12),
                     //! name
                     InputFieldWidget(
