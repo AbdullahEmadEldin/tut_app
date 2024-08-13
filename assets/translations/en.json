@@ -45,5 +45,13 @@
     "published": "Published: ",
     "price": "Price: ",
     "synopsis": "Synopsis",
-    "not_available": "This book is not available to download"
+    "not_available": "This book is not available to download",
+    "english" : "English",
+    "arabic" :"Arabic",
+    "theme":"Theme",
+    "lang":"Language",
+    "logout":"Logout",
+    "about_us":"About us",
+    "error_in_logout":"Logout failed. Please try again.",
+    "copied":"Copied to clipboard"
 }  

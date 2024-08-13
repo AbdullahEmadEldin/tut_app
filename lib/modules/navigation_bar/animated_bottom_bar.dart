@@ -9,12 +9,16 @@ import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/services/networking/dio_comsumer.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/modules/auth/data/repository/auth_repository.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view/page/explore_page.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view_model/cubit/explore_books_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/modules/navigation_bar/home/view_model/get_new_books_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/library/pages/library_page.dart';
-import 'package:tut_app/modules/navigation_bar/profile/pages/profile_page.dart';
+import 'package:tut_app/modules/navigation_bar/profile/data/repository/profile_repository.dart';
+import 'package:tut_app/modules/navigation_bar/profile/view/pages/profile_page.dart';
+import 'package:tut_app/modules/navigation_bar/profile/view_model/logout/logout_cubit.dart';
+import 'package:tut_app/modules/navigation_bar/profile/view_model/user_data_cubit/get_user_data_cubit.dart';
 import 'package:tut_app/shared/data/repos/books_repository.dart';
 
 class AnimatedBottomBar extends StatefulWidget {
@@ -55,7 +59,23 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
       ),
       child: const ExplorePage(),
     ),
-    ProfilePage(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetUserDataCubit(
+            profileRepository: ProfileRepository(
+              api: DioConsumer(
+                dio: Dio(),
+              ),
+            ),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => LogoutCubit(auth: AuthService()),
+        ),
+      ],
+      child: const ProfilePage(),
+    ),
   ];
   @override
   Widget build(BuildContext context) {

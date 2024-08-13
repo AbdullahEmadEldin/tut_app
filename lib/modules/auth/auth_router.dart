@@ -7,7 +7,6 @@ import 'package:tut_app/modules/auth/view/pages/register_page.dart';
 import 'package:tut_app/modules/auth/view_model/login_cubit/login_cubit.dart';
 import 'package:tut_app/modules/auth/view_model/register/register_cubit.dart';
 import 'package:tut_app/constants/constants.dart';
-import 'package:tut_app/core/services/networking/dio_comsumer.dart';
 
 class AuthRouter {
   static Route? onGenerate(RouteSettings settings) {
@@ -19,11 +18,7 @@ class AuthRouter {
           transitionsBuilder: _authPagesAnimationBuilder,
           pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
             create: (context) => LoginCubit(
-              authService: AuthService(
-                api: DioConsumer(
-                  dio: dio,
-                ),
-              ),
+              authService: AuthService(),
             ),
             child: const LoginPage(),
           ),
@@ -35,9 +30,7 @@ class AuthRouter {
             pageBuilder: (context, animation, secondaryAnimation) =>
                 BlocProvider(
                   create: (context) => RegisterCubit(
-                    authService: AuthService(
-                      api: DioConsumer(dio: dio),
-                    ),
+                    authService: AuthService(),
                   ),
                   child: const RegisterPage(),
                 ));

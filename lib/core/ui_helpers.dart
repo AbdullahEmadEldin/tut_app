@@ -60,4 +60,13 @@ class UiHelper {
 
     return double.parse(scaleFactor.toStringAsFixed(1));
   }
+
+  static LinearGradient gradientContainerColors() {
+    return const LinearGradient(
+      colors: [
+        Color.fromARGB(177, 234, 236, 198),
+        Color.fromARGB(186, 191, 233, 255),
+      ],
+    );
+  }
 }

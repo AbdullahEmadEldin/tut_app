@@ -64,9 +64,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
-    final height = MediaQuery.sizeOf(context).height;
-    print('width::: $width and height::: $height');
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: RotationTransition(

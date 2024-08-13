@@ -32,6 +32,9 @@ class ImagesPaths {
   final String mockBanner3 = 'assets/images/mock_banner3.png';
   final String mockBanner4 = 'assets/images/mock_banner4.png';
 
+  final String nightMode = 'assets/images/dark_theme_moon.png';
+  final String lightMode = 'assets/images/light_mode_sun.png';
+
   final String fakeBookCover = 'assets/images/fake_book_cover.png';
 
   final String fakeBookCover2 = 'assets/images/fakeCover2.png';

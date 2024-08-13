@@ -1,32 +1,28 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:tut_app/modules/auth/view_model/register/register_cubit.dart';
-import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/theme/colors_manager.dart';
 import 'package:tut_app/constants/values_manager.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 
 class ProfilePicAvatar extends StatelessWidget {
+  final ImageProvider<Object>? profileAvatar;
+  final Function()? onPressed;
   const ProfilePicAvatar({
     super.key,
+    required this.profileAvatar,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     // Using Stack to put the camera picker button on top-side of the avatar
-    final registerCubit = context.read<RegisterCubit>();
     return Stack(
       children: [
         SizedBox(
-          height: AppSize.s130,
-          width: AppSize.s160,
+          height: UiHelper.getResponsiveDimension(context, baseDimension: 130),
+          width: UiHelper.getResponsiveDimension(context, baseDimension: 160),
           child: CircleAvatar(
             backgroundColor: AppColors.primary,
-            backgroundImage: registerCubit.profilePic == null
-                ? AssetImage(AppAssets.images.avatar)
-                : FileImage(File(registerCubit.profilePic!.path)),
+            backgroundImage: profileAvatar,
           ),
         ),
         Positioned(
@@ -40,14 +36,7 @@ class ProfilePicAvatar extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: 2)),
             child: IconButton(
-                onPressed: () async {
-                  final pic = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery);
-                  // this condition to avoid error if user didn't pick an image after opening the gallery.
-                  if (pic == null) return;
-                  // set the image to the cubit
-                  registerCubit.uploadImage(image: pic);
-                },
+                onPressed: onPressed,
                 icon: const Icon(
                   Icons.camera_alt_rounded,
                   color: Colors.white,

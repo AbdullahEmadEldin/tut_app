@@ -71,4 +71,17 @@ class AppStrings {
   static const String price = 'price';
   static const String synopsis = 'synopsis';
   static const String notAvailable = 'not_available';
+
+  //*---------------------------------------------------------- */
+  //***********************  Profile  *************************//
+  //*---------------------------------------------------------- */
+
+  static const String english = 'english';
+  static const String arabic = 'arabic';
+  static const String theme = 'theme';
+  static const String language = 'lang';
+  static const String logout = 'logout';
+  static const String aboutUs = 'about_us';
+  static const String errorLogout = 'error_in_logout';
+  static const String copiedSuccess = 'copied';
 }
