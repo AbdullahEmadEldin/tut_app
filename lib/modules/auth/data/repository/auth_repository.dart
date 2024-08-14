@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tut_app/constants/constants.dart';
 import 'package:tut_app/core/network_helper.dart';
@@ -15,7 +14,7 @@ class AuthService {
     required this.api,
   });
 
-  factory AuthService() => AuthService._(api: DioConsumer(dio: Dio()));
+  factory AuthService() => AuthService._(api: DioConsumer());
 
   Future<LoginModel> login(String email, String password) async {
     final response = await api.post(

@@ -17,6 +17,7 @@ import 'package:tut_app/modules/navigation_bar/home/view_model/get_new_books_cub
 import 'package:tut_app/modules/navigation_bar/library/pages/library_page.dart';
 import 'package:tut_app/modules/navigation_bar/profile/data/repository/profile_repository.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view/pages/profile_page.dart';
+import 'package:tut_app/modules/navigation_bar/profile/view_model/cubit/edit_user_data_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view_model/logout/logout_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view_model/user_data_cubit/get_user_data_cubit.dart';
 import 'package:tut_app/shared/data/repos/books_repository.dart';
@@ -40,10 +41,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
     BlocProvider(
       create: (context) => GetNewBooksCubit(
         repo: BooksRepository(
-          api: DioConsumer(
-            //todo: define one Dio instance for all pages
-            dio: Dio(),
-          ),
+          api: DioConsumer(),
         ),
       ),
       child: const HomePage(),
@@ -52,9 +50,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
     BlocProvider(
       create: (context) => ExploreBooksCubit(
         BooksRepository(
-          api: DioConsumer(
-            dio: Dio(),
-          ),
+          api: DioConsumer(),
         ),
       ),
       child: const ExplorePage(),
@@ -63,15 +59,16 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
       providers: [
         BlocProvider(
           create: (context) => GetUserDataCubit(
-            profileRepository: ProfileRepository(
-              api: DioConsumer(
-                dio: Dio(),
-              ),
-            ),
+            profileRepository: ProfileRepository(),
           ),
         ),
         BlocProvider(
           create: (context) => LogoutCubit(auth: AuthService()),
+        ),
+        BlocProvider(
+          create: (context) => EditUserDataCubit(
+            profileRepository: ProfileRepository(),
+          ),
         ),
       ],
       child: const ProfilePage(),

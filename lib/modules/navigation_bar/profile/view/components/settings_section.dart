@@ -50,10 +50,10 @@ class SettingsSection extends StatelessWidget {
           ),
           const CustomHorizontalDivider(),
           SettingsItem(
-            title: AppStrings.logout.tr(),
-            suffixIconData: Icons.logout_rounded,
+            title: AppStrings.aboutUs.tr(),
+            suffixIconData: Icons.error_outline,
             actionIcon: IconButton(
-              onPressed: () => BlocProvider.of<LogoutCubit>(context).logout(),
+              onPressed: () {},
               icon: const Icon(
                 Icons.arrow_forward_ios,
                 color: AppColors.grey,
@@ -63,10 +63,10 @@ class SettingsSection extends StatelessWidget {
           ),
           const CustomHorizontalDivider(),
           SettingsItem(
-            title: AppStrings.aboutUs.tr(),
-            suffixIconData: Icons.error_outline,
+            title: AppStrings.logout.tr(),
+            suffixIconData: Icons.logout_rounded,
             actionIcon: IconButton(
-              onPressed: () {},
+              onPressed: () => BlocProvider.of<LogoutCubit>(context).logout(),
               icon: const Icon(
                 Icons.arrow_forward_ios,
                 color: AppColors.grey,

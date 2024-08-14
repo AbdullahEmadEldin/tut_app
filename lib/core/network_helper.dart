@@ -24,8 +24,10 @@ class NetworkHelper {
       );
       return multipartFile;
     } else
-      return MultipartFile.fromFile(image.path,
-          filename: image.path.split('/').last);
+      return MultipartFile.fromFile(
+        image.path,
+        filename: image.path.split('/').last,
+      );
   }
 
   static Future<void> customLaunchUrl(

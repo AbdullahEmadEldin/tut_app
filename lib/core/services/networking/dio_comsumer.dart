@@ -7,7 +7,7 @@ import 'package:tut_app/core/services/networking/api_interceptor.dart';
 class DioConsumer extends ApiConsumer {
   final Dio dio;
 
-  DioConsumer({
+  DioConsumer._({
     required this.dio,
   }) {
     /// add interceptors
@@ -28,6 +28,9 @@ class DioConsumer extends ApiConsumer {
     }
   }
 
+  /// wwe use singleton design pattern to ensure only one instance is used
+  /// and ease dependency injection.
+  factory DioConsumer() => DioConsumer._(dio: Dio());
   @override
   Future post({
     required String path,

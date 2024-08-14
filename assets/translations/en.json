@@ -53,5 +53,11 @@
     "logout":"Logout",
     "about_us":"About us",
     "error_in_logout":"Logout failed. Please try again.",
-    "copied":"Copied to clipboard"
+    "copied":"Copied to clipboard",
+    "error_msg": "Something went wrong. Please try again",
+    "update_phone" : "Update Phone successfully",
+    "update_name" : "Update Name successfully",
+    "update_pic" : "Update Picture successfully",
+    "user_info": "User Info",
+    "settings": "Settings"
 }  

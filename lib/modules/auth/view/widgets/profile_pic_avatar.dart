@@ -6,10 +6,14 @@ import 'package:tut_app/core/ui_helpers.dart';
 class ProfilePicAvatar extends StatelessWidget {
   final ImageProvider<Object>? profileAvatar;
   final Function()? onPressed;
+  final bool checkIcon;
+  final bool isLoading;
   const ProfilePicAvatar({
     super.key,
     required this.profileAvatar,
     required this.onPressed,
+    this.checkIcon = false,
+    this.isLoading = false,
   });
 
   @override
@@ -20,10 +24,12 @@ class ProfilePicAvatar extends StatelessWidget {
         SizedBox(
           height: UiHelper.getResponsiveDimension(context, baseDimension: 130),
           width: UiHelper.getResponsiveDimension(context, baseDimension: 160),
-          child: CircleAvatar(
-            backgroundColor: AppColors.primary,
-            backgroundImage: profileAvatar,
-          ),
+          child: isLoading
+              ? const Center(child: CircularProgressIndicator.adaptive())
+              : CircleAvatar(
+                  backgroundColor: AppColors.primary,
+                  backgroundImage: profileAvatar,
+                ),
         ),
         Positioned(
           bottom: 10,
@@ -37,8 +43,8 @@ class ProfilePicAvatar extends StatelessWidget {
                 border: Border.all(color: Colors.white, width: 2)),
             child: IconButton(
                 onPressed: onPressed,
-                icon: const Icon(
-                  Icons.camera_alt_rounded,
+                icon: Icon(
+                  checkIcon ? Icons.check : Icons.camera_alt_rounded,
                   color: Colors.white,
                 )),
           ),

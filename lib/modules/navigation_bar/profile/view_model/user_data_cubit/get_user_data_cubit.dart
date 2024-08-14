@@ -20,4 +20,9 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
       emit(GetUserDataFailure(errorMessage: e.error.errorMessage));
     }
   }
+
+  Future<void> updateUser({required UserModel updatedUser}) async {
+    print('====>> This is test in GetUserData Cubit');
+    emit(GetUserDataSuccess(userData: updatedUser));
+  }
 }

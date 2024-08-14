@@ -84,4 +84,11 @@ class AppStrings {
   static const String aboutUs = 'about_us';
   static const String errorLogout = 'error_in_logout';
   static const String copiedSuccess = 'copied';
+  static const String updatedPhone = 'update_phone';
+  static const String updatedName = 'update_name';
+  static const String updatedPic = 'update_pic';
+  static const String errorMsg = 'error_msg';
+
+  static const String userInfo = 'user_info';
+  static const String settings = 'settings';
 }
