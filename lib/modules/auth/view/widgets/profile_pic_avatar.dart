@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/constants/values_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 
@@ -27,7 +27,7 @@ class ProfilePicAvatar extends StatelessWidget {
           child: isLoading
               ? const Center(child: CircularProgressIndicator.adaptive())
               : CircleAvatar(
-                  backgroundColor: AppColors.primary,
+                  backgroundColor: AppColors().colorScheme.primary,
                   backgroundImage: profileAvatar,
                 ),
         ),
@@ -38,7 +38,7 @@ class ProfilePicAvatar extends StatelessWidget {
             width: AppSize.s50,
             height: AppSize.s50,
             decoration: BoxDecoration(
-                color: AppColors.primary,
+                color: AppColors().colorScheme.primary,
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: 2)),
             child: IconButton(

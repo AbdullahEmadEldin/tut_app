@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/constants/values_manager.dart';
 
 class RegisterButton extends StatelessWidget {
@@ -26,7 +26,7 @@ class RegisterButton extends StatelessWidget {
         height: height ?? AppSize.s50,
         width: width ?? double.infinity,
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           borderRadius: BorderRadius.circular(AppMargin.m8),
         ),
         child: Center(

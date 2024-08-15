@@ -48,15 +48,22 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: DevicePreview.appBuilder,
-      locale: context.locale,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: AppRouter.onGenerate,
-      initialRoute: SplashScreen.routeName,
-      theme: AppThemes.lightAppTheme(context),
-    );
+    print('5555555555===>>> ${AppThemes.instance.themeNotifier}');
+    return ValueListenableBuilder<ThemeMode?>(
+        valueListenable: AppThemes.instance.themeNotifier,
+        builder: (context, themeMode, child) {
+          return MaterialApp(
+            builder: DevicePreview.appBuilder,
+            locale: context.locale,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: AppRouter.onGenerate,
+            initialRoute: SplashScreen.routeName,
+            themeMode: themeMode,
+            theme: AppThemes.instance.lightAppTheme(context),
+            darkTheme: AppThemes.instance.darkAppTheme(context),
+          );
+        });
   }
 }

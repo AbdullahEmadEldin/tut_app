@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/ui_helpers.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/view/pages/book_details_page.dart';
 
@@ -37,7 +37,7 @@ class BookTile extends StatelessWidget {
         children: [
           Material(
             elevation: 6,
-            shadowColor: AppColors.primary,
+            shadowColor: AppColors().colorScheme.primary,
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
@@ -57,7 +57,7 @@ class BookTile extends StatelessWidget {
               bookTitle,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    color: AppColors.darkGrey,
+                    color: AppColors().colorScheme.darkGrey,
                   ),
             )
         ],

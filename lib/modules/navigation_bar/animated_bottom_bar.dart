@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/services/networking/dio_comsumer.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/modules/auth/data/repository/auth_repository.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view/page/explore_page.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view_model/cubit/explore_books_cubit.dart';
@@ -87,8 +86,8 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
         children: _pages,
       ),
       bottomNavigationBar: SalomonBottomBar(
-        backgroundColor: AppColors.secondaryLight,
-        unselectedItemColor: AppColors.darkGrey,
+        backgroundColor: AppColors().colorScheme.secondaryLight,
+        unselectedItemColor: AppColors().colorScheme.darkGrey,
         currentIndex: _currentIndex,
         onTap: (i) {
           setState(() => _currentIndex = i);
@@ -104,7 +103,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
               AppStrings.reading.tr(),
               style: _barItemTextStyle(),
             ),
-            selectedColor: AppColors.spotColor,
+            selectedColor: AppColors().colorScheme.spotColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(
@@ -115,7 +114,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
               AppStrings.library.tr(),
               style: _barItemTextStyle(),
             ),
-            selectedColor: AppColors.spotColor,
+            selectedColor: AppColors().colorScheme.spotColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(
@@ -126,7 +125,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
               AppStrings.explore.tr(),
               style: _barItemTextStyle(),
             ),
-            selectedColor: AppColors.spotColor,
+            selectedColor: AppColors().colorScheme.spotColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(
@@ -137,7 +136,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
               AppStrings.profile.tr(),
               style: _barItemTextStyle(),
             ),
-            selectedColor: AppColors.spotColor,
+            selectedColor: AppColors().colorScheme.spotColor,
           ),
         ],
       ),

@@ -1,36 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/constants/constants.dart';
+import 'package:tut_app/core/services/cache/cache_helper.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/core/theme/fonts_manager.dart';
 import 'package:tut_app/core/theme/text_styles_manager.dart';
 import 'package:tut_app/constants/values_manager.dart';
 
 class AppThemes {
-  static ThemeData lightAppTheme(BuildContext context) => ThemeData(
+  /// define a singleton instance
+  ///
+  AppThemes._internal();
+  static final instance = AppThemes._internal();
+
+  static ThemeMode? _value;
+  ThemeMode? get themeMode => _value;
+
+  updateThemeValue(bool isDark) {
+    if (CacheHelper.getData(key: AppConstants.sharedPrefKeys.isDark) != null) {
+      _value = CacheHelper.getData(key: AppConstants.sharedPrefKeys.isDark)
+          ? ThemeMode.dark
+          : ThemeMode.light;
+    }
+    _value = isDark ? ThemeMode.dark : ThemeMode.light;
+    themeNotifier.value = _value;
+  }
+
+  final ValueNotifier<ThemeMode?> themeNotifier = ValueNotifier(
+      CacheHelper.getData(key: AppConstants.sharedPrefKeys.isDark)
+          ? ThemeMode.dark
+          : _value);
+
+  ThemeData lightAppTheme(BuildContext context) => ThemeData(
         // main colors
-        primaryColor: AppColors.primary,
-        primaryColorLight: AppColors.lightPrimary,
-        primaryColorDark: AppColors.darkPrimary,
-        disabledColor: AppColors.darkGrey,
-        splashColor: AppColors.lightPrimary,
-        scaffoldBackgroundColor: AppColors.background, // ripple effect color
+        primaryColor: AppColors().colorScheme.primary,
+        primaryColorLight: AppColors().colorScheme.lightPrimary,
+        primaryColorDark: AppColors().colorScheme.darkPrimary,
+        disabledColor: AppColors().colorScheme.darkGrey,
+        splashColor: AppColors().colorScheme.lightPrimary,
+        scaffoldBackgroundColor:
+            AppColors().colorScheme.background, // ripple effect color
         // cardview theme
         cardTheme: CardTheme(
-          color: AppColors.white,
-          shadowColor: AppColors.grey,
+          color: AppColors().colorScheme.white,
+          shadowColor: AppColors().colorScheme.grey,
           elevation: AppSize.s4,
         ),
         appBarTheme: AppBarTheme(
           centerTitle: true,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           elevation: AppSize.s4,
-          shadowColor: AppColors.lightPrimary,
+          shadowColor: AppColors().colorScheme.lightPrimary,
         ),
         // elevated button them
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             textStyle: getRegularStyle(context,
-                color: AppColors.white, fontSize: AppFontSize.s17),
-            backgroundColor: AppColors.primary,
+                color: AppColors().colorScheme.white,
+                fontSize: AppFontSize.s17),
+            backgroundColor: AppColors().colorScheme.primary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppSize.s12),
             ),
@@ -43,14 +70,16 @@ class AppThemes {
           contentPadding: const EdgeInsets.all(AppPadding.p12),
           // hint style
           hintStyle: getRegularStyle(context,
-              color: AppColors.grey, fontSize: AppFontSize.s14),
+              color: AppColors().colorScheme.grey, fontSize: AppFontSize.s14),
           labelStyle: getMediumStyle(context,
-              color: AppColors.grey, fontSize: AppFontSize.s14),
-          errorStyle: getRegularStyle(context, color: AppColors.error),
+              color: AppColors().colorScheme.grey, fontSize: AppFontSize.s14),
+          errorStyle:
+              getRegularStyle(context, color: AppColors().colorScheme.error),
 
           // enabled border style
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.grey, width: AppSize.s0_5),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: AppColors().colorScheme.grey, width: AppSize.s0_5),
             borderRadius: const BorderRadius.all(
               Radius.circular(AppSize.s8),
             ),
@@ -58,8 +87,8 @@ class AppThemes {
 
           // focused border style
           focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: AppColors.primary, width: AppSize.s1_5),
+            borderSide: BorderSide(
+                color: AppColors().colorScheme.primary, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(
               Radius.circular(AppSize.s8),
             ),
@@ -67,15 +96,16 @@ class AppThemes {
 
           // error border style
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.error, width: AppSize.s1_5),
+            borderSide: BorderSide(
+                color: AppColors().colorScheme.error, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(
               Radius.circular(AppSize.s8),
             ),
           ),
           // focused border style
           focusedErrorBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: AppColors.primary, width: AppSize.s1_5),
+            borderSide: BorderSide(
+                color: AppColors().colorScheme.primary, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(
               Radius.circular(AppSize.s8),
             ),
@@ -83,26 +113,29 @@ class AppThemes {
         ),
         // label style
         progressIndicatorTheme:
-            ProgressIndicatorThemeData(color: AppColors.primary),
-        bottomNavigationBarTheme:
-            BottomNavigationBarThemeData(backgroundColor: AppColors.secondary),
+            ProgressIndicatorThemeData(color: AppColors().colorScheme.primary),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: AppColors().colorScheme.secondary),
         checkboxTheme: CheckboxThemeData(
           fillColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
-              return AppColors.primary;
+              return AppColors().colorScheme.primary;
             } else {
               return Colors.transparent;
             }
           }),
-          checkColor: WidgetStatePropertyAll(AppColors.white),
-          side: BorderSide(color: AppColors.primary),
+          checkColor: WidgetStatePropertyAll(AppColors().colorScheme.white),
+          side: BorderSide(color: AppColors().colorScheme.primary),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSize.s4),
           ),
         ),
       );
 
-  static ThemeData darkAppTheme = ThemeData(
-    brightness: Brightness.dark,
-  );
+  ThemeData darkAppTheme(BuildContext context) => ThemeData(
+        scaffoldBackgroundColor:
+            AppColors().colorScheme.background, // ripple effect color
+        brightness: Brightness.dark,
+        textTheme: AppTextThemes.lightTextTheme(context),
+      );
 }

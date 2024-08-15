@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/modules/navigation_bar/profile/data/models/user_model.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view/widgets/profile_info_item.dart';
@@ -58,9 +58,9 @@ class _InfoSectionState extends State<InfoSection> {
                   AppStrings.copiedSuccess.tr(),
                 );
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.copy,
-                color: AppColors.grey,
+                color: AppColors().colorScheme.grey,
                 size: iconSize,
               ),
             ),
@@ -102,7 +102,7 @@ class _InfoSectionState extends State<InfoSection> {
                         )
                       : Icon(
                           phoneReadOnly ? Icons.edit : Icons.check,
-                          color: AppColors.grey,
+                          color: AppColors().colorScheme.grey,
                           size: iconSize,
                         ),
                 ),

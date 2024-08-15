@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/network_helper.dart';
 import 'package:tut_app/core/ui_helpers.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/view/widgets/book_info_texts.dart';
 import 'package:tut_app/shared/view/widgets/icon_action_button.dart';
@@ -61,7 +61,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
           elevation: 3,
           child: Container(
             width: double.infinity,
-            color: AppColors.background,
+            color: AppColors().colorScheme.background,
             padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +84,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
                           book.accessInfo.pdf!.acsTokenLink != null,
                       icon: Icon(
                         Icons.download,
-                        color: AppColors.white,
+                        color: AppColors().colorScheme.white,
                       ),
                     ),
                     const SizedBox(
@@ -105,7 +105,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
                       isAvailable: book.bookInfo.previewLink != null,
                       icon: Icon(
                         Icons.preview_outlined,
-                        color: AppColors.white,
+                        color: AppColors().colorScheme.white,
                       ),
                     ),
                     const SizedBox(
@@ -117,7 +117,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
                       },
                       icon: Icon(
                         Icons.bookmark_border,
-                        color: AppColors.white,
+                        color: AppColors().colorScheme.white,
                       ),
                     )
                   ],

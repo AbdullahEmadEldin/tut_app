@@ -4,64 +4,64 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/lang_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/core/theme/fonts_manager.dart';
 
 class AppTextThemes {
   static TextTheme lightTextTheme(BuildContext context) => TextTheme(
         displayLarge: getSemiBoldStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 40),
         ),
         displayMedium: getSemiBoldStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 36),
         ),
         headlineLarge: getSemiBoldStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 32),
         ),
         headlineMedium: getRegularStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 28),
         ),
         titleMedium: getMediumStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 26),
         ),
         titleSmall: getRegularStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 24),
         ),
         bodyLarge: getRegularStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 20),
         ),
         bodyMedium: getRegularStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 18),
         ),
         bodySmall: getRegularStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 16),
         ),
         labelLarge: getBoldStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 14),
         ),
         labelSmall: getBoldStyle(
           context,
-          color: AppColors.primary,
+          color: AppColors().colorScheme.primary,
           fontSize: UiHelper.getResponsiveDimension(context, baseDimension: 12),
         ),
       );

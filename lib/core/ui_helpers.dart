@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tut_app/core/theme/theme_manager.dart';
 
 class UiHelper {
   /// This method to handle the string length to a limited length
@@ -62,11 +63,16 @@ class UiHelper {
   }
 
   static LinearGradient gradientContainerColors() {
-    return const LinearGradient(
-      colors: [
-        Color.fromARGB(177, 234, 236, 198),
-        Color.fromARGB(186, 191, 233, 255),
-      ],
+    return LinearGradient(
+      colors: AppThemes.instance.themeNotifier.value == ThemeMode.dark
+          ? const [
+              Color(0xff2c3e50),
+              Color(0xff2b5876),
+            ]
+          : const [
+              Color.fromARGB(177, 234, 236, 198),
+              Color.fromARGB(186, 191, 233, 255),
+            ],
     );
   }
 }

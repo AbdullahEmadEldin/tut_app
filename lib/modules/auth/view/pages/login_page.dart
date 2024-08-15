@@ -11,7 +11,7 @@ import 'package:tut_app/modules/auth/view/widgets/stay_logged_checkbox.dart';
 import 'package:tut_app/modules/auth/view_model/login_cubit/login_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/constants/values_manager.dart';
 import 'package:tut_app/shared/view/widgets/toast_message.dart';
 
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors().colorScheme.background,
       body: SingleChildScrollView(
         child: BlocListener<LoginCubit, LoginState>(
           listener: (context, state) {

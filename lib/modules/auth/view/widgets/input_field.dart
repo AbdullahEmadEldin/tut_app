@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/constants/values_manager.dart';
 
 class InputFieldWidget extends StatefulWidget {
@@ -55,11 +55,11 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                     icon: securePassword
                         ? Icon(
                             Icons.remove_red_eye,
-                            color: AppColors.primary,
+                            color: AppColors().colorScheme.primary,
                           )
                         : Icon(
                             Icons.visibility_off,
-                            color: AppColors.primary,
+                            color: AppColors().colorScheme.primary,
                           ),
                     onPressed: () => {
                       setState(() {
@@ -72,10 +72,11 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
             hintStyle: Theme.of(context)
                 .textTheme
                 .bodySmall!
-                .copyWith(color: AppColors.darkGrey),
+                .copyWith(color: AppColors().colorScheme.darkGrey),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppMargin.m8),
-              borderSide: const BorderSide(color: AppColors.grey, width: 0.0),
+              borderSide:
+                  BorderSide(color: AppColors().colorScheme.grey, width: 0.0),
             ),
           ),
           onChanged: widget.onTextChange,

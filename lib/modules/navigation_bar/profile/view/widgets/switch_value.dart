@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/assets_paths.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/constants/constants.dart';
+import 'package:tut_app/core/services/cache/cache_helper.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
+import 'package:tut_app/core/theme/theme_manager.dart';
 
 class ValueSwitcher extends StatefulWidget {
-  const ValueSwitcher({super.key});
+  final Function(bool)? onChanged;
+  const ValueSwitcher({
+    super.key,
+    required this.onChanged,
+  });
 
   @override
   State<ValueSwitcher> createState() => _ValueSwitcherState();
 }
 
 class _ValueSwitcherState extends State<ValueSwitcher> {
-  bool svalue = true;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,10 +25,10 @@ class _ValueSwitcherState extends State<ValueSwitcher> {
         scale: 1.4,
         child: Switch(
           splashRadius: 40,
-          inactiveTrackColor: AppColors.black,
-          activeTrackColor: AppColors.error.withOpacity(0.2),
+          activeTrackColor: AppColors().colorScheme.black,
+          inactiveTrackColor: AppColors().colorScheme.error.withOpacity(0.2),
           thumbColor: WidgetStateProperty.all(Colors.redAccent
-              .withOpacity(0.6)), // Colors.redAccent.withOpacity(0.7),
+              .withOpacity(0.5)), // Colors.redAccent.withOpacity(0.7),
           trackOutlineColor:
               WidgetStateProperty.resolveWith((final Set<WidgetState> states) {
             if (states.contains(WidgetState.selected)) {
@@ -31,13 +37,11 @@ class _ValueSwitcherState extends State<ValueSwitcher> {
               return Colors.transparent;
             }
           }),
-          value: svalue,
-          inactiveThumbImage: AssetImage(AppAssets.images.nightMode),
-          activeThumbImage: AssetImage(AppAssets.images.lightMode),
-          onChanged: (value) {
-            setState(() {});
-            svalue = value;
-          },
+          value: CacheHelper.getData(key: AppConstants.sharedPrefKeys.isDark) ??
+              false,
+          activeThumbImage: AssetImage(AppAssets.images.nightMode),
+          inactiveThumbImage: AssetImage(AppAssets.images.lightMode),
+          onChanged: widget.onChanged,
         ),
       ),
     );

@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 
@@ -34,7 +34,7 @@ class BookInfoTexts extends StatelessWidget {
                       book.bookInfo.title,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.bold,
-                            color: AppColors.white,
+                            color: AppColors().colorScheme.white,
                           ),
                     ),
                     Text(
@@ -45,13 +45,13 @@ class BookInfoTexts extends StatelessWidget {
                                   .toLowerCase(),
                               maxLength: 15),
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: AppColors.white,
+                            color: AppColors().colorScheme.white,
                           ),
                     ),
                     Text(
                       AppStrings.published.tr() + book.bookInfo.publishedDate!,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: AppColors.white,
+                            color: AppColors().colorScheme.white,
                           ),
                     ),
                     Text(
@@ -61,7 +61,7 @@ class BookInfoTexts extends StatelessWidget {
                               : book.saleInfo.listPrice!.amount.toString()) +
                           book.saleInfo.listPrice!.currencyCode!,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: AppColors.white,
+                            color: AppColors().colorScheme.white,
                           ),
                     )
                   ],

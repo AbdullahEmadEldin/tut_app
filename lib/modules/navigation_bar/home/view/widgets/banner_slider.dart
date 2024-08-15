@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/constants/assets_paths.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/modules/navigation_bar/home/data/model/banner_model.dart';
 
 class BannerSlider extends StatelessWidget {
@@ -20,7 +20,7 @@ class BannerSlider extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                     side: BorderSide(
-                      color: AppColors.primary,
+                      color: AppColors().colorScheme.primary,
                     ),
                   ),
                   child: InkWell(

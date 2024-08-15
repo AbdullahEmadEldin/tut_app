@@ -8,7 +8,7 @@ import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/modules/onBoarding/view/pages/on_boarding.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/constants/constants.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/core/services/cache/cache_helper.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors().colorScheme.primary,
       body: RotationTransition(
         turns: _controller!,
         child: Center(

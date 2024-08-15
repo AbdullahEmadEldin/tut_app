@@ -2,8 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
+import 'package:tut_app/constants/constants.dart';
 import 'package:tut_app/core/lang_manager.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/services/cache/cache_helper.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
+import 'package:tut_app/core/theme/theme_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view/components/pop_menu_component.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view/widgets/setting_item.dart';
@@ -11,9 +14,14 @@ import 'package:tut_app/modules/navigation_bar/profile/view/widgets/switch_value
 import 'package:tut_app/modules/navigation_bar/profile/view_model/logout/logout_cubit.dart';
 import 'package:tut_app/shared/view/widgets/custom_horizontal_divider.dart';
 
-class SettingsSection extends StatelessWidget {
+class SettingsSection extends StatefulWidget {
   const SettingsSection({super.key});
 
+  @override
+  State<SettingsSection> createState() => _SettingsSectionState();
+}
+
+class _SettingsSectionState extends State<SettingsSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +37,16 @@ class SettingsSection extends StatelessWidget {
           SettingsItem(
             title: AppStrings.theme.tr(),
             suffixIconData: Icons.mode_night_outlined,
-            actionIcon: const ValueSwitcher(),
+            actionIcon: ValueSwitcher(
+              onChanged: (value) {
+                print('===> $value');
+                CacheHelper.saveData(
+                    key: AppConstants.sharedPrefKeys.isDark, value: value);
+                AppThemes.instance.updateThemeValue(value);
+                AppColors().updateTheme(value);
+                setState(() {});
+              },
+            ),
           ),
           const CustomHorizontalDivider(),
           SettingsItem(
@@ -54,9 +71,9 @@ class SettingsSection extends StatelessWidget {
             suffixIconData: Icons.error_outline,
             actionIcon: IconButton(
               onPressed: () {},
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_forward_ios,
-                color: AppColors.grey,
+                color: AppColors().colorScheme.grey,
                 size: 20,
               ),
             ),
@@ -67,9 +84,9 @@ class SettingsSection extends StatelessWidget {
             suffixIconData: Icons.logout_rounded,
             actionIcon: IconButton(
               onPressed: () => BlocProvider.of<LogoutCubit>(context).logout(),
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_forward_ios,
-                color: AppColors.grey,
+                color: AppColors().colorScheme.grey,
                 size: 20,
               ),
             ),

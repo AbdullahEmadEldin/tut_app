@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/ui_helpers.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/shared/data/repos/book_category_enum.dart';
 
 class CategoryTile extends StatelessWidget {
@@ -23,10 +23,12 @@ class CategoryTile extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-            color: isSelected ? AppColors.secondaryLight : Colors.transparent,
+            color: isSelected
+                ? AppColors().colorScheme.secondaryLight
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: AppColors.spotColor.withOpacity(0.5),
+              color: AppColors().colorScheme.spotColor.withOpacity(0.5),
             )),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

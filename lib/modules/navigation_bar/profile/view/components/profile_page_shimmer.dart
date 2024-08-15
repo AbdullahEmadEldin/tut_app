@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 
 class ProfileShimmer extends StatelessWidget {
@@ -9,8 +9,8 @@ class ProfileShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: AppColors.background,
-      highlightColor: AppColors.secondary,
+      baseColor: AppColors().colorScheme.background,
+      highlightColor: AppColors().colorScheme.secondary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

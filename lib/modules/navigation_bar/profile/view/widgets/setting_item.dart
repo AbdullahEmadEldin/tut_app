@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 
 class SettingsItem extends StatelessWidget {
   final String title;
@@ -23,14 +23,14 @@ class SettingsItem extends StatelessWidget {
             children: [
               Icon(
                 suffixIconData,
-                color: AppColors.grey,
+                color: AppColors().colorScheme.grey,
               ),
               const SizedBox(width: 4),
               Text(
                 title,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: AppColors.grey2,
+                      color: AppColors().colorScheme.grey2,
                     ),
               ),
             ],

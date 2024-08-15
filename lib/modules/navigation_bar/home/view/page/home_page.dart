@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/banner_slider.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/books_list_view.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/falsh_sale_text.dart';
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage>
               FlashSaleText(),
               BannerSlider(),
               Container(
-                color: AppColors.primaryGrade4.withOpacity(0.2),
+                color: AppColors().colorScheme.primaryGrade4.withOpacity(0.2),
                 padding: EdgeInsets.only(left: 16, right: 16, top: 8),
                 width: double.infinity,
                 child: Column(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 
 void showToast(BuildContext context, String message, {bool isError = false}) {
   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -10,7 +10,9 @@ void showToast(BuildContext context, String message, {bool isError = false}) {
         left: MediaQuery.of(context).size.width * 0.1,
         right: MediaQuery.of(context).size.width * 0.1,
         child: Material(
-          color: isError ? AppColors.error : AppColors.success,
+          color: isError
+              ? AppColors().colorScheme.error
+              : AppColors().colorScheme.success,
           shape: const StadiumBorder(),
           child: Container(
             padding:

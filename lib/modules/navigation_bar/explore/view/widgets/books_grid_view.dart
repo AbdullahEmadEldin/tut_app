@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view/widgets/empty_books_grid.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view_model/cubit/explore_books_cubit.dart';
 import 'package:tut_app/shared/data/models/book.dart';
@@ -153,7 +153,7 @@ class _BooksStaggeredGridViewState extends State<BooksStaggeredGridView> {
                       ? BookTileShimmer(
                           inStaggeredView: true,
                           imageHeight: (index % 5 * 6) + 200,
-                          shimmerColor: AppColors.spotColor,
+                          shimmerColor: AppColors().colorScheme.spotColor,
                         )
                       : BookTile(
                           book: _items[index],

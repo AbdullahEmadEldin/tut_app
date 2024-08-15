@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 
 class IconActionButton extends StatefulWidget {
   final Widget icon;
@@ -29,14 +29,14 @@ class _IconActionButtonState extends State<IconActionButton> {
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: !widget.isAvailable
-                ? AppColors.darkGrey.withOpacity(0.7)
+                ? AppColors().colorScheme.darkGrey.withOpacity(0.7)
                 : null,
             borderRadius: BorderRadius.circular(32),
             gradient: widget.isAvailable
                 ? LinearGradient(colors: [
-                    AppColors.spotColor,
-                    //AppColors.primaryGrade4,
-                    AppColors.secondary
+                    AppColors().colorScheme.spotColor,
+                    //AppColors().colorScheme.primaryGrade4,
+                    AppColors().colorScheme.secondary
                   ])
                 : null,
           ),

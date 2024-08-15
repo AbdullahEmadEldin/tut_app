@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 
 class ProfileInfoItem extends StatelessWidget {
@@ -32,13 +32,14 @@ class ProfileInfoItem extends StatelessWidget {
           children: [
             Icon(
               suffixIconData,
-              color: AppColors.grey,
+              color: AppColors().colorScheme.grey,
             ),
             const SizedBox(width: 4),
             Text(
               label,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontWeight: FontWeight.bold, color: AppColors.grey2),
+                  fontWeight: FontWeight.bold,
+                  color: AppColors().colorScheme.grey2),
             ),
           ],
         ),

@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/ui_helpers.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 
 class EmptyBooksGrid extends StatelessWidget {
   final String? message;
@@ -33,7 +33,7 @@ class EmptyBooksGrid extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium!
-                    .copyWith(color: AppColors.spotColor),
+                    .copyWith(color: AppColors().colorScheme.spotColor),
               ),
             ],
           ),

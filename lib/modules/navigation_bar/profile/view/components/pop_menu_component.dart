@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 
 class PopMenuComponent extends StatelessWidget {
   final Object? initialValue;
@@ -13,12 +13,12 @@ class PopMenuComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
-      color: AppColors.background,
+      color: AppColors().colorScheme.background,
       padding: EdgeInsets.zero,
       initialValue: initialValue,
-      icon: const Icon(
+      icon: Icon(
         Icons.keyboard_arrow_down_outlined,
-        color: AppColors.grey,
+        color: AppColors().colorScheme.grey,
       ),
       iconSize: 30,
       itemBuilder: (context) => items,

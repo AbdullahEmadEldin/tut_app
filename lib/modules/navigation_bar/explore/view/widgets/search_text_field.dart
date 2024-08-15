@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/ui_helpers.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view_model/cubit/explore_books_cubit.dart';
 
 class SearchBarDelegate extends SliverPersistentHeaderDelegate {
@@ -46,7 +46,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.secondaryLight.withOpacity(0.1),
+      color: AppColors().colorScheme.secondaryLight.withOpacity(0.1),
       child: Container(
         height: UiHelper.getResponsiveDimension(context, baseDimension: 75),
         width: double.infinity,
@@ -63,14 +63,14 @@ class _SearchTextFieldState extends State<SearchTextField> {
                 hintStyle: Theme.of(context)
                     .textTheme
                     .labelLarge!
-                    .copyWith(color: AppColors.grey),
+                    .copyWith(color: AppColors().colorScheme.grey),
                 suffixIcon: IconButton(
                   onPressed: () {
                     _makeSearchCall(context);
                   },
                   icon: Icon(
                     CupertinoIcons.search_circle_fill,
-                    color: AppColors.spotColor.withOpacity(0.9),
+                    color: AppColors().colorScheme.spotColor.withOpacity(0.9),
                     size: 40,
                   ),
                 ),
@@ -78,21 +78,22 @@ class _SearchTextFieldState extends State<SearchTextField> {
                   borderRadius: BorderRadius.all(
                     Radius.circular(32),
                   ),
-                  borderSide: BorderSide(color: AppColors.grey),
+                  borderSide: BorderSide(color: AppColors().colorScheme.grey),
                 ),
                 disabledBorder: OutlineInputBorder(
                   gapPadding: 16,
                   borderRadius: BorderRadius.all(
                     Radius.circular(32),
                   ),
-                  borderSide: BorderSide(color: AppColors.grey),
+                  borderSide: BorderSide(color: AppColors().colorScheme.grey),
                 ),
                 focusedBorder: OutlineInputBorder(
                   gapPadding: 32,
                   borderRadius: BorderRadius.all(
                     Radius.circular(32),
                   ),
-                  borderSide: BorderSide(color: AppColors.darkGrey),
+                  borderSide:
+                      BorderSide(color: AppColors().colorScheme.darkGrey),
                 )),
           ),
         ),

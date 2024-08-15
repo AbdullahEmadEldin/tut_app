@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/modules/onBoarding/view_model/on_boarding_view_model.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/theme/colors_manager.dart';
+import 'package:tut_app/core/theme/colors/colors_manager.dart';
 
 class OnBoardingBottomSheetWidget extends StatefulWidget {
   final OnBoardingViewModel viewModel;
@@ -29,7 +29,7 @@ class _OnBoardingBottomSheetWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.background,
+      color: AppColors().colorScheme.background,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -45,7 +45,7 @@ class _OnBoardingBottomSheetWidgetState
             ),
           ),
           Container(
-            color: AppColors.primary,
+            color: AppColors().colorScheme.primary,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -58,8 +58,8 @@ class _OnBoardingBottomSheetWidgetState
                   icon: Icon(
                     Icons.arrow_back_ios,
                     color: widget.viewModel.currentIndex == 0
-                        ? AppColors.secondary
-                        : AppColors.white,
+                        ? AppColors().colorScheme.secondary
+                        : AppColors().colorScheme.white,
                   ),
                 ),
                 Row(children: [
@@ -80,8 +80,8 @@ class _OnBoardingBottomSheetWidgetState
                     Icons.arrow_forward_ios,
                     color: widget.viewModel.currentIndex ==
                             widget.viewModel.getOnBoardingObjects().length - 1
-                        ? AppColors.secondary
-                        : AppColors.white,
+                        ? AppColors().colorScheme.secondary
+                        : AppColors().colorScheme.white,
                   ),
                 )
               ],
@@ -102,9 +102,9 @@ class _OnBoardingBottomSheetWidgetState
       decoration: BoxDecoration(
           color: widget.viewModel.currentIndex == i
               ? Colors.transparent
-              : AppColors.white,
+              : AppColors().colorScheme.white,
           borderRadius: BorderRadius.circular(32),
-          border: Border.all(color: AppColors.white)),
+          border: Border.all(color: AppColors().colorScheme.white)),
     );
   }
 }

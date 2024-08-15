@@ -12,4 +12,5 @@ class SharedPrefKeys {
   String stayLoggedIn = 'stayLoggedIn';
   String token = 'token';
   String userId = 'id';
+  String isDark = 'isDark';
 }
