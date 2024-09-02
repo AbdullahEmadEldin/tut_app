@@ -38,7 +38,7 @@ class _InfoSectionState extends State<InfoSection> {
     const double iconSize = 22;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         gradient: UiHelper.gradientContainerColors(),
         borderRadius: BorderRadius.circular(16),
@@ -61,7 +61,8 @@ class _InfoSectionState extends State<InfoSection> {
               icon: Icon(
                 Icons.copy,
                 color: AppColors().colorScheme.grey,
-                size: iconSize,
+                size: UiHelper.getResponsiveDimension(context,
+                    baseDimension: iconSize),
               ),
             ),
           ),
@@ -103,7 +104,8 @@ class _InfoSectionState extends State<InfoSection> {
                       : Icon(
                           phoneReadOnly ? Icons.edit : Icons.check,
                           color: AppColors().colorScheme.grey,
-                          size: iconSize,
+                          size: UiHelper.getResponsiveDimension(context,
+                              baseDimension: iconSize),
                         ),
                 ),
               );

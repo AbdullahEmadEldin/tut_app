@@ -91,4 +91,11 @@ class AppStrings {
 
   static const String userInfo = 'user_info';
   static const String settings = 'settings';
+
+  //*---------------------------------------------------------- */
+  //***********************  Library  *************************//
+  //*---------------------------------------------------------- */
+
+  static String downloaded = 'downloaded';
+  static String saved = 'saved';
 }

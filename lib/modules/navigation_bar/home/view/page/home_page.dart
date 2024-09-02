@@ -8,6 +8,7 @@ import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/banner_slider.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/books_list_view.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/widgets/falsh_sale_text.dart';
+import 'package:tut_app/modules/navigation_bar/library/view_model/cubit/get_saved_books_cubit.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/data/repos/book_category_enum.dart';
 import 'package:tut_app/modules/navigation_bar/home/view_model/get_new_books_cubit.dart';
@@ -29,6 +30,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     BlocProvider.of<GetNewBooksCubit>(context)
         .getCategorizedBooks(category: BooksCategory.Fiction, lang: 'ar');
+    BlocProvider.of<GetSavedBooksCubit>(context).getSavedBooks();
     super.initState();
   }
 

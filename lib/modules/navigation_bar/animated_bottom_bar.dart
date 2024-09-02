@@ -13,13 +13,15 @@ import 'package:tut_app/modules/navigation_bar/explore/view/page/explore_page.da
 import 'package:tut_app/modules/navigation_bar/explore/view_model/cubit/explore_books_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/modules/navigation_bar/home/view_model/get_new_books_cubit.dart';
-import 'package:tut_app/modules/navigation_bar/library/pages/library_page.dart';
+import 'package:tut_app/modules/navigation_bar/library/view/pages/library_page.dart';
+import 'package:tut_app/modules/navigation_bar/library/view_model/cubit/get_saved_books_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/profile/data/repository/profile_repository.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view/pages/profile_page.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view_model/cubit/edit_user_data_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view_model/logout/logout_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view_model/user_data_cubit/get_user_data_cubit.dart';
 import 'package:tut_app/shared/data/repos/books_repository.dart';
+import 'package:tut_app/shared/view_model/cubit/get_book_by_id_cubit.dart';
 
 class AnimatedBottomBar extends StatefulWidget {
   static const String routeName = '/nav_bar';
@@ -45,7 +47,10 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar> {
       ),
       child: const HomePage(),
     ),
-    LibraryPage(),
+    BlocProvider(
+      create: (context) => GetBookByIdCubit(),
+      child: const LibraryPage(),
+    ),
     BlocProvider(
       create: (context) => ExploreBooksCubit(
         BooksRepository(

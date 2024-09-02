@@ -15,8 +15,12 @@ class EmptyBooksGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(
+        '====>> Padiiiiiiiiiiiiiings ${UiHelper.getResponsiveDimension(context, baseDimension: 16)}');
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(
+        UiHelper.getResponsiveDimension(context, baseDimension: 16),
+      ),
       child: SizedBox(
         height: UiHelper.getResponsiveDimension(context, baseDimension: 410),
         child: Center(
@@ -32,7 +36,7 @@ class EmptyBooksGrid extends StatelessWidget {
                 message ?? AppStrings.pickCategory.tr(),
                 style: Theme.of(context)
                     .textTheme
-                    .headlineMedium!
+                    .titleMedium!
                     .copyWith(color: AppColors().colorScheme.spotColor),
               ),
             ],

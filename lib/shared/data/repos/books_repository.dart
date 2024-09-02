@@ -1,5 +1,6 @@
 import 'package:tut_app/constants/api_endpoints.dart';
 import 'package:tut_app/core/services/networking/api_consumer.dart';
+import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/data/models/books_response.dart';
 import 'package:tut_app/shared/data/repos/book_category_enum.dart';
 
@@ -30,6 +31,15 @@ class BooksRepository {
       },
     );
     return BooksResponse.fromJson(response);
+  }
+
+  Future<Book> getBookById({
+    required String id,
+  }) async {
+    final response =
+        await api.get(path: 'https://www.googleapis.com/books/v1/volumes/$id');
+
+    return Book.fromMap(response);
   }
 
   Future<BooksResponse> getCategorizedBooks({

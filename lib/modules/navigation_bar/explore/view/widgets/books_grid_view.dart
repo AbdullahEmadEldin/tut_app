@@ -27,7 +27,8 @@ class BooksStaggeredGridView extends StatefulWidget {
 class _BooksStaggeredGridViewState extends State<BooksStaggeredGridView> {
   late ExploreBooksCubit exploreBooksCubit;
   final List<Book> _items = [];
-  bool _search = false;
+  bool _search =
+      false; // this bool used to switch between search and explore categories requests.
   bool _defaultView = true; // the default is Empty photo.
   int _startIndex = 0;
   bool _isLoading = false;
@@ -101,7 +102,6 @@ class _BooksStaggeredGridViewState extends State<BooksStaggeredGridView> {
 
   @override
   Widget build(BuildContext context) {
-    /// SliverMasonryGrid supports Lazy loading of it's elements So it hasn't builder constructor
     return BlocListener<ExploreBooksCubit, ExploreBooksState>(
       listener: (context, state) {
         if (state is FetchingBooksLoading) {
@@ -140,6 +140,8 @@ class _BooksStaggeredGridViewState extends State<BooksStaggeredGridView> {
               message:
                   (_items.isEmpty && _search) ? AppStrings.noBooks.tr() : null,
             ))
+
+          /// SliverMasonryGrid supports Lazy loading of it's elements So it hasn't builder constructor
           : SliverMasonryGrid(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {

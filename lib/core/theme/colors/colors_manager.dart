@@ -8,7 +8,7 @@ class AppColors {
   AppColors._internal();
 
   AppColorScheme _colorScheme =
-      CacheHelper.getData(key: AppConstants.sharedPrefKeys.isDark)
+      CacheHelper.getData(key: AppConstants.sharedPrefKeys.isDark) ?? false
           ? DarkColorScheme()
           : LightColorScheme(); // Default to light theme
 

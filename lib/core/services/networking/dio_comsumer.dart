@@ -55,11 +55,15 @@ class DioConsumer extends ApiConsumer {
   Future get({
     required String path,
     Map<String, dynamic>? queryParameters,
+    Options? options,
   }) async {
     try {
       final response = await dio.get(
         path,
         queryParameters: queryParameters,
+        options: options,
+
+        /// in case getting image and convert it into bytes we will use this.
       );
       return response.data;
     } on DioException catch (e) {

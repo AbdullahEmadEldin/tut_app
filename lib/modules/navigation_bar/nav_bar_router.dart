@@ -1,22 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/constants.dart';
+import 'package:tut_app/modules/navigation_bar/library/view_model/cubit/get_saved_books_cubit.dart';
+import 'package:tut_app/modules/navigation_bar/library/view_model/cubit/set_books_to_lib_cubit.dart';
 import 'package:tut_app/shared/view/pages/book_details_page.dart';
 
 class NavBarRouter {
+  static final _savedBooksCubit = GetSavedBooksCubit();
   static Route? onGenerate(RouteSettings settings) {
     switch (settings.name) {
+      // inside it there is it's own navigation.
       case AnimatedBottomBar.routeName:
         return PageRouteBuilder(
           transitionDuration: AppConstants.transitionDurationInSec,
           transitionsBuilder: _navBarAnimationBuilder,
           pageBuilder: (context, animation, secondaryAnimation) =>
-              const AnimatedBottomBar(),
+              BlocProvider.value(
+            value: _savedBooksCubit,
+            child: const AnimatedBottomBar(),
+          ),
         );
       case BookDetailsPage.routeName:
         final args = settings.arguments as BookDetailsArgs;
         return MaterialPageRoute(
-            builder: (context) => BookDetailsPage(args: args));
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => SetBooksToLibCubit(),
+                    ),
+                    BlocProvider.value(
+                      value: _savedBooksCubit,
+                    ),
+                  ],
+                  child: BookDetailsPage(args: args),
+                ));
       default:
         return null;
     }

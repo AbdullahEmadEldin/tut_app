@@ -1,5 +1,6 @@
 class AppConstants {
   static SharedPrefKeys sharedPrefKeys = SharedPrefKeys();
+  static SqlKeys sqlKeys = SqlKeys();
   static const int splashTimer = 2;
   static const int pageSize = 50;
   static const int onBoardingAnimationTimerInMilli = 1000;
@@ -13,4 +14,12 @@ class SharedPrefKeys {
   String token = 'token';
   String userId = 'id';
   String isDark = 'isDark';
+}
+
+class SqlKeys {
+  String savedBooksTable = 'savedBooks';
+  String downloadsTable = 'downloads';
+  String bookId = 'bookId';
+  String bookName = 'bookName';
+  String bookImage = 'image';
 }

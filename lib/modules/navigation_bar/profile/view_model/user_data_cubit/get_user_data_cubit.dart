@@ -21,6 +21,7 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
     }
   }
 
+  /// This is to just update the state
   Future<void> updateUser({required UserModel updatedUser}) async {
     print('====>> This is test in GetUserData Cubit');
     emit(GetUserDataSuccess(userData: updatedUser));

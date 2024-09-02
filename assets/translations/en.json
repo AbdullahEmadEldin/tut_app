@@ -20,7 +20,7 @@
     "confirm_password": "Confirm Password",
     "confirm_password_hint": "Make sure it's the same as the password",
     "password_not_match": "Password doesn't match",
-    "phone_number": "Phone Number",
+    "phone_number": "Phone",
     "phone_number_hint": "Enter a valid phone number",
     "phone_number_validation": "Number length must be at least 10 characters long",
     "forgot_password": "Forgot Password?",
@@ -39,7 +39,7 @@
     "flash_sale": "Flash Sale",
     "new_release": "New Books",
     "search_label": "Search for a book...",
-    "pick_category": "Pick a category to explore...",
+    "pick_category": "Pick a category to explore..",
     "no_books": "No books found...",
     "author": "Author: ",
     "published": "Published: ",
@@ -59,5 +59,7 @@
     "update_name" : "Update Name successfully",
     "update_pic" : "Update Picture successfully",
     "user_info": "User Info",
-    "settings": "Settings"
+    "settings": "Settings",
+    "downloaded":"Downloaded",
+    "saved":"Saved"
 }  

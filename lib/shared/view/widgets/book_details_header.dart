@@ -2,12 +2,16 @@ import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/network_helper.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
+import 'package:tut_app/modules/navigation_bar/library/data/models/saved_book_model.dart';
+import 'package:tut_app/modules/navigation_bar/library/view_model/cubit/set_books_to_lib_cubit.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/view/widgets/book_info_texts.dart';
+import 'package:tut_app/shared/view/widgets/bookmark_widget.dart';
 import 'package:tut_app/shared/view/widgets/icon_action_button.dart';
 import 'package:tut_app/shared/view/widgets/toast_message.dart';
 
@@ -15,6 +19,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
   final Book book;
   final String heroTag;
   BookDetailsHeader({required this.book, required this.heroTag});
+
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -111,15 +116,7 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
                     const SizedBox(
                       width: 8,
                     ),
-                    IconActionButton(
-                      onTap: () {
-                        //TODO this logic should be implemented when local Database is set.
-                      },
-                      icon: Icon(
-                        Icons.bookmark_border,
-                        color: AppColors().colorScheme.white,
-                      ),
-                    )
+                    BookmarkWidget(book: book)
                   ],
                 ),
               ],

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/modules/auth/view/widgets/profile_pic_avatar.dart';
 import 'package:tut_app/modules/navigation_bar/profile/data/models/user_model.dart';
 import 'package:tut_app/modules/navigation_bar/profile/view_model/cubit/edit_user_data_cubit.dart';
@@ -55,7 +56,9 @@ class _ProfileHeaderState extends State<ProfileHeader> {
       builder: (context, state) {
         return Column(
           children: [
-            const SizedBox(height: 72),
+            SizedBox(
+                height: UiHelper.getResponsiveDimension(context,
+                    baseDimension: 48)),
             ProfilePicAvatar(
               checkIcon: _picSelection,
               isLoading: state is EditPictureLoading,
