@@ -21,11 +21,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   void initState() {
     super.initState();
-
-    /// set the firstLaunch bool with false
-    ///
-    CacheHelper.saveData(
-        key: AppConstants.sharedPrefKeys.firstLaunch, value: false);
   }
 
   @override
@@ -65,6 +60,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           );
         },
         onSkipFunction: () {
+          /// set the firstLaunch bool with false
+          ///
+          CacheHelper.saveData(
+              key: AppConstants.sharedPrefKeys.firstLaunch, value: false);
           Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
         },
       ),
