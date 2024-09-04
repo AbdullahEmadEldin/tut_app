@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart' as rive;
+import 'package:tut_app/core/theme/colors/colors_scheme.dart';
 import 'package:tut_app/modules/auth/view/widgets/auth_title.dart';
 import 'package:tut_app/modules/auth/view/widgets/dont_have_account_button.dart';
 import 'package:tut_app/modules/auth/view/widgets/input_field.dart';
@@ -11,7 +11,6 @@ import 'package:tut_app/modules/auth/view/widgets/stay_logged_checkbox.dart';
 import 'package:tut_app/modules/auth/view_model/login_cubit/login_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/constants/values_manager.dart';
 import 'package:tut_app/shared/view/widgets/toast_message.dart';
 
@@ -51,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors().colorScheme.background,
+      backgroundColor: LightColorScheme().background,
       body: SingleChildScrollView(
         child: BlocListener<LoginCubit, LoginState>(
           listener: (context, state) {
@@ -74,8 +73,12 @@ class _LoginPageState extends State<LoginPage> {
 
               emailError = state.emailError ?? '';
               passwordError = state.passwordError ?? '';
-              showToast(context, state.errMsg + emailError! + passwordError!,
-                  isError: true);
+              showToast(
+                context,
+                state.errMsg + emailError! + passwordError!,
+                isError: true,
+              );
+
               loginCubit.formKey.currentState?.validate();
               setState(() {
                 buttonLoading = false;

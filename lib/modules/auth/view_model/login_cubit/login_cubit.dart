@@ -25,6 +25,13 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  /// This bool for stay logged in logic
+  bool rememberMe = false;
+
+  //********************************************************************************** */
+  //******************************** R I V E Animation******************************** */
+  //********************************************************************************** */
+
   /// artboard of rive file
   Artboard? riveArtBoard;
 
