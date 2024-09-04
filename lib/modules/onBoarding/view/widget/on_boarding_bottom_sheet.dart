@@ -34,16 +34,6 @@ class _OnBoardingBottomSheetWidgetState
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          TextButton(
-            onPressed: widget.onSkipFunction,
-            child: Text(
-              AppStrings.skip.tr(),
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall!
-                  .copyWith(fontWeight: FontWeight.bold),
-            ),
-          ),
           Container(
             color: AppColors().colorScheme.primary,
             child: Row(
@@ -62,14 +52,34 @@ class _OnBoardingBottomSheetWidgetState
                         : AppColors().colorScheme.white,
                   ),
                 ),
-                Row(children: [
-                  /// why not use .map call back?
-                  /// because we need to get the index and if we use .map code will be messy.
-                  for (int i = 0;
-                      i < widget.viewModel.getOnBoardingObjects().length;
-                      i++)
-                    _indexContainer(i),
-                ]),
+                widget.viewModel.currentIndex ==
+                        widget.viewModel.getOnBoardingObjects().length - 1
+                    ? TextButton(
+                        onPressed: widget.onSkipFunction,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 4, horizontal: 16),
+                          decoration: BoxDecoration(
+                            color: AppColors().colorScheme.background,
+                            borderRadius: BorderRadius.circular(32),
+                          ),
+                          child: Text(
+                            AppStrings.skip.tr(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      )
+                    : Row(children: [
+                        /// why not use .map call back?
+                        /// because we need to get the index and if we use .map code will be messy.
+                        for (int i = 0;
+                            i < widget.viewModel.getOnBoardingObjects().length;
+                            i++)
+                          _indexContainer(i),
+                      ]),
                 IconButton(
                   onPressed: () {
                     setState(() {
