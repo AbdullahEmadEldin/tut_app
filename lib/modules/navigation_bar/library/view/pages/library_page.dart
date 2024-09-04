@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
+import 'package:tut_app/core/theme/theme_manager.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view/widgets/empty_books_grid.dart';
 import 'package:tut_app/modules/navigation_bar/library/view/components/saved_books_grid_view.dart';
 import 'package:tut_app/modules/navigation_bar/library/view_model/cubit/get_saved_books_cubit.dart';
@@ -36,7 +37,11 @@ class _LibraryPageState extends State<LibraryPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Library',
+        backgroundColor:
+            AppThemes.instance.themeNotifier.value == ThemeMode.dark
+                ? AppColors().colorScheme.background
+                : AppColors().colorScheme.primary,
+        title: Text(AppStrings.lib.tr(),
             style: Theme.of(context)
                 .textTheme
                 .headlineMedium!
@@ -66,8 +71,11 @@ class _LibraryPageState extends State<LibraryPage>
               setState(() {});
             },
           ),
-          if (saved) SavedBooksGridView(runtimeType: runtimeType),
-          if (downloaded) EmptyBooksGrid()
+          if (saved) SavedBooksGridView(),
+          if (downloaded)
+            EmptyBooksGrid(
+              message: 'Google books uses DRM-protected books',
+            )
         ],
       ),
     );

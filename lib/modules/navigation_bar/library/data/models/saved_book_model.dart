@@ -7,7 +7,7 @@ import 'package:tut_app/constants/constants.dart';
 class SavedBookModel {
   final String id;
   final String bookName;
-  final Uint8List image;
+  final Uint8List? image;
 
   SavedBookModel({
     required this.id,
@@ -27,7 +27,9 @@ class SavedBookModel {
     return SavedBookModel(
       id: map[AppConstants.sqlKeys.bookId] as String,
       bookName: map[AppConstants.sqlKeys.bookName] as String,
-      image: map[AppConstants.sqlKeys.bookImage] as Uint8List,
+      image: map[AppConstants.sqlKeys.bookImage] != null
+          ? map[AppConstants.sqlKeys.bookImage] as Uint8List
+          : Uint8List(0),
     );
   }
 }

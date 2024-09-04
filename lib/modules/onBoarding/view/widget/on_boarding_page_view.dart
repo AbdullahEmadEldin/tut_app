@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tut_app/modules/onBoarding/model/on_boarding_model.dart';
 
 class OnBoardingPageView extends StatelessWidget {
@@ -21,12 +20,16 @@ class OnBoardingPageView extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(
-            height: 200,
+            height: 150,
           ),
           Text(
             onBoardingObject.title,
             style: Theme.of(context).textTheme.displayLarge,
           ),
+          const SizedBox(
+            height: 32,
+          ),
+          Image.asset(onBoardingObject.image),
           const SizedBox(
             height: 16,
           ),
@@ -35,10 +38,6 @@ class OnBoardingPageView extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(
-            height: 40,
-          ),
-          SvgPicture.asset(onBoardingObject.image),
         ],
       ),
     );

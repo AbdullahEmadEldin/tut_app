@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/modules/navigation_bar/library/data/models/saved_book_model.dart';
 import 'package:tut_app/shared/view/pages/book_details_page.dart';
@@ -39,11 +40,9 @@ class SavedBookTile extends StatelessWidget {
                       arguments:
                           BookDetailsArgs(book: book, heroTag: savedBook.id));
                 }).onError((e, s) {
-                  print('xxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-
                   showToast(
                     context,
-                    'Something went wrong Try again',
+                    'Something went wrong Try again, ${e.toString()}',
                     isError: true,
                   );
                 });
@@ -51,9 +50,11 @@ class SavedBookTile extends StatelessWidget {
               child: Hero(
                 tag: savedBook.id,
                 child: ClipRect(
-                  child: Image.memory(
-                    savedBook.image,
-                  ),
+                  child: savedBook.image == null || savedBook.image!.isEmpty
+                      ? Image.asset(AppAssets.images.fakeBookCover)
+                      : Image.memory(
+                          savedBook.image!,
+                        ),
                 ),
               ),
             ),

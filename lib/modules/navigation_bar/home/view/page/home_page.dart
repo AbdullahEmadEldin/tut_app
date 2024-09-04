@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FlashSaleText(),
+              PopularText(),
               BannerSlider(),
               Container(
                 color: AppColors().colorScheme.primaryGrade4.withOpacity(0.2),

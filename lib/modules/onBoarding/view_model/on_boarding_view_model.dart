@@ -22,11 +22,6 @@ class OnBoardingViewModel {
           body: AppStrings.onBoardingSubTitle3.tr(),
           image: AppAssets.images.onboardingLogo3,
         ),
-        OnBoardingObject(
-          title: AppStrings.onBoardingTitle4.tr(),
-          body: AppStrings.onBoardingSubTitle4.tr(),
-          image: AppAssets.images.onboardingLogo4,
-        ),
       ];
 
   void onPageChanged(int index) {

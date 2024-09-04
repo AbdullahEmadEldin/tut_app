@@ -20,6 +20,26 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "emulator",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "minote",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "6d5b3618"
+        },
+    ],
+    "compounds": [
+        {
+            "name": "All devices",
+            "configurations": [
+                "emulator","minote"
+            ]
         }
     ]
 }

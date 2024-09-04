@@ -6,12 +6,10 @@ class AppStrings {
   static const onBoardingTitle1 = "on_boarding_title_1";
   static const onBoardingTitle2 = "on_boarding_title_2";
   static const onBoardingTitle3 = "on_boarding_title_3";
-  static const onBoardingTitle4 = "on_boarding_title_4";
 
   static const onBoardingSubTitle1 = "on_boarding_sub_title_1";
   static const onBoardingSubTitle2 = "on_boarding_sub_title_2";
   static const onBoardingSubTitle3 = "on_boarding_sub_title_3";
-  static const onBoardingSubTitle4 = "on_boarding_sub_title_4";
   static const skip = "skip";
 
   //*---------------------------------------------------------- */
@@ -53,7 +51,7 @@ class AppStrings {
   static const String explore = "explore";
   static const String profile = "profile";
   static const String library = "library";
-  static const String flashSale = 'flash_sale';
+  static const String popular = 'popular';
   static const String newRelease = 'new_release';
 
   //*---------------------------------------------------------- */
@@ -95,7 +93,9 @@ class AppStrings {
   //*---------------------------------------------------------- */
   //***********************  Library  *************************//
   //*---------------------------------------------------------- */
-
+  static const String lib = 'library';
   static String downloaded = 'downloaded';
   static String saved = 'saved';
+
+  static String emptyBooksLib = 'empty_books_lib';
 }

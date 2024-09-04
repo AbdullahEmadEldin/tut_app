@@ -2,13 +2,11 @@ import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tut_app/constants/app_strings.dart';
+import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/network_helper.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
-import 'package:tut_app/modules/navigation_bar/library/data/models/saved_book_model.dart';
-import 'package:tut_app/modules/navigation_bar/library/view_model/cubit/set_books_to_lib_cubit.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/view/widgets/book_info_texts.dart';
 import 'package:tut_app/shared/view/widgets/bookmark_widget.dart';
@@ -29,13 +27,21 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
           child: Stack(
             children: [
               /// The background image which will be blurred.
-              Image.network(
-                book.bookInfo.imageLinks!.thumbnail!,
-                fit: BoxFit.fill,
-                height: UiHelper.getResponsiveDimension(context,
-                    baseDimension: 320),
-                width: double.infinity,
-              ),
+              book.bookInfo.imageLinks == null
+                  ? Image.asset(
+                      AppAssets.images.fakeBookCover,
+                      height: UiHelper.getResponsiveDimension(context,
+                          baseDimension: 320),
+                      width: double.infinity,
+                      fit: BoxFit.fill,
+                    )
+                  : Image.network(
+                      book.bookInfo.imageLinks!.thumbnail!,
+                      fit: BoxFit.fill,
+                      height: UiHelper.getResponsiveDimension(context,
+                          baseDimension: 320),
+                      width: double.infinity,
+                    ),
               Positioned.directional(
                 textDirection: Directionality.of(context),
                 top: 100,
@@ -47,8 +53,12 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
                     color: Colors.black,
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 15),
-                      child:
-                          Image.network(book.bookInfo.imageLinks!.thumbnail!),
+                      child: book.bookInfo.imageLinks == null
+                          ? Image.asset(
+                              AppAssets.images.fakeBookCover,
+                              height: 180,
+                            )
+                          : Image.network(book.bookInfo.imageLinks!.thumbnail!),
                     ),
                   ),
                 ),
@@ -130,11 +140,14 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
   Future<void> _handleDownloadBookCases(BuildContext context) async {
     if (book.accessInfo.epub!.downloadLink != null) {
       //
+      print('==========>>>> EPUP');
       await NetworkHelper.customLaunchUrl(context,
           url: book.accessInfo.epub!.downloadLink!);
       //
     } else if (book.accessInfo.pdf!.downloadLink != null ||
         book.accessInfo.pdf!.acsTokenLink != null) {
+      print('==========>>>> pdf .... access token');
+
       //
       await NetworkHelper.customLaunchUrl(context,
           url: book.accessInfo.pdf!.acsTokenLink ??

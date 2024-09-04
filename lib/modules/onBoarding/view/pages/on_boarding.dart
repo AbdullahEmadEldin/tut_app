@@ -26,7 +26,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     ///
     CacheHelper.saveData(
         key: AppConstants.sharedPrefKeys.firstLaunch, value: false);
-    debugPrint('This is the first run of the application');
   }
 
   @override

@@ -87,6 +87,13 @@ class ProfileShimmer extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8), color: Colors.red),
           ),
+          Container(
+            margin: const EdgeInsets.all(16),
+            height: UiHelper.getResponsiveDimension(context, baseDimension: 28),
+            width: UiHelper.getResponsiveDimension(context, baseDimension: 350),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8), color: Colors.red),
+          ),
         ],
       ),
     );

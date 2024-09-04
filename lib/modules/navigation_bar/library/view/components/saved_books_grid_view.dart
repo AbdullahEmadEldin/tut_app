@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/modules/navigation_bar/explore/view/widgets/empty_books_grid.dart';
 import 'package:tut_app/modules/navigation_bar/library/view/widgets/saved_book_tile.dart';
 import 'package:tut_app/modules/navigation_bar/library/view_model/cubit/get_saved_books_cubit.dart';
@@ -8,10 +10,7 @@ import 'package:tut_app/shared/view/widgets/book_tile_shimmer.dart';
 class SavedBooksGridView extends StatelessWidget {
   const SavedBooksGridView({
     super.key,
-    required this.runtimeType,
   });
-
-  final Type runtimeType;
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +22,10 @@ class SavedBooksGridView extends StatelessWidget {
             height: 500,
             child: GridView.builder(
               itemCount: 10,
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3),
               itemBuilder: (context, index) {
-                return BookTileShimmer();
+                return const BookTileShimmer();
               },
             ),
           );
@@ -34,7 +33,7 @@ class SavedBooksGridView extends StatelessWidget {
         if (state is GetSavedBooksSuccess) {
           if (state.savedBooks.isEmpty) {
             return EmptyBooksGrid(
-              message: 'Add Some Books to your library',
+              message: AppStrings.emptyBooksLib.tr(),
             );
           }
           return Flexible(

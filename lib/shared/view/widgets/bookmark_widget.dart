@@ -33,8 +33,8 @@ class _BookmarkWidgetState extends State<BookmarkWidget> {
         return IconActionButton(
           onTap: () async {
             if (!_isBookSavedInDB()) {
-              await NetworkHelper.covertImageToBytes(
-                widget.book.bookInfo.imageLinks!.thumbnail!,
+              await NetworkHelper.getImageBytesFromResponse(
+                widget.book.bookInfo.imageLinks?.thumbnail,
               ).then((bytes) {
                 print('==================>> UI set');
                 context.read<SetBooksToLibCubit>().saveBookToLibrary(

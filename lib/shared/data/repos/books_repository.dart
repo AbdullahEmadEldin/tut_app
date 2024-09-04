@@ -1,4 +1,5 @@
 import 'package:tut_app/constants/api_endpoints.dart';
+import 'package:tut_app/core/lang_manager.dart';
 import 'package:tut_app/core/services/networking/api_consumer.dart';
 import 'package:tut_app/shared/data/models/book.dart';
 import 'package:tut_app/shared/data/models/books_response.dart';
@@ -20,8 +21,8 @@ class BooksRepository {
     final response = await api.get(
       path: ApiEndpoints.googleBooksBaseUrl,
       queryParameters: {
-        ApiEndpoints.query: 'action+drama',
-        ApiEndpoints.qLangParam: "en",
+        ApiEndpoints.query: 'recent+history+crime',
+        ApiEndpoints.qLangParam: await LanguageManager.getAppLang(),
         ApiEndpoints.qMaxResults:
             "20", // this will be static value as UI won't need more than 20 book.
         ApiEndpoints.qStartIndex: "0",
@@ -51,7 +52,7 @@ class BooksRepository {
       path: ApiEndpoints.googleBooksBaseUrl,
       queryParameters: {
         ApiEndpoints.query: "subject:${category.name}",
-        ApiEndpoints.qLangParam: "en",
+        ApiEndpoints.qLangParam: await LanguageManager.getAppLang(),
         ApiEndpoints.qMaxResults: "20",
         ApiEndpoints.qStartIndex: "$startIndex",
         ApiEndpoints.qProjection: ApiEndpoints.fullVolumeInfo,
@@ -69,7 +70,6 @@ class BooksRepository {
       path: ApiEndpoints.googleBooksBaseUrl,
       queryParameters: {
         ApiEndpoints.query: searchTerm,
-        ApiEndpoints.qLangParam: "en",
         ApiEndpoints.qMaxResults: "20",
         ApiEndpoints.qStartIndex: "$startIndex",
         ApiEndpoints.qProjection: ApiEndpoints.fullVolumeInfo,

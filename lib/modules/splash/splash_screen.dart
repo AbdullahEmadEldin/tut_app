@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:tut_app/core/theme/text_styles_manager.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/modules/auth/view/pages/login_page.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
-import 'package:tut_app/modules/navigation_bar/home/view/page/home_page.dart';
 import 'package:tut_app/modules/onBoarding/view/pages/on_boarding.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/constants/constants.dart';
@@ -21,18 +20,14 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController? _controller;
+  late AnimationController animationController;
+  late Animation<Offset> slidingAnimation;
   Timer? _timer;
   @override
   void initState() {
     super.initState();
 
-    /// AnimationController for the rotation animation of the logo.
-    _controller = AnimationController(
-      duration: const Duration(
-          seconds: AppConstants.splashTimer), // Set the duration here
-      vsync: this,
-    )..repeat(); // Repeats the animation indefinitely
+    initSlidingAnimation();
 
     /// Timer for navigating to the next screen after duration.
     _timer = Timer(
@@ -66,18 +61,50 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors().colorScheme.primary,
-      body: RotationTransition(
-        turns: _controller!,
-        child: Center(
-          child: Image.asset(AppAssets.images.splashLogo),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              AppAssets.images.logo,
+              height:
+                  UiHelper.getResponsiveDimension(context, baseDimension: 150),
+              width:
+                  UiHelper.getResponsiveDimension(context, baseDimension: 150),
+            ),
+            AnimatedBuilder(
+              animation: slidingAnimation,
+              builder: (context, child) => SlideTransition(
+                position: slidingAnimation,
+                child: Text('Books-Hub',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge!
+                        .copyWith(color: AppColors().colorScheme.white)),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
+  void initSlidingAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+
+    slidingAnimation =
+        Tween<Offset>(begin: const Offset(0, 7), end: Offset.zero)
+            .animate(animationController);
+
+    animationController.forward();
+  }
+
   @override
   void dispose() {
-    _controller!.dispose();
+    animationController.dispose();
     _timer!.cancel();
     super.dispose();
   }

@@ -48,7 +48,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    print('5555555555===>>> ${AppThemes.instance.themeNotifier}');
+    print('Initial Theme ===>>> ${AppThemes.instance.themeNotifier.value}');
     return ValueListenableBuilder<ThemeMode?>(
         valueListenable: AppThemes.instance.themeNotifier,
         builder: (context, themeMode, child) {

@@ -15,8 +15,6 @@ class EmptyBooksGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(
-        '====>> Padiiiiiiiiiiiiiings ${UiHelper.getResponsiveDimension(context, baseDimension: 16)}');
     return Padding(
       padding: EdgeInsets.all(
         UiHelper.getResponsiveDimension(context, baseDimension: 16),
