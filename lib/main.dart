@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/lang_manager.dart';
 import 'package:tut_app/core/router/app_router.dart';
@@ -9,6 +10,14 @@ import 'package:tut_app/core/services/cache/cache_helper.dart';
 import 'package:tut_app/modules/splash/splash_screen.dart';
 
 void main() async {
+  // Set the status bar to transparent
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // Make the status bar transparent
+      statusBarIconBrightness:
+          Brightness.dark, // Set icon brightness (optional)
+    ),
+  );
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await CacheHelper.init();
