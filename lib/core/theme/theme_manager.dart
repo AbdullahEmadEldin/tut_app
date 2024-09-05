@@ -40,7 +40,7 @@ class AppThemes {
         splashColor: AppColors().colorScheme.lightPrimary,
         scaffoldBackgroundColor:
             AppColors().colorScheme.background, // ripple effect color
-        // cardview theme
+        // card view theme
         cardTheme: CardTheme(
           color: AppColors().colorScheme.white,
           shadowColor: AppColors().colorScheme.grey,

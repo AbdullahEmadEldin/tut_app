@@ -52,7 +52,7 @@ class LightColorScheme implements AppColorScheme {
   @override
   Color get white => const Color(0xffFFFFFF);
   @override
-  Color get darkPrimary => const Color(0xffd17d11);
+  Color get darkPrimary => Color.fromARGB(255, 91, 56, 12);
   @override
   Color get grey2 => const Color(0xff797979);
 }
@@ -87,7 +87,7 @@ class DarkColorScheme implements AppColorScheme {
   @override
   Color get white => const Color(0xffFFFFFF);
   @override
-  Color get darkPrimary => const Color(0xffd17d11);
+  Color get darkPrimary => Color.fromARGB(255, 70, 44, 10);
   @override
   Color get grey2 => const Color(0xff797979);
 }
