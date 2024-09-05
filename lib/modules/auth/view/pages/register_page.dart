@@ -50,8 +50,7 @@ class RegisterPage extends StatelessWidget {
                 //as it throw error of dirty widget marked to be builded during HomePage build
                 Future.delayed(const Duration(seconds: 2), () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                      AnimatedBottomBar.routeName,
-                      (Route<dynamic> route) => false);
+                      LoginPage.routeName, (Route<dynamic> route) => false);
                 });
               }
               return Form(
