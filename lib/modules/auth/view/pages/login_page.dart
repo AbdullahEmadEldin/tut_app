@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart' as rive;
+import 'package:tut_app/constants/constants.dart';
+import 'package:tut_app/core/services/cache/cache_helper.dart';
 import 'package:tut_app/core/theme/colors/colors_scheme.dart';
 import 'package:tut_app/modules/auth/view/widgets/auth_title.dart';
 import 'package:tut_app/modules/auth/view/widgets/dont_have_account_button.dart';
@@ -64,13 +66,23 @@ class _LoginPageState extends State<LoginPage> {
             } else if (state is LoginSuccess) {
               loginCubit.addActiveController(loginCubit.loadingEndController);
               buttonLoading = false;
+
+              /// in success login the RememberMe button will decide the value,
+              /// but if login failed it will be false. even the RememberMe button signed it true.
+              CacheHelper.saveData(
+                key: AppConstants.sharedPrefKeys.stayLoggedIn,
+                value: loginCubit.rememberMe,
+              );
               showToast(context, AppStrings.loginSuccessMeg.tr());
               Navigator.of(context).pushNamedAndRemoveUntil(
                   AnimatedBottomBar.routeName, (route) => false);
               //
             } else if (state is LoginFailure) {
               _handleFailureLoginAnimation(context, state);
-
+              CacheHelper.saveData(
+                key: AppConstants.sharedPrefKeys.stayLoggedIn,
+                value: false,
+              );
               emailError = state.emailError ?? '';
               passwordError = state.passwordError ?? '';
               showToast(
