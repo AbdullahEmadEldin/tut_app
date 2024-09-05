@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tut_app/core/lang_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
@@ -93,7 +94,7 @@ TextStyle getRegularStyle(
 }) {
   return _getTextStyle(
     context,
-    fontSize,
+    fontSize.sp,
     AppFontWeight.regular,
     color,
   );

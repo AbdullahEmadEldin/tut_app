@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
-import 'package:tut_app/constants/values_manager.dart';
 
 class InputFieldWidget extends StatefulWidget {
   final String labelText;
@@ -38,7 +37,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
       children: [
         Text(widget.labelText, style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(
-          height: 5,
+          height: 4,
         ),
         TextFormField(
           controller: widget.controller,
@@ -74,7 +73,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                 .bodySmall!
                 .copyWith(color: AppColors().colorScheme.darkGrey),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppMargin.m8),
+              borderRadius: BorderRadius.circular(8),
               borderSide:
                   BorderSide(color: AppColors().colorScheme.grey, width: 0.0),
             ),

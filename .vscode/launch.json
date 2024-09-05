@@ -31,7 +31,7 @@
             "name": "minote",
             "request": "launch",
             "type": "dart",
-            "deviceId": "6d5b3618"
+            "deviceId": "192.168.1.60:5555"
         },
     ],
     "compounds": [

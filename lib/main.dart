@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/lang_manager.dart';
 import 'package:tut_app/core/router/app_router.dart';
@@ -19,6 +20,7 @@ void main() async {
     ),
   );
   WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
   await EasyLocalization.ensureInitialized();
   await CacheHelper.init();
   final String startLocale = await LanguageManager.getAppLang();
@@ -28,12 +30,8 @@ void main() async {
     EasyLocalization(
       startLocale: Locale(startLocale),
       supportedLocales: [
-        Locale(
-          LanguageType.english.code,
-        ),
-        Locale(
-          LanguageType.arabic.code,
-        )
+        Locale(LanguageType.english.code),
+        Locale(LanguageType.arabic.code)
       ],
       path: AppAssets.translationsPath,
       child: MyApp(),
@@ -58,21 +56,26 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     print('Initial Theme ===>>> ${AppThemes.instance.themeNotifier.value}');
-    return ValueListenableBuilder<ThemeMode?>(
-        valueListenable: AppThemes.instance.themeNotifier,
-        builder: (context, themeMode, child) {
-          return MaterialApp(
-            builder: DevicePreview.appBuilder,
-            locale: context.locale,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            debugShowCheckedModeBanner: false,
-            onGenerateRoute: AppRouter.onGenerate,
-            initialRoute: SplashScreen.routeName,
-            themeMode: themeMode,
-            theme: AppThemes.instance.lightAppTheme(context),
-            darkTheme: AppThemes.instance.darkAppTheme(context),
-          );
-        });
+
+    return ScreenUtilInit(
+      designSize: const Size(411, 866),
+      builder: (context, child) {
+        return ValueListenableBuilder<ThemeMode?>(
+            valueListenable: AppThemes.instance.themeNotifier,
+            builder: (context, themeMode, child) {
+              return MaterialApp(
+                builder: DevicePreview.appBuilder,
+                locale: context.locale,
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                debugShowCheckedModeBanner: false,
+                onGenerateRoute: AppRouter.onGenerate,
+                initialRoute: SplashScreen.routeName,
+                themeMode: themeMode,
+                theme: AppThemes.instance.lightAppTheme(context),
+              );
+            });
+      },
+    );
   }
 }

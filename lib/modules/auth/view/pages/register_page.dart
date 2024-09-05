@@ -5,8 +5,10 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tut_app/constants/assets_paths.dart';
+import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/modules/auth/view/pages/login_page.dart';
 import 'package:tut_app/modules/auth/view/widgets/auth_title.dart';
 import 'package:tut_app/modules/auth/view/widgets/input_field.dart';
@@ -15,7 +17,6 @@ import 'package:tut_app/modules/auth/view/widgets/register_button.dart';
 import 'package:tut_app/modules/auth/view_model/register/register_cubit.dart';
 import 'package:tut_app/modules/navigation_bar/animated_bottom_bar.dart';
 import 'package:tut_app/constants/app_strings.dart';
-import 'package:tut_app/constants/values_manager.dart';
 import 'package:tut_app/shared/view/widgets/toast_message.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -53,19 +54,24 @@ class RegisterPage extends StatelessWidget {
                       (Route<dynamic> route) => false);
                 });
               }
-
               return Form(
                 key: registerCubit.formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: AppSize.s30,
+                    SizedBox(
+                      height: UiHelper.getResponsiveDimension(
+                        context,
+                        baseDimension: 20.h,
+                      ),
                     ),
                     //! title
                     AuthTitle(title: AppStrings.register.tr()),
-                    const SizedBox(
-                      height: AppSize.s4,
+                    SizedBox(
+                      height: UiHelper.getResponsiveDimension(
+                        context,
+                        baseDimension: 4.h,
+                      ),
                     ),
                     //! profile pic
                     Center(
@@ -87,7 +93,10 @@ class RegisterPage extends StatelessWidget {
                         },
                       ),
                     ),
-                    const SizedBox(height: AppSize.s12),
+                    SizedBox(
+                      height: UiHelper.getResponsiveDimension(context,
+                          baseDimension: 6.h),
+                    ),
                     //! name
                     InputFieldWidget(
                       labelText: AppStrings.name.tr(),
@@ -95,7 +104,10 @@ class RegisterPage extends StatelessWidget {
                       controller: registerCubit.nameController,
                       validator: _handleValidation,
                     ),
-                    const SizedBox(height: AppSize.s18),
+                    SizedBox(
+                      height: UiHelper.getResponsiveDimension(context,
+                          baseDimension: 18.h),
+                    ),
                     //! email
                     InputFieldWidget(
                       labelText: AppStrings.email.tr(),
@@ -103,7 +115,10 @@ class RegisterPage extends StatelessWidget {
                       controller: registerCubit.emailController,
                       validator: _handleValidation,
                     ),
-                    const SizedBox(height: AppSize.s18),
+                    SizedBox(
+                      height: UiHelper.getResponsiveDimension(context,
+                          baseDimension: 18.h),
+                    ),
                     //! phone
                     InputFieldWidget(
                       labelText: AppStrings.phoneNumber.tr(),
@@ -117,7 +132,10 @@ class RegisterPage extends StatelessWidget {
                         return null;
                       },
                     ),
-                    const SizedBox(height: AppSize.s18),
+                    SizedBox(
+                      height: UiHelper.getResponsiveDimension(context,
+                          baseDimension: 18.h),
+                    ),
                     //! password
                     InputFieldWidget(
                       labelText: AppStrings.password.tr(),
@@ -132,7 +150,10 @@ class RegisterPage extends StatelessWidget {
                         return null;
                       },
                     ),
-                    const SizedBox(height: AppSize.s18),
+                    SizedBox(
+                      height: UiHelper.getResponsiveDimension(context,
+                          baseDimension: 18.h),
+                    ),
                     //! confirm password
                     InputFieldWidget(
                       labelText: AppStrings.confirmPassword.tr(),
@@ -147,7 +168,10 @@ class RegisterPage extends StatelessWidget {
                         return null;
                       },
                     ),
-                    const SizedBox(height: AppSize.s18),
+                    SizedBox(
+                      height: UiHelper.getResponsiveDimension(context,
+                          baseDimension: 18.h),
+                    ),
                     //! register button
                     RegisterButton(
                         text: AppStrings.register.tr(),

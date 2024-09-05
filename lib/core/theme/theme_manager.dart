@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tut_app/constants/constants.dart';
 import 'package:tut_app/core/services/cache/cache_helper.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
@@ -67,12 +68,13 @@ class AppThemes {
         // input decoration theme (text form field)
         inputDecorationTheme: InputDecorationTheme(
           // content padding
-          contentPadding: const EdgeInsets.all(AppPadding.p12),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           // hint style
           hintStyle: getRegularStyle(context,
-              color: AppColors().colorScheme.grey, fontSize: AppFontSize.s14),
+              color: AppColors().colorScheme.grey, fontSize: 14.sp),
           labelStyle: getMediumStyle(context,
-              color: AppColors().colorScheme.grey, fontSize: AppFontSize.s14),
+              color: AppColors().colorScheme.grey, fontSize: 14.sp),
           errorStyle:
               getRegularStyle(context, color: AppColors().colorScheme.error),
 
@@ -133,8 +135,7 @@ class AppThemes {
       );
 
   ThemeData darkAppTheme(BuildContext context) => ThemeData(
-        scaffoldBackgroundColor:
-            AppColors().colorScheme.background, // ripple effect color
+        scaffoldBackgroundColor: Colors.red, // ripple effect color
         brightness: Brightness.dark,
         textTheme: AppTextThemes.lightTextTheme(context),
       );
