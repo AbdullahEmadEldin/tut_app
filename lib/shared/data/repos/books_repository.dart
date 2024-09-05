@@ -21,14 +21,12 @@ class BooksRepository {
     final response = await api.get(
       path: ApiEndpoints.googleBooksBaseUrl,
       queryParameters: {
-        ApiEndpoints.query: 'novel',
+        ApiEndpoints.query: 'subject:Novels',
         ApiEndpoints.qLangParam: await LanguageManager.getAppLang(),
         ApiEndpoints.qMaxResults:
             "20", // this will be static value as UI won't need more than 20 book.
         ApiEndpoints.qStartIndex: "0",
         ApiEndpoints.qProjection: ApiEndpoints.fullVolumeInfo,
-        'orderBy': 'newest',
-        // 'filter': 'ebooks',
       },
     );
     return BooksResponse.fromJson(response);
