@@ -44,7 +44,7 @@ class MyApp extends StatefulWidget {
   /// and to enable use it in di or state management.
   const MyApp._internal();
 
-  static final MyApp _instance = MyApp._internal();
+  static MyApp _instance = const MyApp._internal();
 
   factory MyApp() => _instance;
 
