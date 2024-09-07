@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tut_app/constants/app_strings.dart';
 import 'package:tut_app/constants/assets_paths.dart';
 import 'package:tut_app/core/network_helper.dart';
+import 'package:tut_app/core/theme/theme_manager.dart';
 import 'package:tut_app/core/ui_helpers.dart';
 import 'package:tut_app/core/theme/colors/colors_manager.dart';
 import 'package:tut_app/shared/data/models/book.dart';
@@ -76,7 +77,9 @@ class BookDetailsHeader extends SliverPersistentHeaderDelegate {
           elevation: 3,
           child: Container(
             width: double.infinity,
-            color: AppColors().colorScheme.background,
+            color: AppThemes.instance.themeNotifier.value == ThemeMode.dark
+                ? const Color(0xff0F2027)
+                : AppColors().colorScheme.background,
             padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
